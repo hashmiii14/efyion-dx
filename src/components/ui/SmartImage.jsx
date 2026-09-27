@@ -4,28 +4,44 @@ const widths = [480, 800, 1200, 1600];
 const unsplashUrl = (id, w) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
 
 /**
- * Responsive image with lazy loading and a branded fallback.
+ * Responsive image with lazy loading, fade-in transition, and a branded fallback.
  * `image` comes from content/images.js: { unsplash: 'photo-…' } or { src: '/images/…' }, plus `alt`.
  */
-export default function SmartImage({ image, className = '', sizes = '(min-width: 1024px) 50vw, 100vw', priority = false, label }) {
+export default function SmartImage({
+  image,
+  className = '',
+  sizes = '(min-width: 1024px) 50vw, 100vw',
+  priority = false,
+  label,
+}) {
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   if (!image || failed) return <BrandPlaceholder className={className} label={label} />;
 
   const props = image.unsplash
-    ? { src: unsplashUrl(image.unsplash, 1200), srcSet: widths.map((w) => `${unsplashUrl(image.unsplash, w)} ${w}w`).join(', '), sizes }
+    ? {
+        src: unsplashUrl(image.unsplash, 1200),
+        srcSet: widths.map((w) => `${unsplashUrl(image.unsplash, w)} ${w}w`).join(', '),
+        sizes,
+      }
     : { src: image.src };
 
   return (
-    <img
-      {...props}
-      alt={image.alt || ''}
-      loading={priority ? 'eager' : 'lazy'}
-      fetchPriority={priority ? 'high' : undefined}
-      decoding="async"
-      onError={() => setFailed(true)}
-      className={`h-full w-full object-cover ${className}`}
-    />
+    <div className={`relative h-full w-full overflow-hidden bg-slate-100/80 ${className}`}>
+      <img
+        {...props}
+        alt={image.alt || ''}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        onError={() => setFailed(true)}
+        className={`h-full w-full object-cover transition-opacity duration-300 ${
+          loaded || priority ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </div>
   );
 }
 

@@ -186,7 +186,7 @@ export const about = {
   hero: {
     title: 'Committed to Precision. Focused on Healthcare Outcomes.',
     text: 'Efyion Dx delivers diagnostic technologies and ongoing support that enable healthcare teams to make clinical decisions with certainty.',
-    image: images.aboutTeam,
+    image: images.aboutHero,
   },
   intro: {
     title: 'About Efyion Dx',
@@ -254,7 +254,7 @@ export const technology = {
   hero: {
     title: 'Diagnostic Technology & Quality Governance',
     text: 'How we evaluate laboratory instrumentation, maintain analytical consistency, and uphold rigorous quality management.',
-    image: images.pillarMicroscopy,
+    image: images.techOptics,
   },
   sections: [
     {

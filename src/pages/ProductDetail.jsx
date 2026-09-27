@@ -12,10 +12,11 @@ import NotFound from './NotFound';
 
 const sections = [
   { id: 'overview', label: 'Overview' },
+  { id: 'assay-menu', label: 'Assay menu & panels' },
   { id: 'applications', label: 'Applications' },
   { id: 'features', label: 'Features' },
-  { id: 'technical', label: 'Technical information' },
-  { id: 'downloads', label: 'Downloads' },
+  { id: 'technical', label: 'Technical specifications' },
+  { id: 'downloads', label: 'Documents & downloads' },
 ];
 
 /** Shown when a product field has not been filled in yet. */
@@ -95,8 +96,29 @@ export default function ProductDetail() {
           <div className="space-y-16 lg:col-span-9 lg:space-y-20">
             <Reveal as="section" id="overview" aria-labelledby="h-overview">
               <h2 id="h-overview" className="text-3xl sm:text-4xl">Overview</h2>
-              <p className="mt-5 max-w-3xl text-lg">{product.overview}</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed">{product.overview}</p>
             </Reveal>
+
+            {product.assayMenu && product.assayMenu.length > 0 && (
+              <Reveal as="section" id="assay-menu" aria-labelledby="h-assay-menu">
+                <div className="flex flex-wrap items-baseline justify-between gap-4">
+                  <h2 id="h-assay-menu" className="text-3xl sm:text-4xl">Assay Menu & Test Panels</h2>
+                  <span className="text-sm font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+                    Clinical Parameters
+                  </span>
+                </div>
+                <div className="mt-6">
+                  <ul className="grid gap-3 sm:grid-cols-2">
+                    {product.assayMenu.map((item) => (
+                      <li key={item} className="flex items-start gap-3 rounded-2xl bg-azure-50/50 border border-azure-100/60 px-5 py-4 font-semibold text-navy-950">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-violet-600 shrink-0" aria-hidden="true" />
+                        <span className="text-sm leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
 
             <Reveal as="section" id="applications" aria-labelledby="h-applications">
               <h2 id="h-applications" className="text-3xl sm:text-4xl">Applications</h2>
@@ -123,8 +145,8 @@ export default function ProductDetail() {
                   <ul className="grid gap-5 sm:grid-cols-2">
                     {product.features.map((f) => (
                       <li key={f.title} className="border-t-2 border-navy-900 pt-5">
-                        <h3 className="text-xl">{f.title}</h3>
-                        <p className="mt-2 text-ink">{f.text}</p>
+                        <h3 className="text-xl font-bold">{f.title}</h3>
+                        <p className="mt-2 text-ink leading-relaxed">{f.text}</p>
                       </li>
                     ))}
                   </ul>
@@ -152,17 +174,21 @@ export default function ProductDetail() {
             </Reveal>
 
             <Reveal as="section" id="downloads" aria-labelledby="h-downloads">
-              <h2 id="h-downloads" className="text-3xl sm:text-4xl">Downloads</h2>
+              <h2 id="h-downloads" className="text-3xl sm:text-4xl">Downloads & Documentation</h2>
               <div className="mt-6">
-                {product.downloads.length ? (
+                {product.downloads && product.downloads.length > 0 ? (
                   <ul className="grid gap-3 sm:grid-cols-2">
                     {product.downloads.map((d) => (
-                      <li key={d.href}>
-                        <a href={d.href} download className="group flex min-h-[64px] items-center gap-4 rounded-2xl border border-line px-5 py-4 transition-colors hover:border-navy-900">
-                          <FileDown size={22} className="text-violet-600" aria-hidden="true" />
-                          <span className="font-bold text-navy-900">{d.label}</span>
-                          {d.size && <span className="ml-auto text-sm text-ink">{d.size}</span>}
-                        </a>
+                      <li key={d.label}>
+                        <Link to={d.href} className="group flex min-h-[68px] items-center gap-4 rounded-2xl border border-line bg-white p-4 transition-all hover:border-violet-600 hover:shadow-subtle">
+                          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors">
+                            <FileDown size={20} aria-hidden="true" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <span className="block truncate font-bold text-navy-900 group-hover:text-violet-600 transition-colors">{d.label}</span>
+                            {d.size && <span className="block text-xs font-medium text-ink/70 mt-0.5">{d.size} • Verified Specification</span>}
+                          </div>
+                        </Link>
                       </li>
                     ))}
                   </ul>

@@ -37,7 +37,7 @@ export default function Solutions() {
       <PageHero
         title="Solutions for every diagnostic setting"
         text="From busy hospital laboratories to focused research facilities, we shape our solutions around the way each setting works."
-        image={images.hospitalTeam}
+        image={images.solutionsHero}
         crumbs={[{ label: 'Solutions' }]}
       />
 

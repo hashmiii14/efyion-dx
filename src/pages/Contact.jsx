@@ -54,13 +54,32 @@ export default function Contact() {
                   </li>
                 )}
               </ul>
-              <div className="mt-10 border-t border-white/15 pt-8">
+              <div className="mt-8 rounded-2xl bg-white/10 p-4 border border-white/10">
+                <p className="text-xs font-bold uppercase tracking-wider text-violet-400">Application Advisory SLA</p>
+                <div className="mt-2 space-y-1.5 text-xs text-white/90">
+                  <p className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>Emergency Lab Support: <strong>&lt; 2 hour response</strong></span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-azure-400 shrink-0" />
+                    <span>RFP & Spec Enquiries: <strong>Within 24 business hours</strong></span>
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 border-t border-white/15 pt-6">
                 <p className="text-sm font-bold text-white">What happens next</p>
-                <ol className="mt-4 space-y-3 text-white/75">
-                  {['We read your enquiry', 'We reply by email with next steps', 'If helpful, we arrange a conversation'].map((s, i) => (
+                <ol className="mt-3 space-y-2.5 text-sm text-white/75">
+                  {[
+                    'Clinical review of your testing menu and daily volume',
+                    'Tailored technical brochure and specification package',
+                    'Direct scheduling with a laboratory application specialist',
+                  ].map((s, i) => (
                     <li key={s} className="flex gap-3">
-                      <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold text-white">{i + 1}</span>
-                      {s}
+                      <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/15 text-xs font-bold text-white">
+                        {i + 1}
+                      </span>
+                      <span>{s}</span>
                     </li>
                   ))}
                 </ol>
