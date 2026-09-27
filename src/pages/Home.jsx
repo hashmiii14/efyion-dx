@@ -161,13 +161,17 @@ function Hero() {
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Button to="/products" className="!min-h-[48px] sm:!min-h-[50px] text-sm font-bold shadow-lg shadow-violet-900/40">
+              <Button
+                to="/products"
+                variant="gradient"
+                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40"
+              >
                 Explore diagnostic systems
               </Button>
               <Button
                 to="/contact"
-                variant="outline"
-                className="!min-h-[48px] sm:!min-h-[50px] text-sm font-bold !border-white/30 !text-white hover:!bg-white/10 hover:!border-white/50 backdrop-blur-sm"
+                variant="outlineLight"
+                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold"
               >
                 Request consultation
               </Button>
@@ -182,7 +186,7 @@ function Hero() {
               ].map(({ value, label }) => (
                 <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
                   <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
-                  <p className="text-xs font-semibold text-white/65 mt-0.5">{label}</p>
+                  <p className="text-xs font-semibold text-white/70 mt-0.5">{label}</p>
                 </div>
               ))}
             </div>
@@ -190,23 +194,23 @@ function Hero() {
 
           {/* Floating Info Cards — right side, desktop only */}
           <div className="hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end items-end pb-2">
-            <div className="flex flex-col gap-3 w-full max-w-[260px]">
-              <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-4 shadow-xl animate-float">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/30 text-violet-300">
+            <div className="flex flex-col gap-3.5 w-full max-w-[270px]">
+              <div className="flex items-center gap-3 rounded-2xl border border-white/20 bg-navy-950/60 backdrop-blur-xl p-4 shadow-2xl animate-float">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/25 text-violet-300 border border-violet-400/20">
                   <Activity size={20} aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-white">Multi-Channel Detection</p>
-                  <p className="text-xs font-medium text-white/65">Continuous STAT Access</p>
+                  <p className="text-xs font-medium text-white/70">Continuous STAT Access</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-4 shadow-xl" style={{ animationDelay: '0.5s' }}>
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-azure-600/30 text-azure-300">
+              <div className="flex items-center gap-3 rounded-2xl border border-white/20 bg-navy-950/60 backdrop-blur-xl p-4 shadow-2xl" style={{ animationDelay: '0.5s' }}>
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-azure-500/25 text-azure-300 border border-azure-400/20">
                   <ShieldCheck size={20} aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-white">CE-IVD Certified</p>
-                  <p className="text-xs font-medium text-white/65">ISO 13485 Quality Standards</p>
+                  <p className="text-xs font-medium text-white/70">ISO 13485 Quality Standards</p>
                 </div>
               </div>
             </div>
@@ -781,7 +785,7 @@ function TechnologySection() {
             </div>
 
             <div className="mt-8 flex items-center gap-4">
-              <Button to="/technology" className="!min-h-[44px] text-sm font-bold bg-white !text-navy-900 hover:bg-slate-100">
+              <Button to="/technology" variant="light" className="!min-h-[46px] text-sm font-bold">
                 Explore technology & quality
               </Button>
             </div>
