@@ -44,8 +44,8 @@ export default function Resources() {
   return (
     <>
       <PageHero
-        title="Resources"
-        text="Articles, technical information, news and answers to common questions. New material will be added here as it is published."
+        title="Diagnostic Knowledge & Resources"
+        text="Technical documentation, workflow guides, clinical perspectives, and answers to common laboratory questions."
         crumbs={[{ label: 'Resources' }]}
       />
 

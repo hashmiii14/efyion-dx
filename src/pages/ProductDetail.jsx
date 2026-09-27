@@ -62,14 +62,14 @@ export default function ProductDetail() {
             <h1 className="anim-rise mt-2 text-[2.35rem] leading-[1.05] sm:text-5xl lg:text-6xl" style={{ '--delay': '120ms', letterSpacing: '-0.035em' }}>
               {product.name}
             </h1>
-            <p className="lead anim-rise mt-6 max-w-xl" style={{ '--delay': '180ms' }}>{product.summary}</p>
-            <div className="anim-rise mt-9 flex flex-col gap-3 sm:flex-row" style={{ '--delay': '240ms' }}>
-              <Button to={enquiry}>Enquire about this product</Button>
-              <Button href="#technical" variant="outline">Technical information</Button>
+            <p className="lead anim-rise mt-5 max-w-xl text-ink" style={{ '--delay': '180ms' }}>{product.summary}</p>
+            <div className="anim-rise mt-8 flex flex-wrap items-center gap-3 sm:gap-4" style={{ '--delay': '240ms' }}>
+              <Button to={enquiry}>Enquire about this system</Button>
+              <Button href="#technical" variant="outline">Technical specifications</Button>
             </div>
           </div>
-          <div className="anim-rise relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift" style={{ '--delay': '150ms' }}>
-            <SmartImage image={product.image} priority label={`${product.name} image to be added`} />
+          <div className="anim-rise relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line" style={{ '--delay': '150ms' }}>
+            <SmartImage image={product.image} priority label={product.name} />
           </div>
         </div>
       </section>

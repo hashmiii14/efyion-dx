@@ -10,9 +10,9 @@
 export const site = {
   name: 'Efyion Dx',
   tagline: 'Precision Diagnostics. Better Outcomes.',
-  url: '', // e.g. 'https://www.efyiondx.com' — used for canonical/OG URLs once live
+  url: 'https://efyion-dx.vercel.app',
   defaultDescription:
-    'Efyion Dx is focused on precision diagnostics and healthcare solutions for laboratories, hospitals and healthcare professionals.',
+    'Efyion Dx delivers precision in vitro diagnostic instruments, standardized assays, and laboratory workflow solutions.',
 };
 
 export const contact = {

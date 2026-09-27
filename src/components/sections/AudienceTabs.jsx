@@ -67,8 +67,8 @@ export default function AudienceTabs() {
         className="lg:col-span-7"
       >
         <div key={current.slug} className="page-enter">
-          <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-azure-100">
-            <SmartImage image={current.image} sizes="(min-width: 1024px) 55vw, 100vw" />
+          <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-azure-100 shadow-soft border border-line">
+            <SmartImage image={current.image} sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
             <p className="max-w-lg text-lg text-ink">{current.text}</p>

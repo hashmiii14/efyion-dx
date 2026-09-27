@@ -2,23 +2,33 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const base =
-  'group inline-flex min-h-[48px] items-center justify-center gap-3 rounded-full font-bold text-[0.95rem] transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60';
+  'group inline-flex items-center justify-center font-bold tracking-tight rounded-full transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60 select-none text-[0.875rem] sm:text-[0.9375rem] min-h-[42px] sm:min-h-[46px] leading-tight';
 
 const variants = {
-  primary: 'bg-navy-900 pl-6 pr-2 text-white hover:bg-navy-800 hover:shadow-lift active:scale-[.98]',
-  outline: 'border border-line bg-white px-6 text-navy-900 hover:border-navy-900 active:scale-[.98]',
-  light: 'bg-white pl-6 pr-2 text-navy-900 hover:shadow-lift active:scale-[.98]',
-  ghostLight: 'border border-white/30 px-6 text-white hover:border-white hover:bg-white/10 active:scale-[.98]',
+  primary:
+    'bg-navy-900 text-white pl-4 sm:pl-5 pr-1.5 sm:pr-2 gap-2 sm:gap-2.5 hover:bg-navy-800 hover:shadow-lift active:scale-[.98] border border-transparent shadow-sm',
+  outline:
+    'border border-line bg-white text-navy-900 px-4 sm:px-5 hover:border-navy-900 hover:bg-mist/50 active:scale-[.98]',
+  light:
+    'bg-white text-navy-900 pl-4 sm:pl-5 pr-1.5 sm:pr-2 gap-2 sm:gap-2.5 hover:bg-mist hover:shadow-lift active:scale-[.98] shadow-sm',
+  ghostLight:
+    'border border-white/30 text-white px-4 sm:px-5 hover:border-white hover:bg-white/10 active:scale-[.98]',
+  secondary:
+    'bg-azure-50 text-azure-600 px-4 sm:px-5 hover:bg-azure-100 active:scale-[.98] border border-azure-100',
 };
 
 /**
- * One button for links and actions.
- *  - `to`   → internal route (React Router)
- *  - `href` → external link / mailto
- *  - neither → <button>
- * Filled variants carry the arrow chip; outline variants don't.
+ * Responsive button for internal links, external links and button actions.
+ * Sized comfortably at 42px on mobile and 46px on desktop with balanced padding.
  */
-export default function Button({ to, href, variant = 'primary', className = '', children, ...rest }) {
+export default function Button({
+  to,
+  href,
+  variant = 'primary',
+  className = '',
+  children,
+  ...rest
+}) {
   const withArrow = variant === 'primary' || variant === 'light';
   const content = (
     <>
@@ -26,20 +36,38 @@ export default function Button({ to, href, variant = 'primary', className = '', 
       {withArrow && (
         <span
           aria-hidden="true"
-          className={`grid h-9 w-9 place-items-center rounded-full transition-transform duration-300 group-hover:translate-x-0.5 ${
-            variant === 'primary' ? 'bg-white/15' : 'bg-navy-900 text-white'
+          className={`grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-full transition-transform duration-300 group-hover:translate-x-0.5 ${
+            variant === 'primary'
+              ? 'bg-white/15 text-white'
+              : 'bg-navy-900 text-white'
           }`}
         >
-          <ArrowRight size={16} strokeWidth={2.4} />
+          <ArrowRight size={14} strokeWidth={2.4} />
         </span>
       )}
     </>
   );
-  const cls = `${base} ${variants[variant]} ${className}`;
+  const cls = `${base} ${variants[variant] || variants.primary} ${className}`;
 
-  if (to) return <Link to={to} className={cls} {...rest}>{content}</Link>;
-  if (href) return <a href={href} className={cls} {...rest}>{content}</a>;
-  return <button className={cls} {...rest}>{content}</button>;
+  if (to) {
+    return (
+      <Link to={to} className={cls} {...rest}>
+        {content}
+      </Link>
+    );
+  }
+  if (href) {
+    return (
+      <a href={href} className={cls} {...rest}>
+        {content}
+      </a>
+    );
+  }
+  return (
+    <button className={cls} {...rest}>
+      {content}
+    </button>
+  );
 }
 
 /** Text link with an arrow, used inside cards and sections. */
@@ -47,10 +75,16 @@ export function TextLink({ to, children, className = '', light = false }) {
   return (
     <Link
       to={to}
-      className={`group inline-flex items-center gap-2 font-bold ${light ? 'text-white' : 'text-azure-600'} ${className}`}
+      className={`group inline-flex items-center gap-1.5 text-sm sm:text-[0.9375rem] font-bold ${
+        light ? 'text-white' : 'text-azure-600'
+      } ${className}`}
     >
       <span className="link-underline">{children}</span>
-      <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+      <ArrowRight
+        size={15}
+        className="transition-transform duration-300 group-hover:translate-x-1 shrink-0"
+        aria-hidden="true"
+      />
     </Link>
   );
 }

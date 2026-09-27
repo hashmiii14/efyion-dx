@@ -40,8 +40,8 @@ export default function Products() {
   return (
     <>
       <PageHero
-        title="Products"
-        text="Explore the Efyion Dx catalogue by product area, or search for what you need. Full product information will be added as it is confirmed."
+        title="Diagnostic Products & Systems"
+        text="Explore the Efyion Dx diagnostic catalogue across clinical instruments, specialized assay panels, standardized reagents, and laboratory informatics."
         crumbs={[{ label: 'Products' }]}
       />
 

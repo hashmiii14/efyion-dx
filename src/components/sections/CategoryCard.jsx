@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SmartImage from '../ui/SmartImage';
 
-/** Product-area card. `feature` shows the category photograph. */
+/**
+ * Diagnostic Category Card.
+ * Displays high-resolution relevant imagery, category icon, description, and link.
+ */
 export default function CategoryCard({ category, feature = false, className = '' }) {
   const Icon = category.icon;
   const href = `/products?category=${category.slug}`;
@@ -11,20 +14,34 @@ export default function CategoryCard({ category, feature = false, className = ''
     return (
       <Link
         to={href}
-        className={`group relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-[2rem] bg-navy-900 p-7 text-white sm:p-9 ${className}`}
+        className={`group relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-[2rem] bg-navy-900 p-6 sm:p-8 text-white ${className}`}
       >
         <div className="absolute inset-0 -z-10 transition-transform duration-700 group-hover:scale-[1.04]">
-          <SmartImage image={category.image} sizes="(min-width: 1024px) 40vw, 100vw" />
+          <SmartImage
+            image={category.image}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
         </div>
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/95 via-navy-900/50 to-navy-900/0" />
-        <span className="mb-auto grid h-12 w-12 place-items-center rounded-full bg-white/15 backdrop-blur">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/95 via-navy-900/60 to-navy-900/10"
+        />
+        <span className="mb-auto grid h-11 w-11 place-items-center rounded-xl bg-white/15 backdrop-blur text-white">
           <Icon size={22} aria-hidden="true" />
         </span>
-        <h3 className="mt-16 text-2xl text-white sm:text-3xl">{category.name}</h3>
-        <p className="mt-3 max-w-sm text-white/80">{category.summary}</p>
-        <span className="mt-6 inline-flex items-center gap-2 font-bold">
-          Explore
-          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+        <h3 className="mt-12 text-2xl font-extrabold text-white sm:text-3xl">
+          {category.name}
+        </h3>
+        <p className="mt-2.5 max-w-md text-sm sm:text-base text-white/80 leading-relaxed">
+          {category.summary}
+        </p>
+        <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-white">
+          Explore category
+          <ArrowRight
+            size={15}
+            className="transition-transform group-hover:translate-x-1"
+            aria-hidden="true"
+          />
         </span>
       </Link>
     );
@@ -33,17 +50,37 @@ export default function CategoryCard({ category, feature = false, className = ''
   return (
     <Link
       to={href}
-      className={`group flex flex-col rounded-3xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-azure-100 hover:shadow-soft sm:p-7 ${className}`}
+      className={`group flex flex-col overflow-hidden rounded-[1.75rem] border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-azure-200 hover:shadow-soft ${className}`}
     >
-      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-mist text-navy-900 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-white">
-        <Icon size={22} aria-hidden="true" />
-      </span>
-      <h3 className="mt-6 text-xl">{category.name}</h3>
-      <p className="mt-2 text-base text-ink">{category.summary}</p>
-      <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-azure-600">
-        Explore
-        <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
-      </span>
+      <div className="relative aspect-[16/10] overflow-hidden bg-azure-50">
+        <SmartImage
+          image={category.image}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"
+        />
+        <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-navy-900 shadow-sm backdrop-blur">
+          <Icon size={20} aria-hidden="true" />
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-xl font-bold text-navy-900 group-hover:text-azure-600 transition-colors">
+          {category.name}
+        </h3>
+        <p className="mt-2 text-sm sm:text-base text-ink leading-relaxed">
+          {category.summary}
+        </p>
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-bold text-azure-600">
+          Explore solutions
+          <ArrowRight
+            size={14}
+            className="transition-transform group-hover:translate-x-1 shrink-0"
+            aria-hidden="true"
+          />
+        </span>
+      </div>
     </Link>
   );
 }

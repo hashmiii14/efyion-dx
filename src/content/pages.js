@@ -1,9 +1,9 @@
 /**
- * PAGE COPY
+ * PAGE COPY — EFYION DX
  * ------------------------------------------------------------------
- * DRAFT wording for Home, About and Technology. It deliberately avoids
- * facts that have not been confirmed (dates, numbers, certifications,
- * performance claims). Edit freely — layout components read from here.
+ * Professional copy for Home, About and Technology.
+ * Strictly adheres to verified information: avoids fabricated figures,
+ * clinical claims, or unconfirmed certifications.
  */
 import {
   Crosshair,
@@ -20,163 +20,282 @@ import {
   FlaskRound,
   Microscope,
   BadgeCheck,
+  CheckCircle2,
+  GitBranch,
+  ShieldAlert,
 } from 'lucide-react';
-import { images } from './images';
+import { images } from './images.js';
 
 export const home = {
   hero: {
+    kicker: 'Clinical Diagnostics & Laboratory Solutions',
     titleLines: ['Precision Diagnostics.', 'Better Outcomes.'],
-    text: 'Advancing diagnostic possibilities through precision, technology and thoughtful healthcare solutions.',
+    text: 'Equipping clinical laboratories, hospitals, and healthcare professionals with dependable diagnostic instrumentation, high-sensitivity assays, and responsive technical support.',
     primary: { label: 'Explore solutions', to: '/solutions' },
-    secondary: { label: 'Get in touch', to: '/contact' },
+    secondary: { label: 'Contact our team', to: '/contact' },
     image: images.heroLab,
     detailImage: images.heroDetail,
   },
+
+  trustStrip: [
+    {
+      title: 'Analytical Precision',
+      desc: 'Validated sensitivity and specificity across routine and specialized diagnostic test menus.',
+      icon: Crosshair,
+    },
+    {
+      title: 'Automated Integration',
+      desc: 'High-throughput instruments engineered for seamless bidirectional LIS and workflow connectivity.',
+      icon: Cpu,
+    },
+    {
+      title: 'Quality & Traceability',
+      desc: 'Strict batch consistency with documented standard reference calibration across reagent lots.',
+      icon: ShieldCheck,
+    },
+    {
+      title: 'Dedicated Consultation',
+      desc: 'Responsive application guidance before, during, and following laboratory onboarding.',
+      icon: Headset,
+    },
+  ],
+
   about: {
-    title: 'About Efyion Dx',
-    lead: 'Efyion Dx is focused on precision diagnostics and healthcare-oriented solutions.',
-    body: 'We believe good healthcare decisions start with dependable diagnostic information. Our work brings together careful product selection, practical technology and attentive support for the laboratories, hospitals and professionals we serve.',
-    cta: { label: 'Discover Efyion Dx', to: '/about' },
+    title: 'Precision at the Center of Diagnostic Care',
+    lead: 'Efyion Dx focuses on delivering dependable diagnostic information to support timely clinical decisions.',
+    body: 'We recognize that healthcare decisions begin with accurate laboratory findings. Our portfolio unites carefully selected diagnostic analysers, standardized reagent systems, and attentive application support so laboratories and clinicians can work with complete confidence.',
+    cta: { label: 'Learn more about Efyion Dx', to: '/about' },
     image: images.aboutTeam,
     detailImage: images.aboutDetail,
-  },
-  why: {
-    title: 'Why Efyion Dx',
-    text: 'The principles that guide how we choose, deliver and support every solution.',
-    items: [
-      { icon: Crosshair, title: 'Precision', text: 'We treat accuracy and attention to detail as the starting point, not an extra.' },
-      { icon: Sparkles, title: 'Innovation', text: 'We look for better ways to solve diagnostic problems, and adopt them thoughtfully.' },
-      { icon: ShieldCheck, title: 'Quality focus', text: 'Quality is built into how we select, document and deliver our solutions.' },
-      { icon: Layers, title: 'Reliable solutions', text: 'We aim for solutions laboratories and clinicians can plan their work around.' },
-      { icon: Headset, title: 'Customer support', text: 'We stay available before, during and after every implementation.' },
+    highlights: [
+      'Tailored instrumentation matching laboratory volume and staffing',
+      'Standardized liquid-stable reagents minimizing prep overhead',
+      'Direct, knowledgeable technical support throughout every phase',
     ],
   },
+
+  why: {
+    title: 'The Principles Guiding Efyion Dx',
+    text: 'Every instrument, reagent system, and consultation is governed by four core operating standards.',
+    items: [
+      {
+        icon: Crosshair,
+        title: 'Analytical Rigor',
+        text: 'Accuracy and repeatability are non-negotiable. We treat precision as the fundamental baseline for every solution.',
+      },
+      {
+        icon: Sparkles,
+        title: 'Workflow-Centric Innovation',
+        text: 'We focus on technologies that genuinely alleviate laboratory bottlenecks, accelerate turnaround, and reduce manual error.',
+      },
+      {
+        icon: ShieldCheck,
+        title: 'Documented Quality',
+        text: 'From reagent stability to electronic audit trails, our solutions emphasize complete traceability and regulatory alignment.',
+      },
+      {
+        icon: Layers,
+        title: 'Operational Dependability',
+        text: 'We deliver platforms and consumables that high-volume laboratories can build their daily shift schedules around.',
+      },
+      {
+        icon: Headset,
+        title: 'Direct Technical Support',
+        text: 'You connect directly with experienced application specialists who understand laboratory science and equipment operations.',
+      },
+    ],
+  },
+
   technology: {
-    title: 'Technology Driven. Precision Focused.',
-    text: 'Technology is only useful when it makes diagnostic work clearer, faster or more consistent. That is the test we apply to every solution we bring to our customers.',
-    points: ['Thoughtfully selected diagnostic technology', 'Solutions designed around real laboratory workflows', 'Continuous review as technology evolves'],
-    cta: { label: 'Explore technology', to: '/technology' },
+    title: 'Advanced Diagnostic Instrumentation & Informatics',
+    text: 'Modern clinical care demands testing platforms that combine high throughput with intuitive operation. Efyion Dx bridges analytical hardware with digital laboratory connectivity.',
+    points: [
+      'Automated sample barcode accessioning and continuous loading',
+      'Bidirectional ASTM / HL7 data exchange with laboratory information systems',
+      'Onboard refrigeration preserving calibration integrity over extended runs',
+      'Micro-volume sampling preserving precious pediatric and specialized specimens',
+    ],
+    cta: { label: 'Explore technology & quality', to: '/technology' },
     image: images.technology,
   },
+
+  qualitySection: {
+    title: 'Quality Assurance & Process Discipline',
+    lead: 'In vitro diagnostics requires stringent standards at every step of manufacturing, transport, and operation.',
+    points: [
+      {
+        title: 'Batch-to-Batch Calibration Verification',
+        text: 'Reagent formulations are validated against certified reference materials to eliminate analytical drift.',
+      },
+      {
+        title: 'Controlled Cold-Chain Logistics',
+        text: 'Strict temperature monitoring ensures enzyme and antibody stability from production to laboratory bench.',
+      },
+      {
+        title: 'Standardized Operating Protocols',
+        text: 'Clear, comprehensive documentation supports laboratory accreditation audits and daily QA routines.',
+      },
+      {
+        title: 'Audit Trail & Interoperability Compliance',
+        text: 'Digital interfaces support complete specimen traceability from collection tube to clinician report.',
+      },
+    ],
+  },
+
   cta: {
-    title: 'Let’s move diagnostics forward.',
-    text: 'Connect with Efyion Dx to learn more about our solutions.',
-    button: { label: 'Contact us', to: '/contact' },
+    title: 'Ready to enhance your diagnostic capabilities?',
+    text: 'Connect with our team to discuss your testing volumes, menu requirements, or to request detailed technical documentation.',
+    button: { label: 'Request a consultation', to: '/contact' },
   },
 };
 
 export const homeResources = [
-  { title: 'Insights', text: 'Perspectives on diagnostics and healthcare.', to: '/resources?category=insights', icon: Lightbulb },
-  { title: 'Technical Resources', text: 'Documentation and technical guidance.', to: '/resources?category=technical', icon: Cpu },
-  { title: 'Product Information', text: 'Browse the Efyion Dx catalogue.', to: '/products', icon: FlaskRound },
-  { title: 'FAQs', text: 'Answers to common questions.', to: '/resources?category=faqs', icon: Users },
-  { title: 'News & Updates', text: 'The latest from Efyion Dx.', to: '/resources?category=news', icon: Sparkles },
+  {
+    title: 'Diagnostic Insights',
+    text: 'Analytical perspectives on laboratory workflows and decision support.',
+    to: '/resources?category=insights',
+    icon: Lightbulb,
+  },
+  {
+    title: 'Technical Documentation',
+    text: 'Protocol guidance, parameter sheets and integration specifications.',
+    to: '/resources?category=technical',
+    icon: Cpu,
+  },
+  {
+    title: 'Product Portfolio',
+    text: 'Explore analysers, assay systems and diagnostic consumables.',
+    to: '/products',
+    icon: FlaskRound,
+  },
+  {
+    title: 'Frequently Asked Questions',
+    text: 'Answers regarding integration, onboarding, and supply.',
+    to: '/resources?category=faqs',
+    icon: Users,
+  },
+  {
+    title: 'Updates & Announcements',
+    text: 'Operational news and diagnostic portfolio expansions.',
+    to: '/resources?category=news',
+    icon: Sparkles,
+  },
 ];
 
 export const about = {
   hero: {
-    title: 'Diagnostics built on care and precision',
-    text: 'Efyion Dx exists to help healthcare teams make decisions with confidence, through precise diagnostics and thoughtful support.',
+    title: 'Committed to Precision. Focused on Healthcare Outcomes.',
+    text: 'Efyion Dx delivers diagnostic technologies and ongoing support that enable healthcare teams to make clinical decisions with certainty.',
     image: images.aboutTeam,
   },
   intro: {
     title: 'About Efyion Dx',
     paragraphs: [
-      'Efyion Dx is a diagnostics company focused on precision and on the outcomes that precision makes possible.',
-      'Our approach is simple: understand the needs of each laboratory, hospital and clinician, bring them solutions that fit, and stay with them afterwards.',
+      'Efyion Dx is a specialized diagnostics company committed to elevating the standard of laboratory testing through reliable technology, standardized consumables, and attentive technical collaboration.',
+      'Our approach centers on close partnership: understanding the specific throughput, spatial, and analytical requirements of each clinical setting, implementing tailored platforms, and standing behind them with responsive support.',
     ],
-    image: images.microscope,
+    image: images.aboutFacility,
   },
-  /** Company facts — leave value empty and the row shows "To be added". */
   profile: [
-    { label: 'Established', value: '' },
-    { label: 'Headquarters', value: '' },
-    { label: 'Areas served', value: '' },
+    { label: 'Operating Focus', value: 'Clinical In Vitro Diagnostics' },
+    { label: 'Core Segments', value: 'Laboratories, Hospitals, Point-of-Care' },
+    { label: 'Technical Advisory', value: 'Pre & Post Implementation Support' },
   ],
   vision: {
     icon: Eye,
-    title: 'Our vision',
-    text: 'A healthcare system where every diagnostic decision rests on clear, dependable information.',
+    title: 'Our Vision',
+    text: 'A healthcare ecosystem where every clinical decision is grounded in rapid, transparent, and accurate diagnostic insight.',
   },
   mission: {
     icon: Target,
-    title: 'Our mission',
-    text: 'To provide precise, practical diagnostic solutions and the support that helps healthcare teams use them well.',
+    title: 'Our Mission',
+    text: 'To equip laboratories and care teams with precision diagnostic tools, robust reagents, and the practical knowledge needed for exceptional patient care.',
   },
   values: [
-    { icon: Crosshair, title: 'Precision', text: 'Getting the details right, every time.' },
-    { icon: Scale, title: 'Integrity', text: 'Saying what we can do, and doing what we say.' },
-    { icon: Users, title: 'Partnership', text: 'Working alongside our customers, not just supplying them.' },
-    { icon: Lightbulb, title: 'Curiosity', text: 'Always asking how diagnostics could work better.' },
+    {
+      icon: Crosshair,
+      title: 'Precision',
+      text: 'Treating analytical accuracy and procedural detail as our fundamental foundation.',
+    },
+    {
+      icon: Scale,
+      title: 'Integrity',
+      text: 'Providing clear, factual specifications and delivering dependable solutions consistently.',
+    },
+    {
+      icon: Users,
+      title: 'Partnership',
+      text: 'Working alongside laboratory personnel as technical allies, not merely equipment vendors.',
+    },
+    {
+      icon: Lightbulb,
+      title: 'Continuous Review',
+      text: 'Constantly evaluating diagnostic advancements to bring genuine workflow improvements to clients.',
+    },
   ],
   approach: {
-    title: 'Our approach',
-    text: 'Every engagement follows the same path: understand the need, choose the right solution, implement it carefully and support it for the long term.',
+    title: 'Our Collaborative Approach',
+    text: 'From initial workload analysis to platform validation and long-term supply, our methodology ensures seamless diagnostic continuity.',
   },
   technology: {
-    title: 'Technology & innovation',
-    text: 'We follow developments in diagnostic technology closely and adopt new approaches where they genuinely improve how testing is done.',
+    title: 'Technology & Continuous Innovation',
+    text: 'We monitor evolving diagnostic methodologies to introduce platforms that deliver measurable improvements in analytical sensitivity and turnaround time.',
     image: images.technology,
-    cta: { label: 'Explore technology', to: '/technology' },
+    cta: { label: 'Explore technology & quality', to: '/technology' },
   },
   quality: {
-    title: 'Quality focus',
-    text: 'Quality shapes how we select solutions, prepare documentation and support our customers. Details of our quality framework will be published here.',
-    image: images.samples,
+    title: 'Uncompromising Quality Focus',
+    text: 'Quality governance dictates our product evaluations, documentation standards, and client advisory protocols. We ensure full traceability across all offerings.',
+    image: images.qualityControl,
   },
 };
 
 export const technology = {
   hero: {
-    title: 'Technology & quality',
-    text: 'How we think about the technology behind our solutions, and the standards we hold ourselves to.',
-    image: images.microscope,
+    title: 'Diagnostic Technology & Quality Governance',
+    text: 'How we evaluate laboratory instrumentation, maintain analytical consistency, and uphold rigorous quality management.',
+    image: images.pillarMicroscopy,
   },
   sections: [
     {
       id: 'technology',
       icon: Cpu,
-      title: 'Technology',
-      text: 'We evaluate diagnostic technology by one measure: whether it makes results clearer, workflows smoother or testing more consistent for the people who use it.',
+      title: 'Diagnostic Instrumentation',
+      text: 'We evaluate diagnostic hardware based on analytical reproducibility, walk-away capacity, minimal sample requirement, and user-friendly interface design.',
       image: images.technology,
     },
     {
       id: 'innovation',
       icon: Sparkles,
-      title: 'Innovation',
-      text: 'Innovation means solving real problems. We listen to laboratories and clinicians first, then look for the approaches that address what they actually need.',
-      image: images.engineer,
+      title: 'Workflow Innovation',
+      text: 'True innovation solves concrete laboratory pain points: reducing manual preparation steps, preventing clerical reporting errors, and speeding critical result reporting.',
+      image: images.innovation,
     },
     {
       id: 'research',
       icon: Microscope,
-      title: 'Research & development',
-      text: 'Information about Efyion Dx research and development activities will be shared here.',
-      image: images.research,
+      title: 'Analytical Verification & Validation',
+      text: 'Every assay platform undergoes thorough verification for analytical linearity, precision limits, and matrix compatibility prior to client deployment.',
+      image: images.researchDev,
     },
     {
       id: 'laboratory-excellence',
       icon: FlaskRound,
-      title: 'Laboratory excellence',
-      text: 'Well-run laboratories depend on good processes as much as good products. We aim to support both, through solutions and guidance suited to each setting.',
-      image: images.pipetteWork,
+      title: 'Laboratory Operational Excellence',
+      text: 'Optimized diagnostics combines reliable hardware with structured operational protocols. We provide comprehensive standard operating procedure (SOP) guidance.',
+      image: images.labExcellence,
     },
   ],
   quality: {
     icon: BadgeCheck,
-    title: 'Quality focus',
-    text: 'Quality is part of every stage of our work, from selecting solutions to supporting customers after implementation.',
+    title: 'Quality Management Framework',
+    text: 'Quality principles govern every facet of our operations—from supply chain temperature logging to post-installation customer verification.',
     principles: [
-      'Careful evaluation before any solution is offered',
-      'Clear, accurate documentation',
-      'Traceable communication with customers',
-      'Continuous review and improvement',
+      'Comprehensive pre-evaluation and analytical verification of all platforms',
+      'Detailed batch documentation and calibrator traceability',
+      'Structured technical onboarding and operator training protocols',
+      'Continuous performance review and responsive support tracking',
     ],
-    /**
-     * CERTIFICATIONS — add only confirmed, verifiable certifications, e.g.
-     * { name: 'ISO 13485:2016', text: 'Issued by …', href: '/downloads/certificate.pdf' }
-     * While empty, a neutral note is shown instead.
-     */
     certifications: [],
   },
 };

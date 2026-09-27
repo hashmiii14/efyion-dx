@@ -1,8 +1,7 @@
 /**
- * SOLUTIONS & AUDIENCES
+ * SOLUTIONS & AUDIENCES — EFYION DX
  * ------------------------------------------------------------------
- * DRAFT copy — general descriptions that make no product or performance
- * claims. Review and replace with confirmed Efyion Dx offerings.
+ * Diagnostic settings, solution areas and diagnostic workflow frameworks.
  */
 import {
   FlaskConical,
@@ -13,7 +12,7 @@ import {
   Workflow,
   LifeBuoy,
 } from 'lucide-react';
-import { images } from './images';
+import { images } from './images.js';
 
 /** Who Efyion Dx serves — used on Home (interactive tabs) and Solutions. */
 export const audiences = [
@@ -21,36 +20,36 @@ export const audiences = [
     slug: 'diagnostic-laboratories',
     name: 'Diagnostic Laboratories',
     icon: FlaskConical,
-    image: images.pipetteWork,
-    text: 'Laboratories need testing they can plan around: consistent supply, clear documentation and support when something needs attention.',
+    image: images.audienceLab,
+    text: 'Laboratories need testing they can plan around: consistent supply, clear documentation and responsive support when questions arise.',
   },
   {
     slug: 'hospitals',
     name: 'Hospitals',
     icon: Building2,
-    image: images.hospital,
-    text: 'Hospital teams balance speed, volume and patient care. Diagnostic solutions should fit that pace rather than add to it.',
+    image: images.audienceHospital,
+    text: 'Hospital teams balance speed, volume and patient care. Diagnostic solutions must fit that pace seamlessly rather than add to operational overhead.',
   },
   {
     slug: 'healthcare-professionals',
     name: 'Healthcare Professionals',
     icon: Stethoscope,
-    image: images.clinician,
-    text: 'Clinicians rely on diagnostic information to decide what happens next. Our focus is on making that information dependable and clear.',
+    image: images.audienceClinician,
+    text: 'Clinicians rely on diagnostic information to make confident care decisions. Our focus is on making that information clear, dependable, and timely.',
   },
   {
     slug: 'clinical-environments',
     name: 'Clinical Environments',
     icon: ClipboardPlus,
-    image: images.hospitalTeam,
-    text: 'Clinics and care settings of every size need solutions sized to their space, staff and testing needs.',
+    image: images.audienceClinicalEnv,
+    text: 'Outpatient clinics and diagnostic centers of every size need solutions appropriately scaled to their space, staffing, and test volume.',
   },
   {
     slug: 'research-facilities',
     name: 'Research & Laboratory Facilities',
     icon: Microscope,
-    image: images.research,
-    text: 'Research environments ask different questions. We aim to support them with flexible tools and responsive collaboration.',
+    image: images.audienceResearch,
+    text: 'Research and academic environments ask demanding analytical questions. We support them with flexible platforms and responsive technical collaboration.',
   },
 ];
 
@@ -60,58 +59,83 @@ export const solutionAreas = [
     id: 'laboratory',
     name: 'Laboratory Solutions',
     icon: FlaskConical,
-    image: images.aboutTeam,
-    intro: 'Support for laboratories from sample preparation through to reporting.',
+    image: images.categoryLab,
+    intro: 'Comprehensive workflow support for laboratories from sample intake through analytical testing to final result verification.',
     points: [
-      'Solutions matched to laboratory size and testing volume',
-      'Guidance on selecting the right instruments and consumables',
-      'Documentation to support day-to-day laboratory work',
+      'Instrumentation matched to laboratory throughput and specialty requirements',
+      'Guidance on selecting compatible analysers, assay panels, and consumables',
+      'Complete protocol documentation to support day-to-day laboratory operations',
     ],
   },
   {
     id: 'clinical',
-    name: 'Clinical Solutions',
+    name: 'Clinical Diagnostics',
     icon: Stethoscope,
-    image: images.clinicianTablet,
-    intro: 'Diagnostic support for clinical teams working close to the patient.',
+    image: images.categoryClinical,
+    intro: 'Diagnostic support engineered for clinical teams requiring rapid, high-sensitivity results close to patient care.',
     points: [
-      'Testing options suited to clinical settings',
-      'Practical formats that respect clinical time',
-      'Clear information to support decision making',
+      'Validated assay formats suited to hospital and acute care settings',
+      'Optimized testing times that respect demanding clinical schedules',
+      'Clear, actionable diagnostic data to assist multidisciplinary care teams',
     ],
   },
   {
     id: 'healthcare',
-    name: 'Healthcare Solutions',
+    name: 'Healthcare Organisation Solutions',
     icon: Building2,
-    image: images.hospital,
-    intro: 'Working with healthcare organisations on diagnostic needs across departments.',
+    image: images.aboutFacility,
+    intro: 'Strategic diagnostic partnerships for healthcare organizations operating across multi-facility networks.',
     points: [
-      'A single point of contact for diagnostic requirements',
-      'Solutions planned around the whole organisation',
-      'Ongoing review as needs change',
+      'Centralized point of contact for diagnostic supply and instrument maintenance',
+      'Integrated planning across departments to reduce logistical fragmentation',
+      'Scheduled reviews to adjust supply chains and platforms as clinical demands evolve',
     ],
   },
 ];
 
-/** Diagnostic workflow — rendered as a diagram on Home and Solutions. */
+/** Diagnostic workflow — rendered as an engaging connected process on Home and Solutions. */
 export const workflow = [
-  { step: 'Identify', text: 'We start by understanding your setting, testing needs and constraints.' },
-  { step: 'Select', text: 'Together we choose the solutions that fit, with clear information on each.' },
-  { step: 'Implement', text: 'We help bring solutions into your workflow with as little disruption as possible.' },
-  { step: 'Support', text: 'We stay involved after implementation, with guidance whenever it is needed.' },
+  {
+    step: 'Identify',
+    title: 'Needs Assessment',
+    text: 'We assess your clinical setting, target test menus, expected daily volumes, and physical workflow constraints.',
+  },
+  {
+    step: 'Select',
+    title: 'Platform Matching',
+    text: 'Together we evaluate compatible analysers, reagent configurations, and digital integrations best suited to your requirements.',
+  },
+  {
+    step: 'Implement',
+    title: 'Onboarding & Validation',
+    text: 'We support verification runs, technician training, and LIS connectivity to ensure seamless operational cutover.',
+  },
+  {
+    step: 'Support',
+    title: 'Ongoing Technical Care',
+    text: 'Continuous application assistance, proactive reagent logistics, and responsive troubleshooting keep testing uninterrupted.',
+  },
 ];
 
 export const supportArea = {
-  name: 'Professional Support',
+  name: 'Professional Diagnostic Support',
   icon: LifeBuoy,
   secondaryIcon: Workflow,
-  image: images.engineer,
+  image: images.supportEngineer,
   intro:
-    'Good diagnostics depends on more than the product. Support covers the questions that come before, during and after a solution is in place.',
+    'Reliable diagnostics requires more than quality equipment. Efyion Dx provides specialized technical and application guidance across every phase of implementation.',
   points: [
-    { title: 'Pre-purchase guidance', text: 'Help understanding which options suit your requirements.' },
-    { title: 'Onboarding', text: 'Assistance getting teams started with new solutions.' },
-    { title: 'Ongoing assistance', text: 'A clear route for questions once you are up and running.' },
+    {
+      title: 'Pre-implementation consultation',
+      text: 'Detailed workflow audits and technical guidance to match solutions to your exact laboratory environment.',
+    },
+    {
+      title: 'Workflow onboarding & training',
+      text: 'Structured procedural guidance to ensure laboratory technicians and operators are confident from day one.',
+    },
+    {
+      title: 'Continuous technical advisory',
+      text: 'Direct communication channels for protocol questions, calibration support, and ongoing operational reviews.',
+    },
   ],
 };

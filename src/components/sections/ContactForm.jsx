@@ -157,15 +157,15 @@ export default function ContactForm({ defaultSubject = '' }) {
         {errors.message && <p id="e-message" className="mt-2 text-sm font-semibold text-red-600">{errors.message}</p>}
       </div>
 
-      <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-        <p id="form-note" className="text-sm text-ink">Fields marked * are required.</p>
+      <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between pt-2">
+        <p id="form-note" className="text-xs sm:text-sm text-ink">Fields marked * are required.</p>
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-navy-900 px-7 font-bold text-white transition-all hover:bg-navy-800 hover:shadow-lift active:scale-[.98] disabled:cursor-wait disabled:opacity-70"
+          className="inline-flex min-h-[44px] sm:min-h-[48px] items-center justify-center gap-2.5 rounded-full bg-navy-900 px-6 sm:px-7 text-sm sm:text-base font-bold text-white transition-all hover:bg-navy-800 hover:shadow-lift active:scale-[.98] disabled:cursor-wait disabled:opacity-70 shadow-sm"
         >
-          {status === 'sending' ? <Loader2 size={18} className="animate-spin" aria-hidden="true" /> : <Send size={18} aria-hidden="true" />}
-          {status === 'sending' ? 'Sending enquiry…' : 'Send enquiry'}
+          {status === 'sending' ? <Loader2 size={16} className="animate-spin" aria-hidden="true" /> : <Send size={16} aria-hidden="true" />}
+          <span>{status === 'sending' ? 'Sending enquiry…' : 'Send enquiry'}</span>
         </button>
       </div>
     </form>
