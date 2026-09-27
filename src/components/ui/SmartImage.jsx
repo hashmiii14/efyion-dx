@@ -1,14 +1,11 @@
-import { useState } from 'react';
-import { Microscope, Activity, ShieldCheck, Cpu, FlaskConical, Layers } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Microscope, Activity, ShieldCheck, Cpu, FlaskConical, Layers, Award } from 'lucide-react';
 
 /**
  * SmartImage — Production Image & Slot Component for Efyion Dx
  * ------------------------------------------------------------------
- * Seamlessly handles:
- * 1. Real image display when `image.src` is provided (cover, responsive, zero-CLS).
- * 2. Elegant, high-tech clinical diagnostic placeholder frame when `image.src` is null,
- *    ready for the 5-10 real photos the client will provide later.
- * 3. Zero artificial delay: renders immediately with no blocking fade-outs or spinners.
+ * Handles responsive, zero-CLS rendering with WebP priority,
+ * smooth fade-in, and professional diagnostic fallback aesthetics.
  */
 export default function SmartImage({
   image,
@@ -18,22 +15,38 @@ export default function SmartImage({
   label,
   dark = false,
 }) {
+  const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      setLoaded(true);
+    }
+  }, [image?.src]);
 
   // If image has a genuine valid src and hasn't failed to load
   if (image && image.src && !failed) {
+    const webpSrc = image.src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
     return (
-      <div className={`relative h-full w-full overflow-hidden ${className}`}>
-        <img
-          src={image.src}
-          alt={image.alt || label || 'Efyion Dx Diagnostic System'}
-          sizes={sizes}
-          loading={priority ? 'eager' : 'lazy'}
-          fetchPriority={priority ? 'high' : undefined}
-          decoding="async"
-          onError={() => setFailed(true)}
-          className="h-full w-full object-cover"
-        />
+      <div className={`relative h-full w-full overflow-hidden bg-slate-50 ${className}`}>
+        <picture>
+          <source srcSet={webpSrc} type="image/webp" />
+          <img
+            ref={imgRef}
+            src={image.src}
+            alt={image.alt || label || 'Efyion Dx Diagnostic System'}
+            sizes={sizes}
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : undefined}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={() => setFailed(true)}
+            className={`h-full w-full object-cover transition-opacity duration-300 ${
+              loaded ? 'opacity-100' : 'opacity-90'
+            }`}
+          />
+        </picture>
       </div>
     );
   }
@@ -51,9 +64,8 @@ export default function SmartImage({
 }
 
 /**
- * Elegant, high-precision clinical media slot.
- * Replaces random stock photography with an intentional, branded diagnostic frame
- * that seamlessly transitions when real photos are supplied.
+ * High-precision clinical media visual card.
+ * Replaces missing photography with a bespoke branded diagnostic card.
  */
 export function ClinicalMediaSlot({
   slot = 'diagnosticPlatform',
@@ -77,11 +89,11 @@ export function ClinicalMediaSlot({
   return (
     <div
       role="img"
-      aria-label={`${label} — Visual placeholder slot for Efyion Dx asset`}
+      aria-label={`${label} — Efyion Dx Diagnostic Modality`}
       className={`relative flex h-full w-full flex-col items-center justify-center overflow-hidden p-6 sm:p-8 select-none transition-colors ${
         dark
           ? 'bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950 text-white border border-white/10'
-          : 'bg-gradient-to-br from-slate-50 via-azure-50/40 to-violet-50/30 text-navy-900 border border-line/80'
+          : 'bg-gradient-to-br from-slate-50 via-azure-50/50 to-violet-50/40 text-navy-900 border border-line/80'
       } ${className}`}
     >
       {/* Precision Technical Grid Background */}
@@ -101,7 +113,7 @@ export function ClinicalMediaSlot({
       </svg>
 
       {/* Optical Reticle & Concentric Crosshairs SVG */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-25">
         <svg viewBox="0 0 240 240" className="w-56 h-56 text-violet-500/40" fill="none" stroke="currentColor">
           <circle cx="120" cy="120" r="100" strokeWidth="1" strokeDasharray="4 6" />
           <circle cx="120" cy="120" r="70" strokeWidth="1" />
@@ -112,11 +124,11 @@ export function ClinicalMediaSlot({
       </div>
 
       {/* Subtle Efyion Dx Watermark */}
-      <div className="absolute right-4 top-4 opacity-30">
+      <div className="absolute right-4 top-4 opacity-35">
         <img
           src={dark ? '/logo-mark-white.png' : '/logo-mark.png'}
           alt=""
-          className="h-8 w-auto"
+          className="h-7 w-auto"
           aria-hidden="true"
         />
       </div>
@@ -127,7 +139,7 @@ export function ClinicalMediaSlot({
           className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-2xl shadow-subtle border ${
             dark
               ? 'bg-white/10 text-violet-400 border-white/15'
-              : 'bg-white text-violet-600 border-violet-100'
+              : 'bg-white text-violet-600 border-violet-100 shadow-sm'
           }`}
         >
           <IconComponent size={24} aria-hidden="true" />
@@ -143,7 +155,7 @@ export function ClinicalMediaSlot({
 
         {description && (
           <p
-            className={`mt-1 text-xs line-clamp-2 max-w-[260px] leading-relaxed ${
+            className={`mt-1.5 text-xs line-clamp-2 max-w-[260px] leading-relaxed ${
               dark ? 'text-white/60' : 'text-ink/75'
             }`}
           >
@@ -153,14 +165,14 @@ export function ClinicalMediaSlot({
 
         <div className="mt-4 flex items-center gap-2">
           <span
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wide uppercase ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wide uppercase ${
               dark
                 ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
-                : 'bg-azure-100/70 text-navy-900 border border-azure-200/70'
+                : 'bg-white/90 text-violet-700 border border-violet-200/80 shadow-xs'
             }`}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Slot: {slot}</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            <span>Precision Clinical Standard</span>
           </span>
         </div>
       </div>

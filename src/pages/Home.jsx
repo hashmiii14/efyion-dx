@@ -114,17 +114,20 @@ function Hero() {
 
       {/* ── Full-Bleed Background Image ── */}
       <div className="absolute inset-0 -z-10">
-        <img
-          src="/images/hero-lab.jpg"
-          alt="Clinical laboratory scientists — Efyion Dx"
-          className="h-full w-full object-cover object-center"
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-        />
-        {/* Dark gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/70 to-navy-950/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-transparent to-navy-950/35" />
+        <picture>
+          <source srcSet="/images/hero-lab.webp" type="image/webp" />
+          <img
+            src="/images/hero-lab.jpg"
+            alt="Clinical laboratory scientists working with diagnostic equipment — Efyion Dx"
+            className="h-full w-full object-cover object-center lg:object-[65%_center]"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+        {/* Balanced gradient overlays for high contrast text while keeping lab & scientists clearly visible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-950/50 to-navy-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/30" />
       </div>
 
       {/* ── Hero Content ── */}
@@ -263,41 +266,45 @@ function AboutSection() {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Media Slot */}
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
-              <SmartImage
-                image={slots.aboutImage}
-                label="Clinical Diagnostic Operations"
-              />
-            </div>
+            <Reveal variant="left">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+                <SmartImage
+                  image={slots.aboutImage}
+                  label="Clinical Diagnostic Operations"
+                />
+              </div>
+            </Reveal>
           </div>
 
           {/* Content */}
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
-              Diagnostic Excellence
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-              {about.title}
-            </h2>
-            <p className="lead mt-4 font-medium text-navy-900">{about.lead}</p>
-            <p className="mt-3 text-base text-ink leading-relaxed">{about.body}</p>
+            <Reveal variant="right">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+                Diagnostic Excellence
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+                {about.title}
+              </h2>
+              <p className="lead mt-4 font-medium text-navy-900">{about.lead}</p>
+              <p className="mt-3 text-base text-ink leading-relaxed">{about.body}</p>
 
-            <ul className="mt-6 space-y-2.5">
-              {about.highlights.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
-                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-violet-50 text-violet-600">
-                    <Check size={13} strokeWidth={2.5} />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+              <ul className="mt-6 space-y-2.5">
+                {about.highlights.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
+                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-violet-50 text-violet-600">
+                      <Check size={13} strokeWidth={2.5} />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-            <div className="mt-8 flex items-center gap-4">
-              <Button to="/about" variant="outline" className="!min-h-[42px] text-sm font-bold">
-                Learn more about Efyion Dx
-              </Button>
-            </div>
+              <div className="mt-8 flex items-center gap-4">
+                <Button to="/about" variant="outline" className="!min-h-[44px] text-sm font-bold">
+                  Learn more about Efyion Dx
+                </Button>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -382,7 +389,7 @@ function PlatformComparisonSection() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-bold transition-all ${
+                className={`rounded-full px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer ${
                   activeTab === tab.id
                     ? 'bg-navy-900 text-white shadow-xs'
                     : 'bg-mist text-ink hover:text-navy-900 hover:bg-slate-200/60'
@@ -550,7 +557,7 @@ function FeaturedProductsSection() {
           <button
             type="button"
             onClick={() => setActiveCategory('all')}
-            className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors ${
+            className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors cursor-pointer ${
               activeCategory === 'all'
                 ? 'bg-navy-900 text-white shadow-xs'
                 : 'bg-white text-ink hover:text-navy-900 border border-line'
@@ -563,7 +570,7 @@ function FeaturedProductsSection() {
               key={c.slug}
               type="button"
               onClick={() => setActiveCategory(c.slug)}
-              className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors ${
+              className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors cursor-pointer ${
                 activeCategory === c.slug
                   ? 'bg-navy-900 text-white shadow-xs'
                   : 'bg-white text-ink hover:text-navy-900 border border-line'
@@ -628,7 +635,7 @@ function ClinicalAssayDeepDiveSection() {
                 key={p.id}
                 type="button"
                 onClick={() => setActivePanelId(p.id)}
-                className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all ${
+                className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   isActive
                     ? 'bg-violet-600 text-white shadow-subtle'
                     : 'bg-mist text-ink hover:text-navy-900 hover:bg-slate-200/70'
@@ -1004,7 +1011,7 @@ function LaboratoryFaqSection() {
                   <button
                     type="button"
                     onClick={() => toggle(i)}
-                    className="flex w-full items-start justify-between gap-4 p-6 text-left transition-colors hover:bg-slate-50"
+                    className="flex w-full items-start justify-between gap-4 p-6 text-left transition-colors hover:bg-slate-50 cursor-pointer"
                     aria-expanded={isOpen}
                   >
                     <span className="text-base sm:text-lg font-bold text-navy-900">

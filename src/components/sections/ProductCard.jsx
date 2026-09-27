@@ -11,7 +11,7 @@ export default function ProductCard({ product, className = '' }) {
       to={`/products/${product.slug}`}
       className={`group flex h-full flex-col rounded-[1.75rem] border border-line bg-white p-3.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-violet-300 hover:shadow-lift ${className}`}
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-mist">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-white border border-line/60">
         <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
           <SmartImage
             image={product.image}

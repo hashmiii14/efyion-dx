@@ -52,7 +52,7 @@ export default function CategoryCard({ category, feature = false, className = ''
       to={href}
       className={`group flex flex-col overflow-hidden rounded-[1.75rem] border border-line bg-white transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-violet-300 hover:shadow-lift ${className}`}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-azure-50">
+      <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-line/60">
         <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.05]">
           <SmartImage
             image={category.image}

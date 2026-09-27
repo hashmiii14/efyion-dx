@@ -58,7 +58,7 @@ export default function Products() {
                     type="button"
                     aria-pressed={on}
                     onClick={() => setParam('category', f.slug)}
-                    className={`min-h-[44px] shrink-0 whitespace-nowrap rounded-full border px-4 text-sm font-bold transition-colors ${
+                    className={`min-h-[44px] shrink-0 whitespace-nowrap rounded-full border px-4 text-sm font-bold transition-colors cursor-pointer ${
                       on ? 'border-navy-900 bg-navy-900 text-white' : 'border-line bg-white text-navy-900 hover:border-navy-900'
                     }`}
                   >
