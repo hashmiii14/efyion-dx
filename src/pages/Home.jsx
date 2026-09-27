@@ -110,95 +110,113 @@ function Hero() {
   const { hero } = home;
 
   return (
-    <section className="relative isolate -mt-[64px] sm:-mt-[68px] lg:-mt-[74px] overflow-hidden bg-mist pt-[64px] sm:pt-[68px] lg:pt-[74px]">
-      <CurveBackdrop />
+    <section className="relative isolate -mt-[64px] sm:-mt-[68px] lg:-mt-[74px] overflow-hidden min-h-[95vh] flex flex-col justify-end">
 
-      <div className="container-site relative pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-18 lg:pb-28">
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          {/* Hero Copy */}
-          <div className="lg:col-span-7 anim-rise">
-            <div className="inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-white/90 px-3.5 py-1 text-xs font-bold text-violet-700 shadow-xs mb-5">
-              <span className="h-1.5 w-1.5 rounded-full bg-violet-600 animate-pulse" />
+      {/* ── Full-Bleed Background Image ── */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/hero-lab.jpg"
+          alt="Clinical laboratory scientists — Efyion Dx"
+          className="h-full w-full object-cover object-center"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+        />
+        {/* Dark gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/70 to-navy-950/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-transparent to-navy-950/35" />
+      </div>
+
+      {/* ── Hero Content ── */}
+      <div className="container-site relative z-10 pt-[130px] pb-20 sm:pt-[150px] sm:pb-24 lg:pt-[170px] lg:pb-28">
+        <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+
+          {/* Hero Copy — left side */}
+          <div className="lg:col-span-8 xl:col-span-7 anim-rise">
+
+            {/* Kicker Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 text-xs font-bold text-white/90 mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-violet-400 animate-pulse" />
               <span>{hero.kicker}</span>
             </div>
 
+            {/* Headline */}
             <h1
-              className="text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold text-navy-900 tracking-tight"
+              className="text-[2.5rem] leading-[1.07] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
               style={{ letterSpacing: '-0.035em' }}
             >
-              <span>Precision Diagnostics.</span>
+              <span className="drop-shadow-md">Precision Diagnostics.</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-violet-500 to-azure-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-300 to-azure-400">
                 Better Outcomes.
               </span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-base sm:text-lg text-ink/90 leading-relaxed font-normal">
+            {/* Sub-text */}
+            <p className="mt-5 max-w-2xl text-base sm:text-lg text-white/80 leading-relaxed font-normal">
               Equipping clinical laboratories, hospital networks, and acute care facilities with
               high-throughput automated analyzers, standardized liquid-stable reagents, and
               responsive application advisory.
             </p>
 
+            {/* CTA Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Button to="/products" className="!min-h-[44px] sm:!min-h-[46px] text-sm font-bold shadow-sm">
+              <Button to="/products" className="!min-h-[48px] sm:!min-h-[50px] text-sm font-bold shadow-lg shadow-violet-900/40">
                 Explore diagnostic systems
               </Button>
               <Button
                 to="/contact"
                 variant="outline"
-                className="!min-h-[44px] sm:!min-h-[46px] text-sm font-bold"
+                className="!min-h-[48px] sm:!min-h-[50px] text-sm font-bold !border-white/30 !text-white hover:!bg-white/10 hover:!border-white/50 backdrop-blur-sm"
               >
                 Request consultation
               </Button>
             </div>
 
-            {/* Quick Metrics Tag */}
-            <div className="mt-8 pt-6 border-t border-line/60 grid grid-cols-3 gap-3 max-w-lg">
-              <div className="transition-transform duration-300 hover:-translate-y-0.5">
-                <p className="text-xl sm:text-2xl font-extrabold text-navy-900">400 T/H</p>
-                <p className="text-xs font-semibold text-ink/75">Photometric Capacity</p>
-              </div>
-              <div className="transition-transform duration-300 hover:-translate-y-0.5">
-                <p className="text-xl sm:text-2xl font-extrabold text-navy-900">2.0 µL</p>
-                <p className="text-xs font-semibold text-ink/75">Micro-Volume Sample</p>
-              </div>
-              <div className="transition-transform duration-300 hover:-translate-y-0.5">
-                <p className="text-xl sm:text-2xl font-extrabold text-navy-900">HL7 / ASTM</p>
-                <p className="text-xs font-semibold text-ink/75">Bi-Directional LIS</p>
-              </div>
+            {/* Quick Metrics */}
+            <div className="mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 max-w-lg">
+              {[
+                { value: '400 T/H', label: 'Photometric Capacity' },
+                { value: '2.0 µL',  label: 'Micro-Volume Sample'  },
+                { value: 'HL7/ASTM', label: 'Bi-Directional LIS'  },
+              ].map(({ value, label }) => (
+                <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
+                  <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
+                  <p className="text-xs font-semibold text-white/65 mt-0.5">{label}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Hero Media Slot */}
-          <div className="lg:col-span-5 relative">
-            {/* Ambient Pulse Glow */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-4 -z-10 rounded-[2.5rem] bg-violet-600/15 blur-2xl animate-pulse-glow"
-            />
-            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line group">
-                <SmartImage
-                  image={slots.heroImage}
-                  label="Efyion Dx Diagnostic Analyzer Platform"
-                  priority
-                />
-              </div>
-
-              {/* Floating Specification Card */}
-              <div className="hidden sm:flex absolute -bottom-5 -left-5 items-center gap-3 rounded-2xl border border-line bg-white/95 p-3.5 shadow-lift backdrop-blur-md animate-float">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600">
+          {/* Floating Info Cards — right side, desktop only */}
+          <div className="hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end items-end pb-2">
+            <div className="flex flex-col gap-3 w-full max-w-[260px]">
+              <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-4 shadow-xl animate-float">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/30 text-violet-300">
                   <Activity size={20} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-navy-900">Multi-Channel Detection</p>
-                  <p className="text-[11px] font-medium text-ink/75">Continuous STAT Access</p>
+                  <p className="text-sm font-bold text-white">Multi-Channel Detection</p>
+                  <p className="text-xs font-medium text-white/65">Continuous STAT Access</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-4 shadow-xl" style={{ animationDelay: '0.5s' }}>
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-azure-600/30 text-azure-300">
+                  <ShieldCheck size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-white">CE-IVD Certified</p>
+                  <p className="text-xs font-medium text-white/65">ISO 13485 Quality Standards</p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
+
+      {/* Smooth fade into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }
