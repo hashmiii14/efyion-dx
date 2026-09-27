@@ -6,11 +6,9 @@ import {
   Mail,
   ChevronDown,
   ArrowRight,
-  ShieldCheck,
   Headset,
-  FileText,
   Activity,
-  Sparkles,
+  Layers,
 } from 'lucide-react';
 import Logo from '../ui/Logo';
 import Button from '../ui/Button';
@@ -25,11 +23,10 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState({ products: false, solutions: false });
   const { pathname } = useLocation();
   const toggleRef = useRef(null);
-  const panelRef = useRef(null);
   const headerRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
 
-  // Solid background on scroll
+  // Monitor scroll for subtle elevation
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -37,13 +34,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close menus on page change
+  // Close menus immediately on navigation
   useEffect(() => {
     setOpen(false);
     setActiveDropdown(null);
   }, [pathname]);
 
-  // Handle escape & outside clicks for desktop dropdowns
+  // Click outside and escape listeners
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (headerRef.current && !headerRef.current.contains(e.target)) {
@@ -72,7 +69,9 @@ export default function Navbar() {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const onResize = () => window.innerWidth >= 1024 && setOpen(false);
+    const onResize = () => {
+      if (window.innerWidth >= 768) setOpen(false);
+    };
     window.addEventListener('resize', onResize);
     return () => {
       document.body.style.overflow = prev;
@@ -90,7 +89,7 @@ export default function Navbar() {
     if (window.innerWidth < 1024) return;
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 150);
+    }, 120);
   };
 
   const toggleMobileSubmenu = (section) => {
@@ -99,28 +98,28 @@ export default function Navbar() {
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 w-full select-none">
-      {/* Top Clinical Utility Strip */}
-      <div className="bg-navy-950 text-white/80 border-b border-white/10 text-xs py-2 px-4 sm:px-6">
+      {/* 1. Top Clinical Utility Bar */}
+      <div className="bg-navy-950 text-white/80 border-b border-white/10 text-xs py-1.5 px-4 sm:px-6">
         <div className="container-site flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 truncate">
             <span className="inline-flex items-center gap-1.5 font-semibold text-white/95">
               <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <span>Efyion Dx</span>
             </span>
-            <span className="hidden md:inline text-white/40">|</span>
-            <span className="hidden md:inline text-white/70">
-              Clinical In Vitro Diagnostics & Laboratory Workflow Instrumentation
+            <span className="hidden sm:inline text-white/40">|</span>
+            <span className="hidden sm:inline text-white/70 truncate">
+              Precision Clinical In Vitro Diagnostics & Laboratory Workflow Instrumentation
             </span>
           </div>
 
           <div className="flex items-center gap-4 sm:gap-6 shrink-0 font-medium">
-            <div className="hidden lg:flex items-center gap-1.5 text-white/60">
+            <div className="hidden lg:flex items-center gap-1.5 text-white/70">
               <Headset size={13} className="text-violet-400" aria-hidden="true" />
-              <span>STAT Application Support</span>
+              <span>Emergency Lab Advisory: &lt; 2h Response</span>
             </div>
             <a
               href={`mailto:${contact.email}`}
-              className="hover:text-white transition-colors flex items-center gap-1.5 text-white/80 font-semibold"
+              className="hover:text-white transition-colors flex items-center gap-1.5 text-white/85 font-semibold"
             >
               <Mail size={13} className="text-violet-400" aria-hidden="true" />
               <span>{contact.email}</span>
@@ -129,7 +128,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
+      {/* 2. Main Navigation Bar */}
       <div
         className={`relative transition-[background-color,border-color,box-shadow] duration-200 border-b ${
           scrolled || activeDropdown
@@ -137,18 +136,21 @@ export default function Navbar() {
             : 'bg-white/90 backdrop-blur-sm border-line/60'
         }`}
       >
-        <div className="container-site flex h-[68px] sm:h-[72px] lg:h-[76px] items-center justify-between gap-4">
-          <Logo />
+        <div className="container-site flex h-[64px] sm:h-[68px] lg:h-[74px] items-center justify-between gap-3 sm:gap-4">
+          {/* Logo */}
+          <div className="shrink-0">
+            <Logo />
+          </div>
 
-          {/* Desktop Navigation with Flyouts */}
-          <nav aria-label="Main navigation" className="hidden lg:block">
+          {/* DESKTOP NAVIGATION (1024px+) */}
+          <nav aria-label="Desktop navigation" className="hidden lg:block">
             <ul className="flex items-center gap-1">
               <li>
                 <NavLink
                   to="/"
                   end
                   className={({ isActive }) =>
-                    `rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                    `rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                       isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900 hover:bg-mist/60'
                     }`
                   }
@@ -157,7 +159,7 @@ export default function Navbar() {
                 </NavLink>
               </li>
 
-              {/* Products Menu with Dropdown */}
+              {/* Products Dropdown */}
               <li
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('products')}
@@ -167,7 +169,7 @@ export default function Navbar() {
                   <NavLink
                     to="/products"
                     className={({ isActive }) =>
-                      `flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                      `flex items-center gap-1 rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                         isActive || activeDropdown === 'products'
                           ? 'text-navy-900 bg-azure-50/80'
                           : 'text-ink hover:text-navy-900 hover:bg-mist/60'
@@ -178,7 +180,7 @@ export default function Navbar() {
                     <span>Products</span>
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-200 ${
+                      className={`transition-transform duration-150 ${
                         activeDropdown === 'products' ? 'rotate-180 text-violet-600' : 'opacity-60'
                       }`}
                       aria-hidden="true"
@@ -186,12 +188,11 @@ export default function Navbar() {
                   </NavLink>
                 </div>
 
-                {/* Products Dropdown Panel */}
                 {activeDropdown === 'products' && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[620px] rounded-3xl border border-line bg-white/98 backdrop-blur-xl p-5 shadow-lift anim-fade z-50">
-                    <div className="flex items-center justify-between border-b border-line pb-3 mb-3 px-1">
-                      <p className="text-xs font-bold uppercase tracking-wider text-violet-600">
-                        Diagnostic Portfolio by Category
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[600px] rounded-2xl border border-line bg-white/98 backdrop-blur-xl p-4 shadow-lift z-50">
+                    <div className="flex items-center justify-between border-b border-line pb-2.5 mb-2.5 px-1">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-violet-600">
+                        Diagnostic Modalities & Portfolio
                       </p>
                       <Link
                         to="/products"
@@ -209,16 +210,16 @@ export default function Navbar() {
                             key={c.slug}
                             to={`/products?category=${c.slug}`}
                             onClick={() => setActiveDropdown(null)}
-                            className="group flex items-start gap-3 rounded-2xl p-2.5 transition-colors hover:bg-azure-50/60 border border-transparent hover:border-azure-100"
+                            className="group flex items-start gap-2.5 rounded-xl p-2 transition-colors hover:bg-azure-50/60 border border-transparent hover:border-azure-100"
                           >
-                            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors">
-                              <Icon size={18} aria-hidden="true" />
+                            <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors">
+                              <Icon size={16} aria-hidden="true" />
                             </div>
                             <div className="min-w-0">
-                              <p className="font-bold text-sm text-navy-900 group-hover:text-violet-700 transition-colors">
+                              <p className="font-bold text-xs sm:text-sm text-navy-900 group-hover:text-violet-700 transition-colors">
                                 {c.name}
                               </p>
-                              <p className="text-xs text-ink/75 line-clamp-1 mt-0.5">{c.summary}</p>
+                              <p className="text-[11px] text-ink/75 line-clamp-1 mt-0.5">{c.summary}</p>
                             </div>
                           </Link>
                         );
@@ -228,7 +229,7 @@ export default function Navbar() {
                 )}
               </li>
 
-              {/* Solutions Menu with Dropdown */}
+              {/* Solutions Dropdown */}
               <li
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('solutions')}
@@ -238,7 +239,7 @@ export default function Navbar() {
                   <NavLink
                     to="/solutions"
                     className={({ isActive }) =>
-                      `flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                      `flex items-center gap-1 rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                         isActive || activeDropdown === 'solutions'
                           ? 'text-navy-900 bg-azure-50/80'
                           : 'text-ink hover:text-navy-900 hover:bg-mist/60'
@@ -249,7 +250,7 @@ export default function Navbar() {
                     <span>Solutions</span>
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-200 ${
+                      className={`transition-transform duration-150 ${
                         activeDropdown === 'solutions' ? 'rotate-180 text-violet-600' : 'opacity-60'
                       }`}
                       aria-hidden="true"
@@ -257,11 +258,10 @@ export default function Navbar() {
                   </NavLink>
                 </div>
 
-                {/* Solutions Dropdown Panel */}
                 {activeDropdown === 'solutions' && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[540px] rounded-3xl border border-line bg-white/98 backdrop-blur-xl p-5 shadow-lift anim-fade z-50">
-                    <div className="flex items-center justify-between border-b border-line pb-3 mb-3 px-1">
-                      <p className="text-xs font-bold uppercase tracking-wider text-violet-600">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[520px] rounded-2xl border border-line bg-white/98 backdrop-blur-xl p-4 shadow-lift z-50">
+                    <div className="flex items-center justify-between border-b border-line pb-2.5 mb-2.5 px-1">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-violet-600">
                         Clinical Care Settings
                       </p>
                       <Link
@@ -280,19 +280,19 @@ export default function Navbar() {
                             key={a.slug}
                             to={`/solutions#${a.slug}`}
                             onClick={() => setActiveDropdown(null)}
-                            className="group flex items-center gap-3 rounded-2xl p-2.5 transition-colors hover:bg-azure-50/60 border border-transparent hover:border-azure-100"
+                            className="group flex items-center gap-2.5 rounded-xl p-2 transition-colors hover:bg-azure-50/60 border border-transparent hover:border-azure-100"
                           >
-                            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors">
-                              <Icon size={18} aria-hidden="true" />
+                            <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors">
+                              <Icon size={16} aria-hidden="true" />
                             </div>
                             <div className="min-w-0 flex-1">
-                              <p className="font-bold text-sm text-navy-900 group-hover:text-violet-700 transition-colors">
+                              <p className="font-bold text-xs sm:text-sm text-navy-900 group-hover:text-violet-700 transition-colors">
                                 {a.name}
                               </p>
-                              <p className="text-xs text-ink/75 truncate mt-0.5">{a.text}</p>
+                              <p className="text-[11px] text-ink/75 truncate mt-0.5">{a.text}</p>
                             </div>
                             <ArrowRight
-                              size={14}
+                              size={12}
                               className="text-ink/30 group-hover:text-violet-600 group-hover:translate-x-0.5 transition-all"
                             />
                           </Link>
@@ -307,7 +307,7 @@ export default function Navbar() {
                 <NavLink
                   to="/technology"
                   className={({ isActive }) =>
-                    `rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                    `rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                       isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900 hover:bg-mist/60'
                     }`
                   }
@@ -319,7 +319,7 @@ export default function Navbar() {
                 <NavLink
                   to="/resources"
                   className={({ isActive }) =>
-                    `rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                    `rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                       isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900 hover:bg-mist/60'
                     }`
                   }
@@ -331,7 +331,7 @@ export default function Navbar() {
                 <NavLink
                   to="/about"
                   className={({ isActive }) =>
-                    `rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                    `rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                       isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900 hover:bg-mist/60'
                     }`
                   }
@@ -342,21 +342,83 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* Right Action Buttons */}
+          {/* TABLET INTERMEDIATE NAVIGATION (768px to 1023px) */}
+          <nav aria-label="Tablet navigation" className="hidden md:flex lg:hidden items-center gap-1">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `rounded-full px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                  isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900'
+                }`
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                `rounded-full px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                  isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900'
+                }`
+              }
+            >
+              Products
+            </NavLink>
+            <NavLink
+              to="/solutions"
+              className={({ isActive }) =>
+                `rounded-full px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                  isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900'
+                }`
+              }
+            >
+              Solutions
+            </NavLink>
+            <NavLink
+              to="/technology"
+              className={({ isActive }) =>
+                `rounded-full px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                  isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900'
+                }`
+              }
+            >
+              Tech
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `rounded-full px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                  isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900'
+                }`
+              }
+            >
+              About
+            </NavLink>
+          </nav>
+
+          {/* RIGHT ACTION BUTTONS */}
           <div className="flex items-center gap-2 sm:gap-3">
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `hidden xl:inline-flex rounded-full px-3.5 py-2 text-[0.92rem] font-bold transition-colors ${
+                `hidden xl:inline-flex rounded-full px-3 py-2 text-[0.9rem] font-bold transition-colors ${
                   isActive ? 'text-navy-900 bg-azure-50/80' : 'text-ink hover:text-navy-900 hover:bg-mist/60'
                 }`
               }
             >
               Contact
             </NavLink>
-            <Button to="/contact" className="!min-h-[40px] sm:!min-h-[42px] !text-xs sm:!text-sm font-bold">
+
+            {/* Compact CTA */}
+            <Button
+              to="/contact"
+              className="!min-h-[36px] sm:!min-h-[40px] !px-3 sm:!px-4 !text-xs sm:!text-sm font-bold"
+            >
               Enquire now
             </Button>
+
+            {/* Mobile Menu Button (< 768px only) */}
             <button
               ref={toggleRef}
               type="button"
@@ -364,22 +426,21 @@ export default function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? 'Close menu' : 'Open menu'}
-              className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full text-navy-900 transition-colors hover:bg-mist lg:hidden border border-line"
+              className="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-full text-navy-900 transition-colors hover:bg-mist md:hidden border border-line"
             >
-              {open ? <X size={20} /> : <Menu size={20} />}
+              {open ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer (Clean, Accessible Accordions) */}
+      {/* 3. Mobile Navigation Drawer (< 768px) */}
       {open && (
         <div
           id="mobile-menu"
-          ref={panelRef}
-          className="fixed inset-x-0 bottom-0 top-[106px] z-40 overflow-y-auto overscroll-contain bg-white/98 backdrop-blur-2xl lg:hidden border-t border-line shadow-2xl"
+          className="fixed inset-x-0 bottom-0 top-[96px] z-40 overflow-y-auto overscroll-contain bg-white/98 backdrop-blur-2xl md:hidden border-t border-line shadow-2xl"
         >
-          <nav aria-label="Mobile navigation" className="container-site flex min-h-full flex-col pb-12 pt-4">
+          <nav aria-label="Mobile navigation" className="container-site flex min-h-full flex-col pb-10 pt-3">
             <ul className="divide-y divide-line/60">
               <li>
                 <NavLink
@@ -387,7 +448,7 @@ export default function Navbar() {
                   end
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `flex min-h-[48px] items-center justify-between text-lg font-bold py-2 ${
+                    `flex min-h-[44px] items-center justify-between text-base font-bold py-2 ${
                       isActive ? 'text-violet-600' : 'text-navy-900'
                     }`
                   }
@@ -396,13 +457,13 @@ export default function Navbar() {
                 </NavLink>
               </li>
 
-              {/* Products Accordion on Mobile */}
+              {/* Products Accordion */}
               <li className="py-2">
                 <div className="flex items-center justify-between">
                   <NavLink
                     to="/products"
                     onClick={() => setOpen(false)}
-                    className="text-lg font-bold text-navy-900"
+                    className="text-base font-bold text-navy-900"
                   >
                     Products
                   </NavLink>
@@ -410,24 +471,24 @@ export default function Navbar() {
                     type="button"
                     onClick={() => toggleMobileSubmenu('products')}
                     aria-label="Toggle products categories"
-                    className="p-2 text-ink"
+                    className="p-1.5 text-ink"
                   >
                     <ChevronDown
-                      size={18}
-                      className={`transition-transform duration-200 ${
+                      size={16}
+                      className={`transition-transform duration-150 ${
                         mobileExpanded.products ? 'rotate-180 text-violet-600' : ''
                       }`}
                     />
                   </button>
                 </div>
                 {mobileExpanded.products && (
-                  <ul className="mt-2 space-y-1.5 pl-3 border-l-2 border-azure-100">
+                  <ul className="mt-2 space-y-1 pl-3 border-l-2 border-azure-100">
                     {categories.map((c) => (
                       <li key={c.slug}>
                         <Link
                           to={`/products?category=${c.slug}`}
                           onClick={() => setOpen(false)}
-                          className="block py-1.5 text-sm font-semibold text-ink hover:text-navy-900"
+                          className="block py-1 text-xs sm:text-sm font-semibold text-ink hover:text-navy-900"
                         >
                           {c.name}
                         </Link>
@@ -437,47 +498,47 @@ export default function Navbar() {
                       <Link
                         to="/products"
                         onClick={() => setOpen(false)}
-                        className="block py-1.5 text-xs font-bold text-violet-600 hover:underline"
+                        className="block py-1 text-xs font-bold text-violet-600 hover:underline"
                       >
-                        Browse all instruments & systems →
+                        All 6 diagnostic systems →
                       </Link>
                     </li>
                   </ul>
                 )}
               </li>
 
-              {/* Solutions Accordion on Mobile */}
+              {/* Solutions Accordion */}
               <li className="py-2">
                 <div className="flex items-center justify-between">
                   <NavLink
                     to="/solutions"
                     onClick={() => setOpen(false)}
-                    className="text-lg font-bold text-navy-900"
+                    className="text-base font-bold text-navy-900"
                   >
                     Solutions
                   </NavLink>
                   <button
                     type="button"
                     onClick={() => toggleMobileSubmenu('solutions')}
-                    aria-label="Toggle solutions categories"
-                    className="p-2 text-ink"
+                    aria-label="Toggle solutions settings"
+                    className="p-1.5 text-ink"
                   >
                     <ChevronDown
-                      size={18}
-                      className={`transition-transform duration-200 ${
+                      size={16}
+                      className={`transition-transform duration-150 ${
                         mobileExpanded.solutions ? 'rotate-180 text-violet-600' : ''
                       }`}
                     />
                   </button>
                 </div>
                 {mobileExpanded.solutions && (
-                  <ul className="mt-2 space-y-1.5 pl-3 border-l-2 border-azure-100">
+                  <ul className="mt-2 space-y-1 pl-3 border-l-2 border-azure-100">
                     {audiences.map((a) => (
                       <li key={a.slug}>
                         <Link
                           to={`/solutions#${a.slug}`}
                           onClick={() => setOpen(false)}
-                          className="block py-1.5 text-sm font-semibold text-ink hover:text-navy-900"
+                          className="block py-1 text-xs sm:text-sm font-semibold text-ink hover:text-navy-900"
                         >
                           {a.name}
                         </Link>
@@ -492,7 +553,7 @@ export default function Navbar() {
                   to="/technology"
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `flex min-h-[48px] items-center justify-between text-lg font-bold py-2 ${
+                    `flex min-h-[44px] items-center justify-between text-base font-bold py-2 ${
                       isActive ? 'text-violet-600' : 'text-navy-900'
                     }`
                   }
@@ -506,7 +567,7 @@ export default function Navbar() {
                   to="/resources"
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `flex min-h-[48px] items-center justify-between text-lg font-bold py-2 ${
+                    `flex min-h-[44px] items-center justify-between text-base font-bold py-2 ${
                       isActive ? 'text-violet-600' : 'text-navy-900'
                     }`
                   }
@@ -520,7 +581,7 @@ export default function Navbar() {
                   to="/about"
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `flex min-h-[48px] items-center justify-between text-lg font-bold py-2 ${
+                    `flex min-h-[44px] items-center justify-between text-base font-bold py-2 ${
                       isActive ? 'text-violet-600' : 'text-navy-900'
                     }`
                   }
@@ -534,7 +595,7 @@ export default function Navbar() {
                   to="/contact"
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `flex min-h-[48px] items-center justify-between text-lg font-bold py-2 ${
+                    `flex min-h-[44px] items-center justify-between text-base font-bold py-2 ${
                       isActive ? 'text-violet-600' : 'text-navy-900'
                     }`
                   }
@@ -544,15 +605,15 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <div className="mt-auto space-y-3 pt-6 border-t border-line/60">
-              <Button to="/contact" className="w-full !min-h-[46px] text-base font-bold shadow-lift">
+            <div className="mt-auto space-y-2.5 pt-6 border-t border-line/60">
+              <Button to="/contact" className="w-full !min-h-[42px] text-sm font-bold shadow-subtle">
                 Request a Consultation
               </Button>
               <a
                 href={`mailto:${contact.email}`}
-                className="flex min-h-[44px] items-center justify-center gap-2 text-sm font-semibold text-navy-900 border border-line rounded-full hover:bg-mist transition-colors"
+                className="flex min-h-[40px] items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-navy-900 border border-line rounded-full hover:bg-mist transition-colors"
               >
-                <Mail size={16} className="text-violet-600" aria-hidden="true" />
+                <Mail size={15} className="text-violet-600" aria-hidden="true" />
                 {contact.email}
               </a>
             </div>

@@ -1,8 +1,7 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  ArrowLeft,
   Check,
   ChevronRight,
   ShieldCheck,
@@ -13,13 +12,20 @@ import {
   Activity,
   Layers,
   Sparkles,
+  Microscope,
+  HeartPulse,
+  MonitorSmartphone,
+  FileText,
+  BadgeCheck,
+  Zap,
+  Building2,
+  Stethoscope,
+  ClipboardPlus,
 } from 'lucide-react';
 import { usePageMeta } from '../hooks/usePageMeta';
 import Button, { TextLink } from '../components/ui/Button';
 import SectionHeading from '../components/ui/SectionHeading';
 import SmartImage from '../components/ui/SmartImage';
-import Reveal from '../components/ui/Reveal';
-import ImageText from '../components/sections/ImageText';
 import CategoryCard from '../components/sections/CategoryCard';
 import ProductCard from '../components/sections/ProductCard';
 import AudienceTabs from '../components/sections/AudienceTabs';
@@ -29,7 +35,7 @@ import { CurveBackdrop } from '../components/sections/PageHero';
 import { home, homeResources } from '../content/pages';
 import { categories, products } from '../content/catalog';
 import { resources } from '../content/resources';
-import { images } from '../content/images';
+import { slots } from '../content/images';
 
 export default function Home() {
   usePageMeta({
@@ -43,219 +49,131 @@ export default function Home() {
       {/* 1. Hero Section */}
       <Hero />
 
-      {/* 2. Trust & Credibility Strip */}
+      {/* 2. Clinical Credibility & Value Strip */}
       <TrustStrip />
 
-      {/* 3. About / Company Overview */}
+      {/* 3. Company & Brand Introduction */}
       <AboutSection />
 
-      {/* 4. Diagnostic Categories Portfolio */}
+      {/* 4. Diagnostic Modalities & Portfolio (Categories) */}
       <CategoriesSection />
 
-      {/* 5. Technology & Automation Capabilities */}
-      <TechnologySection />
-
-      {/* 6. Settings & Applications (Audience Tabs) */}
-      <section className="section bg-white">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              title="Tailored for Every Diagnostic Setting"
-              text="From high-throughput central hospital laboratories to bedside point-of-care suites and research institutions."
-              className="mb-12 lg:mb-16"
-            />
-          </Reveal>
-          <Reveal delay={100}>
-            <AudienceTabs />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 7. Featured Diagnostic Systems */}
+      {/* 5. Featured Diagnostic Systems Showcase */}
       <FeaturedProductsSection />
 
-      {/* 8. Diagnostic Workflow: Sample to Insight */}
-      <section className="section relative overflow-hidden bg-mist">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              title="From Initial Assessment to Ongoing Care"
-              text="A structured four-phase pathway ensuring smooth instrument commissioning, validation, and long-term diagnostic confidence."
-              className="mb-14 lg:mb-20"
-            />
-          </Reveal>
-          <Workflow />
-        </div>
-      </section>
+      {/* 6. Technology & Analytical Capabilities */}
+      <TechnologySection />
 
-      {/* 9. Quality, Calibration & Process Control */}
+      {/* 7. Clinical Solutions Across Care Settings */}
+      <CareSettingsSection />
+
+      {/* 8. Diagnostic Workflow: Intake to Insight */}
+      <WorkflowSection />
+
+      {/* 9. Precision & Quality Governance */}
       <QualitySection />
 
-      {/* 10. Professional Support Framework */}
+      {/* 10. Clinical Applications & Test Panel Matrix */}
+      <ClinicalPanelsSection />
+
+      {/* 11. Operating Principles — Why Efyion Dx */}
+      <PrinciplesSection />
+
+      {/* 12. Technical Support & Onboarding Framework */}
       <SupportSection />
 
-      {/* 11. Diagnostic Insights & Resources */}
+      {/* 13. Knowledge Hub & Technical Documentation */}
       <ResourcesSection />
 
-      {/* 12. Bottom Conversion CTA */}
-      <div className="pt-12 sm:pt-16 lg:pt-20">
-        <CTASection />
-      </div>
+      {/* 14. Bottom Conversion CTA */}
+      <CTASection />
     </>
   );
 }
 
-/* ==================================================================
-   SUB-COMPONENTS FOR HOMEPAGE DEPTH
-   ================================================================== */
-
+/** 1. HERO SECTION */
 function Hero() {
   const { hero } = home;
+
   return (
-    <section className="relative isolate -mt-[102px] overflow-hidden bg-mist pt-[102px] lg:pt-[112px]">
+    <section className="relative isolate -mt-[64px] sm:-mt-[68px] lg:-mt-[74px] overflow-hidden bg-mist pt-[64px] sm:pt-[68px] lg:pt-[74px]">
       <CurveBackdrop />
-      <div className="container-site grid items-center gap-12 pb-20 pt-8 sm:pt-12 lg:grid-cols-12 lg:gap-10 lg:pb-28 lg:pt-14">
-        {/* Left Column: Typography & CTAs */}
-        <div className="lg:col-span-7">
-          <div className="anim-rise inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-violet-50/80 px-3.5 py-1 text-xs font-bold text-violet-700 mb-6">
-            <span className="h-1.5 w-1.5 rounded-full bg-violet-600 animate-pulse" />
-            <span>Clinical In Vitro Diagnostics</span>
-          </div>
 
-          <h1 className="h-display font-black text-navy-900 tracking-tight leading-[1.04]">
-            {hero.titleLines.map((line, i) => (
-              <span
-                key={line}
-                className="anim-rise block"
-                style={{ '--delay': `${120 + i * 100}ms` }}
-              >
-                {line}
-              </span>
-            ))}
-          </h1>
+      <div className="container-site relative pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-18 lg:pb-28">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+          {/* Hero Copy */}
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-white/90 px-3.5 py-1 text-xs font-bold text-violet-700 shadow-xs mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-violet-600 animate-pulse" />
+              <span>{hero.kicker}</span>
+            </div>
 
-          <p
-            className="lead anim-rise mt-6 max-w-xl text-ink text-base sm:text-lg sm:leading-relaxed"
-            style={{ '--delay': `${320}ms` }}
-          >
-            {hero.text}
-          </p>
+            <h1
+              className="text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold text-navy-900 tracking-tight"
+              style={{ letterSpacing: '-0.035em' }}
+            >
+              <span>Precision Diagnostics.</span>
+              <br />
+              <span className="text-violet-600">Better Outcomes.</span>
+            </h1>
 
-          {/* Compact, touch-friendly mobile button layout */}
-          <div
-            className="anim-rise mt-8 flex flex-wrap items-center gap-3 sm:gap-4"
-            style={{ '--delay': `${420}ms` }}
-          >
-            <Button to={hero.primary.to}>{hero.primary.label}</Button>
-            <Button to={hero.secondary.to} variant="outline">
-              {hero.secondary.label}
-            </Button>
-          </div>
-
-          {/* Focus Areas Quick Links */}
-          <div
-            className="anim-rise mt-10 border-t border-navy-900/10 pt-5"
-            style={{ '--delay': `${520}ms` }}
-          >
-            <p className="text-xs font-bold uppercase tracking-wider text-ink/70 mb-2.5">
-              Core Specialty Areas
+            <p className="mt-5 max-w-xl text-base sm:text-lg text-ink/90 leading-relaxed font-normal">
+              Equipping clinical laboratories, hospital networks, and acute care facilities with
+              high-throughput automated analyzers, standardized liquid-stable reagents, and
+              responsive application advisory.
             </p>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Specialty focus areas">
-              {categories.slice(0, 4).map((c) => (
-                <li key={c.slug}>
-                  <Link
-                    to={`/products?category=${c.slug}`}
-                    className="group inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-navy-900 hover:text-violet-600 transition-colors"
-                  >
-                    <span>{c.name}</span>
-                    <ChevronRight
-                      size={13}
-                      className="text-violet-500 transition-transform group-hover:translate-x-0.5"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
-        {/* Right Column: Visual Composition with Multiple Insets */}
-        <div className="relative mx-auto w-full max-w-[24rem] sm:max-w-md lg:col-span-5 lg:max-w-none">
-          {/* Decorative rising dots */}
-          <div
-            aria-hidden="true"
-            className="absolute -top-10 right-[15%] flex flex-col items-center gap-2 sm:-top-14"
-          >
-            <span
-              className="anim-bubble h-4 w-4 rounded-full bg-violet-600"
-              style={{ '--delay': '1100ms' }}
-            />
-            <span
-              className="anim-bubble -ml-5 h-3 w-3 rounded-full bg-azure-500"
-              style={{ '--delay': '950ms' }}
-            />
-            <span
-              className="anim-bubble h-2 w-2 rounded-full bg-navy-900"
-              style={{ '--delay': '800ms' }}
-            />
-          </div>
+            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+              <Button to="/products" className="!min-h-[44px] sm:!min-h-[46px] text-sm font-bold">
+                Explore diagnostic systems
+              </Button>
+              <Button
+                to="/contact"
+                variant="outline"
+                className="!min-h-[44px] sm:!min-h-[46px] text-sm font-bold"
+              >
+                Request consultation
+              </Button>
+            </div>
 
-          {/* Primary Hero Image: Tube Framed Clinical Lab */}
-          <div
-            className="anim-tube tube frame-hero relative overflow-hidden bg-azure-100 shadow-lift border-2 border-white"
-            style={{ '--delay': '200ms' }}
-          >
-            <SmartImage
-              image={hero.image}
-              priority
-              sizes="(min-width: 1024px) 45vw, 90vw"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-navy-950/30 via-transparent to-transparent"
-            />
-          </div>
-
-          {/* Secondary Inset: Diagnostic Sample Tubes */}
-          <div
-            className="anim-rise absolute -bottom-6 -left-3 aspect-square w-24 sm:w-32 lg:w-36 overflow-hidden rounded-full border-[5px] border-white bg-azure-100 shadow-lift"
-            style={{ '--delay': '750ms' }}
-          >
-            <SmartImage image={hero.detailImage} sizes="160px" priority />
-          </div>
-
-          {/* Floating Diagnostic Card */}
-          <div
-            className="anim-rise absolute -right-2 bottom-8 hidden sm:block lg:-right-4 xl:-right-8"
-            style={{ '--delay': '900ms' }}
-          >
-            <div className="anim-drift w-56 rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lift backdrop-blur-md">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold text-navy-900">
-                  Sample Workflow
-                </span>
-                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+            {/* Quick Metrics Tag */}
+            <div className="mt-8 pt-6 border-t border-line/60 grid grid-cols-3 gap-3 max-w-lg">
+              <div>
+                <p className="text-xl sm:text-2xl font-extrabold text-navy-900">400 T/H</p>
+                <p className="text-xs font-semibold text-ink/75">Photometric Capacity</p>
               </div>
-              <ol className="mt-3 space-y-2 text-xs font-bold text-navy-900">
-                {[
-                  { step: 'Accession', status: 'Verified' },
-                  { step: 'Analysis', status: 'Calibrated' },
-                  { step: 'Report', status: 'Validated' },
-                ].map((s, i) => (
-                  <li key={s.step} className="flex items-center justify-between gap-2">
-                    <span className="flex items-center gap-1.5">
-                      <span className="grid h-4 w-4 place-items-center rounded-full bg-navy-900 text-white text-[9px]">
-                        {i + 1}
-                      </span>
-                      <span>{s.step}</span>
-                    </span>
-                    <span className="text-[10px] font-semibold text-violet-600 bg-violet-50 px-2 py-0.5 rounded-full">
-                      {s.status}
-                    </span>
-                  </li>
-                ))}
-              </ol>
+              <div>
+                <p className="text-xl sm:text-2xl font-extrabold text-navy-900">2.0 µL</p>
+                <p className="text-xs font-semibold text-ink/75">Micro-Volume Sample</p>
+              </div>
+              <div>
+                <p className="text-xl sm:text-2xl font-extrabold text-navy-900">HL7 / ASTM</p>
+                <p className="text-xs font-semibold text-ink/75">Bi-Directional LIS</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Hero Media Slot */}
+          <div className="lg:col-span-5">
+            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+              <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+                <SmartImage
+                  image={slots.heroImage}
+                  label="Efyion Dx Diagnostic Analyzer Platform"
+                  priority
+                />
+              </div>
+
+              {/* Floating Specification Card */}
+              <div className="hidden sm:flex absolute -bottom-5 -left-5 items-center gap-3 rounded-2xl border border-line bg-white/95 p-3.5 shadow-subtle backdrop-blur-md">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600">
+                  <Activity size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-navy-900">Multi-Channel Detection</p>
+                  <p className="text-[11px] font-medium text-ink/75">Continuous STAT Access</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -264,32 +182,26 @@ function Hero() {
   );
 }
 
+/** 2. TRUST & CREDIBILITY STRIP */
 function TrustStrip() {
   const { trustStrip } = home;
+
   return (
     <section className="border-y border-line bg-white py-10 sm:py-12">
       <div className="container-site">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {trustStrip.map((item, i) => {
+          {trustStrip.map((item) => {
             const Icon = item.icon;
             return (
-              <Reveal
-                key={item.title}
-                delay={i * 60}
-                className="flex items-start gap-4 p-2"
-              >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-mist text-violet-600">
+              <div key={item.title} className="flex items-start gap-4">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-azure-50 text-violet-600 border border-azure-100/80">
                   <Icon size={20} aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="text-base font-bold text-navy-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-xs sm:text-sm text-ink leading-relaxed">
-                    {item.desc}
-                  </p>
                 </div>
-              </Reveal>
+                <div>
+                  <h2 className="text-sm font-bold text-navy-900">{item.title}</h2>
+                  <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
             );
           })}
         </div>
@@ -298,73 +210,81 @@ function TrustStrip() {
   );
 }
 
+/** 3. ABOUT / COMPANY INTRODUCTION */
 function AboutSection() {
-  const { about: a } = home;
+  const { about } = home;
+
   return (
     <section className="section bg-white">
-      <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="relative lg:col-span-5">
-          <div className="tube frame-arch relative mx-auto max-w-lg overflow-hidden bg-azure-100 shadow-lift border border-line">
-            <SmartImage image={a.image} sizes="(min-width: 1024px) 40vw, 90vw" />
+      <div className="container-site">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Media Slot */}
+          <div className="lg:col-span-5 order-2 lg:order-1">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+              <SmartImage
+                image={slots.aboutImage}
+                label="Clinical Diagnostic Operations"
+              />
+            </div>
           </div>
-          <div className="absolute -bottom-6 -left-3 aspect-square w-28 sm:w-36 overflow-hidden rounded-full border-[5px] border-white bg-azure-100 shadow-lift">
-            <SmartImage image={a.detailImage} sizes="160px" />
+
+          {/* Content */}
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+              Diagnostic Excellence
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              {about.title}
+            </h2>
+            <p className="lead mt-4 font-medium text-navy-900">{about.lead}</p>
+            <p className="mt-3 text-base text-ink leading-relaxed">{about.body}</p>
+
+            <ul className="mt-6 space-y-2.5">
+              {about.highlights.map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-violet-50 text-violet-600">
+                    <Check size={13} strokeWidth={2.5} />
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex items-center gap-4">
+              <Button to="/about" variant="outline" className="!min-h-[42px] text-sm font-bold">
+                Learn more about Efyion Dx
+              </Button>
+            </div>
           </div>
-        </Reveal>
-
-        <Reveal delay={100} className="lg:col-span-7">
-          <SectionHeading
-            kicker="About Efyion Dx"
-            title={a.title}
-            text={a.lead}
-          />
-          <p className="mt-5 text-base sm:text-lg text-ink leading-relaxed">
-            {a.body}
-          </p>
-
-          <ul className="mt-6 space-y-3">
-            {a.highlights.map((h) => (
-              <li key={h} className="flex items-start gap-3 text-sm sm:text-base font-semibold text-navy-900">
-                <span className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-violet-600 text-white">
-                  <Check size={11} strokeWidth={3} aria-hidden="true" />
-                </span>
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8">
-            <Button to={a.cta.to} variant="outline">
-              {a.cta.label}
-            </Button>
-          </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
 }
 
+/** 4. DIAGNOSTIC MODALITIES & PORTFOLIO (CATEGORIES) */
 function CategoriesSection() {
   return (
-    <section className="section bg-mist">
+    <section className="section bg-mist border-t border-line">
       <div className="container-site">
-        <Reveal className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 lg:mb-16">
           <SectionHeading
-            kicker="Diagnostic Portfolio"
-            title="Comprehensive Solution Categories"
-            text="Explore diagnostic systems engineered for precision across clinical disciplines, sample formats, and healthcare settings."
+            title="Core Diagnostic Modalities"
+            text="Comprehensive instrumentation and standardized assay platforms categorized by clinical specialty."
+            className="mb-0"
           />
-          <TextLink to="/products" className="shrink-0">
-            View full catalogue
-          </TextLink>
-        </Reveal>
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 hover:text-navy-900 transition-colors shrink-0"
+          >
+            <span>View all products</span>
+            <ArrowRight size={16} />
+          </Link>
+        </div>
 
-        {/* 6-Card Responsive Grid with Distinct Verified Imagery */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((c, i) => (
-            <Reveal key={c.slug} delay={(i % 3) * 70}>
-              <CategoryCard category={c} className="h-full" />
-            </Reveal>
+          {categories.map((c) => (
+            <CategoryCard key={c.slug} category={c} />
           ))}
         </div>
       </div>
@@ -372,268 +292,473 @@ function CategoriesSection() {
   );
 }
 
-function TechnologySection() {
-  const { technology: t } = home;
-  return (
-    <section className="relative isolate overflow-hidden bg-navy-900 text-white">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-0 -z-10 h-[30rem] w-[30rem] rounded-full bg-violet-600/25 blur-3xl"
-      />
-      <div className="container-site grid items-center gap-12 py-20 sm:py-24 lg:grid-cols-2 lg:gap-16 lg:py-32">
-        <Reveal>
-          <SectionHeading
-            light
-            kicker="Instrumentation & Informatics"
-            title={t.title}
-            text={t.text}
-          />
-          <ul className="mt-8 space-y-3.5">
-            {t.points.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
-                <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-violet-600 text-white">
-                  <Check size={12} strokeWidth={3} aria-hidden="true" />
-                </span>
-                <span>{p}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-9">
-            <Button to={t.cta.to} variant="light">
-              {t.cta.label}
-            </Button>
-          </div>
-        </Reveal>
+/** 5. FEATURED DIAGNOSTIC SYSTEMS SHOWCASE */
+function FeaturedProductsSection() {
+  const [activeCategory, setActiveCategory] = useState('all');
 
-        <Reveal delay={120} className="relative">
-          <div className="tube frame-arch relative mx-auto max-w-lg overflow-hidden bg-navy-800 shadow-lift border border-white/10">
-            <SmartImage image={t.image} sizes="(min-width: 1024px) 45vw, 90vw" />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-tr from-navy-900/60 via-transparent to-violet-600/20 mix-blend-multiply"
-            />
+  const filtered =
+    activeCategory === 'all'
+      ? products
+      : products.filter((p) => p.category === activeCategory);
+
+  return (
+    <section className="section bg-white border-t border-line">
+      <div className="container-site">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600">
+              Hardware & Consumables
+            </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              Featured Diagnostic Systems
+            </h2>
+            <p className="mt-3 text-base text-ink max-w-2xl">
+              Precision analyzers and reagent formulations engineered for continuous operational reliability.
+            </p>
           </div>
-          <img
-            src="/logo-mark-white.png"
-            alt=""
-            aria-hidden="true"
-            className="absolute -bottom-6 -right-2 w-20 opacity-80 sm:w-24 lg:-right-4"
-          />
-        </Reveal>
+
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-600 hover:underline shrink-0"
+          >
+            <span>Complete catalog</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex flex-wrap gap-2 pb-6 border-b border-line mb-10">
+          <button
+            type="button"
+            onClick={() => setActiveCategory('all')}
+            className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors ${
+              activeCategory === 'all'
+                ? 'bg-navy-900 text-white shadow-xs'
+                : 'bg-mist text-ink hover:text-navy-900'
+            }`}
+          >
+            All Systems (6)
+          </button>
+          {categories.map((c) => (
+            <button
+              key={c.slug}
+              type="button"
+              onClick={() => setActiveCategory(c.slug)}
+              className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors ${
+                activeCategory === c.slug
+                  ? 'bg-navy-900 text-white shadow-xs'
+                  : 'bg-mist text-ink hover:text-navy-900'
+              }`}
+            >
+              {c.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Product Cards Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((p) => (
+            <ProductCard key={p.slug} product={p} />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function FeaturedProductsSection() {
-  const scroller = useRef(null);
-  const scroll = (dir) => {
-    const el = scroller.current;
-    if (!el) return;
-    const card = el.querySelector('li');
-    el.scrollBy({ left: dir * (card ? card.offsetWidth + 20 : 320), behavior: 'smooth' });
-  };
+/** 6. TECHNOLOGY & ANALYTICAL CAPABILITIES */
+function TechnologySection() {
+  const techPoints = [
+    {
+      title: 'Multi-Wavelength Photometric Optics',
+      desc: '12 discrete optical wavelengths (340–800 nm) utilizing concave holographic flat-field gratings.',
+      icon: Microscope,
+    },
+    {
+      title: 'Triple-Sensor Sample Integrity',
+      desc: 'Capacitive liquid-level sensing, mechanical clot detection, and micro-bubble optical rejection.',
+      icon: Activity,
+    },
+    {
+      title: 'Refrigerated Reagent Protection',
+      desc: 'Continuous 2°C–8°C onboard chilling preserves enzyme activity and calibration curves for 30+ days.',
+      icon: FlaskConical,
+    },
+    {
+      title: 'Bi-Directional LIS Interoperability',
+      desc: 'Native ASTM 1394 and HL7 v2.x protocols ensure real-time query-host sample accession and result dispatch.',
+      icon: Cpu,
+    },
+  ];
 
+  return (
+    <section className="section bg-navy-950 text-white relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="absolute -right-32 -top-32 h-[32rem] w-[32rem] rounded-full bg-violet-600/20 blur-3xl pointer-events-none"
+      />
+
+      <div className="container-site relative">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full border border-violet-500/20">
+              Analytical Precision
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+              Diagnostic Hardware & Informatics Engineering
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-white/75 leading-relaxed">
+              Clinical decision-making relies fundamentally on repeatable analytical findings. Efyion Dx unites
+              precision opto-mechanical hardware with modern digital middleware to minimize technician burden.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {techPoints.map((tp) => {
+                const Icon = tp.icon;
+                return (
+                  <div key={tp.title} className="rounded-2xl bg-white/5 border border-white/10 p-4">
+                    <Icon size={20} className="text-violet-400 mb-2" aria-hidden="true" />
+                    <h3 className="text-sm font-bold text-white">{tp.title}</h3>
+                    <p className="mt-1 text-xs text-white/65 leading-relaxed">{tp.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 flex items-center gap-4">
+              <Button to="/technology" className="!min-h-[44px] text-sm font-bold bg-white !text-navy-900 hover:bg-slate-100">
+                Explore technology & quality
+              </Button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/10 shadow-2xl">
+              <SmartImage
+                image={slots.technologyImage}
+                label="Diagnostic Optical & Analytical Hardware"
+                dark
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** 7. CLINICAL SOLUTIONS ACROSS CARE SETTINGS */
+function CareSettingsSection() {
   return (
     <section className="section bg-white">
       <div className="container-site">
-        <Reveal className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-12">
-          <SectionHeading
-            kicker="Featured Instrumentation"
-            title="Featured Diagnostic Systems"
-            text="Selected platforms supporting clinical chemistry, optical review, standardized reagents, and point-of-care testing."
-          />
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => scroll(-1)}
-              aria-label="Scroll products left"
-              className="grid h-10 w-10 place-items-center rounded-full border border-line text-navy-900 hover:border-navy-900 transition-colors"
-            >
-              <ArrowLeft size={16} aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll(1)}
-              aria-label="Scroll products right"
-              className="grid h-10 w-10 place-items-center rounded-full border border-line text-navy-900 hover:border-navy-900 transition-colors"
-            >
-              <ArrowRight size={16} aria-hidden="true" />
-            </button>
-          </div>
-        </Reveal>
-      </div>
-
-      <div className="container-site !pr-0 sm:!pr-6 lg:!pr-8">
-        <ul
-          ref={scroller}
-          className="-my-4 flex snap-x snap-mandatory gap-5 overflow-x-auto py-4 pr-5 [scrollbar-width:none] sm:pr-0 [&::-webkit-scrollbar]:hidden"
-          aria-label="Featured diagnostic products"
-        >
-          {products.map((p) => (
-            <li
-              key={p.slug}
-              className="w-[84%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]"
-            >
-              <ProductCard product={p} />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="container-site mt-8">
-        <Button to="/products" variant="outline">
-          View all 6 diagnostic systems
-        </Button>
+        <SectionHeading
+          title="Tailored for Every Diagnostic Setting"
+          text="From high-throughput central hospital laboratories to bedside point-of-care suites and research institutions."
+          className="mb-12 lg:mb-16"
+        />
+        <AudienceTabs />
       </div>
     </section>
   );
 }
 
-function QualitySection() {
-  const { qualitySection: q } = home;
+/** 8. DIAGNOSTIC WORKFLOW */
+function WorkflowSection() {
   return (
-    <section className="section bg-white border-t border-line">
-      <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
-          <SectionHeading
-            kicker="Standards & Quality"
-            title={q.title}
-            text={q.lead}
-          />
-          <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-[2rem] bg-azure-50 border border-line">
-            <SmartImage image={images.qualityControl} sizes="(min-width: 1024px) 40vw, 90vw" />
+    <section className="section bg-mist border-t border-line">
+      <div className="container-site">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5 order-2 lg:order-1">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+              <SmartImage
+                image={slots.workflowImage}
+                label="Laboratory Sample Workflow"
+              />
+            </div>
           </div>
-        </Reveal>
 
-        <div className="lg:col-span-7">
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {q.points.map((pt, i) => (
-              <Reveal
-                as="li"
-                key={pt.title}
-                delay={i * 60}
-                className="rounded-2xl border border-line bg-mist p-5 sm:p-6"
-              >
-                <div className="grid h-9 w-9 place-items-center rounded-lg bg-navy-900 text-white">
-                  <ShieldCheck size={18} aria-hidden="true" />
-                </div>
-                <h3 className="mt-4 text-base font-bold text-navy-900">
-                  {pt.title}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">
-                  {pt.text}
-                </p>
-              </Reveal>
-            ))}
-          </ul>
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <SectionHeading
+              title="From Initial Assessment to Ongoing Care"
+              text="A structured four-phase pathway ensuring smooth instrument commissioning, validation, and long-term diagnostic confidence."
+              className="mb-8"
+            />
+            <Workflow />
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+/** 9. QUALITY & REGULATORY RIGOR */
+function QualitySection() {
+  const { qualitySection } = home;
+
+  return (
+    <section className="section bg-white border-t border-line">
+      <div className="container-site">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+              Quality Governance
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              {qualitySection.title}
+            </h2>
+            <p className="lead mt-4 text-ink">{qualitySection.lead}</p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {qualitySection.points.map((item) => (
+                <div key={item.title} className="rounded-2xl border border-line bg-mist/60 p-4">
+                  <h3 className="text-sm font-bold text-navy-900">{item.title}</h3>
+                  <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex items-center gap-4">
+              <Button to="/technology#quality" variant="outline" className="!min-h-[42px] text-sm font-bold">
+                Review quality governance
+              </Button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+              <SmartImage
+                image={slots.qualityImage}
+                label="Quality Assurance & Calibration Standards"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** 10. CLINICAL APPLICATIONS & TEST PANEL MATRIX (EXPANDED DEPTH) */
+function ClinicalPanelsSection() {
+  const panels = [
+    {
+      title: 'Cardiac & Vascular Assessment',
+      icon: HeartPulse,
+      tags: ['hs-Troponin I/T', 'CK-MB', 'Myoglobin', 'D-Dimer', 'NT-proBNP'],
+      summary: 'High-sensitivity quantitative detection of acute coronary syndromes and thrombotic events.',
+    },
+    {
+      title: 'Comprehensive Metabolic & Renal',
+      icon: Activity,
+      tags: ['Creatinine', 'BUN/Urea', 'eGFR', 'Electrolytes (Na/K/Cl)', 'Uric Acid'],
+      summary: 'Essential renal clearance and metabolic profiling with micro-sample volume requirements.',
+    },
+    {
+      title: 'Hepatic & Liver Function',
+      icon: FlaskConical,
+      tags: ['ALT', 'AST', 'ALP', 'Total/Direct Bilirubin', 'Albumin', 'Total Protein'],
+      summary: 'Routine and specialized enzyme kinetics ensuring accurate liver disease evaluation.',
+    },
+    {
+      title: 'Sepsis & Infectious Inflammation',
+      icon: ShieldCheck,
+      tags: ['Procalcitonin (PCT)', 'High-Sensitivity CRP', 'Ferritin', 'IL-6'],
+      summary: 'Critical inflammatory biomarkers supporting antimicrobial stewardship and ICU triage.',
+    },
+    {
+      title: 'Endocrine & Thyroid Profiles',
+      icon: Layers,
+      tags: ['TSH', 'Free T3', 'Free T4', 'Anti-TPO', 'Beta-hCG', '25-OH Vitamin D'],
+      summary: 'Sub-picogram chemiluminescence sensitivity across comprehensive hormone pathways.',
+    },
+    {
+      title: 'Laboratory Data & Connectivity',
+      icon: MonitorSmartphone,
+      tags: ['HL7 v2.x', 'ASTM 1394', 'Automated Delta-Check', 'Levey-Jennings QC'],
+      summary: 'Bi-directional middleware interfacing analyzers with hospital EHR and LIMS networks.',
+    },
+  ];
+
+  return (
+    <section className="section bg-mist border-t border-line">
+      <div className="container-site">
+        <SectionHeading
+          title="Clinical Applications & Test Menus"
+          text="Targeted assay configurations supporting decisive clinical triage and routine pathology workloads."
+          className="mb-12 lg:mb-16"
+        />
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {panels.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-line bg-white p-6 transition-all hover:shadow-subtle hover:border-violet-300"
+              >
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-violet-50 text-violet-600 mb-4">
+                  <Icon size={20} aria-hidden="true" />
+                </div>
+                <h3 className="text-base font-bold text-navy-900">{p.title}</h3>
+                <p className="mt-1 text-xs text-ink/75 leading-relaxed">{p.summary}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md bg-azure-50 px-2 py-0.5 text-[11px] font-semibold text-navy-900 border border-azure-100/60"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** 11. OPERATING PRINCIPLES — WHY EFYION DX */
+function PrinciplesSection() {
+  const { why } = home;
+
+  return (
+    <section className="section bg-white border-t border-line">
+      <div className="container-site">
+        <SectionHeading
+          title={why.title}
+          text={why.text}
+          className="mb-12 lg:mb-16"
+        />
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {why.items.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.title} className="rounded-2xl border border-line bg-white p-6">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-azure-50 text-violet-600 mb-4">
+                  <Icon size={20} aria-hidden="true" />
+                </div>
+                <h3 className="text-base font-bold text-navy-900">{item.title}</h3>
+                <p className="mt-2 text-xs text-ink/80 leading-relaxed">{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** 12. PROFESSIONAL TECHNICAL SUPPORT & ONBOARDING */
 function SupportSection() {
   return (
     <section className="section bg-mist border-t border-line">
-      <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-6 lg:order-2">
-          <div className="tube frame-arch relative mx-auto max-w-lg overflow-hidden bg-azure-100 shadow-lift border border-line">
-            <SmartImage image={images.supportEngineer} sizes="(min-width: 1024px) 45vw, 90vw" />
+      <div className="container-site">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+              Technical Partnership
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              Specialized Application Support & Training
+            </h2>
+            <p className="mt-4 text-base text-ink leading-relaxed">
+              Diagnostic instrumentation demands attentive ongoing collaboration. Efyion Dx provides direct access to
+              experienced biomedical engineers and application specialists across every stage of platform deployment.
+            </p>
+
+            <div className="mt-6 space-y-3">
+              {[
+                {
+                  title: 'Pre-Installation Workflow Audit',
+                  text: 'Matching analyzer throughput and reagent allocations to your daily sample volume and peak hours.',
+                },
+                {
+                  title: 'Operator Training & Validation Runs',
+                  text: 'On-site technical onboarding ensuring laboratory technicians are confident in calibration routines.',
+                },
+                {
+                  title: 'Guaranteed Emergency Support SLA',
+                  text: 'Under 2-hour response for critical laboratory inquiries to keep diagnostic testing uninterrupted.',
+                },
+              ].map((s) => (
+                <div key={s.title} className="rounded-2xl border border-line bg-white p-4">
+                  <h3 className="text-sm font-bold text-navy-900">{s.title}</h3>
+                  <p className="mt-1 text-xs text-ink/80 leading-relaxed">{s.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex items-center gap-4">
+              <Button to="/contact" className="!min-h-[42px] text-sm font-bold">
+                Contact technical support
+              </Button>
+            </div>
           </div>
-        </Reveal>
 
-        <Reveal delay={100} className="lg:col-span-6 lg:order-1">
-          <SectionHeading
-            kicker="Service & Support"
-            title="Specialized Technical Advisory"
-            text="Diagnostic reliability extends beyond the physical instrument. Efyion Dx specialists provide structured guidance from initial workflow planning through post-onboarding optimization."
-          />
-
-          <ul className="mt-8 space-y-4">
-            {[
-              {
-                title: 'Pre-Purchase Workflow Audits',
-                desc: 'Detailed evaluations of your testing space, volume, and menu needs to select the right platform configuration.',
-              },
-              {
-                title: 'Structured Operator Onboarding',
-                desc: 'Hands-on operator procedural training ensuring staff are fully confident in running assays and routine maintenance.',
-              },
-              {
-                title: 'Responsive Application Support',
-                desc: 'Direct telephone and email communication channels for swift technical inquiries and calibration guidance.',
-              },
-            ].map((s) => (
-              <li key={s.title} className="rounded-2xl border border-line bg-white p-5">
-                <h3 className="text-base font-bold text-navy-900">{s.title}</h3>
-                <p className="mt-1.5 text-sm text-ink leading-relaxed">{s.desc}</p>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8">
-            <Button to="/contact" variant="primary">
-              Connect with an advisor
-            </Button>
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+              <SmartImage
+                image={slots.supportImage}
+                label="Technical Advisory & Support Advisory"
+              />
+            </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
 }
 
+/** 13. KNOWLEDGE HUB & TECHNICAL RESOURCES PREVIEW */
 function ResourcesSection() {
-  const topArticles = resources.slice(0, 3);
+  const featuredResources = resources.slice(0, 3);
 
   return (
     <section className="section bg-white border-t border-line">
       <div className="container-site">
-        <Reveal className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <SectionHeading
-            kicker="Knowledge Hub"
-            title="Diagnostic Insights & Resources"
-            text="Technical articles, operational guidance, and healthcare diagnostic perspectives from Efyion Dx."
+            title="Diagnostic Insights & Technical Guides"
+            text="Analytical publications, verification guidance, and platform evaluation guides."
+            className="mb-0"
           />
-          <TextLink to="/resources" className="shrink-0">
-            View all resources
-          </TextLink>
-        </Reveal>
+          <Link
+            to="/resources"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 hover:text-navy-900 transition-colors shrink-0"
+          >
+            <span>All publications</span>
+            <ArrowRight size={16} />
+          </Link>
+        </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {topArticles.map((r, i) => (
-            <Reveal key={r.slug} delay={i * 70}>
-              <Link
-                to={`/resources/${r.slug}`}
-                className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-azure-200 hover:shadow-soft h-full"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-mist">
-                  <SmartImage
-                    image={r.image}
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-violet-600">
-                    {r.category}
-                  </span>
-                  <h3 className="mt-2 text-lg font-bold text-navy-900 group-hover:text-azure-600 transition-colors line-clamp-2">
-                    {r.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-ink leading-relaxed line-clamp-3">
-                    {r.excerpt}
-                  </p>
-                  <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-bold text-azure-600">
-                    <span>Read article</span>
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform group-hover:translate-x-1 shrink-0"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
+          {featuredResources.map((r) => (
+            <article
+              key={r.slug}
+              className="flex flex-col rounded-2xl border border-line bg-white p-6 transition-all hover:shadow-subtle"
+            >
+              <span className="text-[11px] font-bold uppercase tracking-wider text-violet-600">
+                {r.category}
+              </span>
+              <h3 className="mt-3 text-lg font-bold text-navy-900 hover:text-violet-600 transition-colors">
+                <Link to={`/resources/${r.slug}`}>{r.title}</Link>
+              </h3>
+              <p className="mt-2 text-xs text-ink leading-relaxed line-clamp-3">{r.excerpt}</p>
+              <div className="mt-auto pt-4">
+                <Link
+                  to={`/resources/${r.slug}`}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-azure-600 hover:underline"
+                >
+                  <span>Read article</span>
+                  <ArrowRight size={12} />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>

@@ -89,56 +89,46 @@
   }
 }
 
-/* ---------- Motion ---------- */
+/* ---------- Motion (Progressive, Non-Blocking) ---------- */
 
-/* Scroll reveal: small distance, short duration */
+/* Content is immediately visible and readable with zero artificial waiting */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-  transition-delay: var(--delay, 0ms);
-}
-[data-reveal].is-visible {
   opacity: 1;
   transform: none;
 }
 
-/* Hero load sequence — the one orchestrated moment on the site */
 @keyframes rise {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0.92; transform: translateY(6px); }
   to { opacity: 1; transform: none; }
 }
 @keyframes tube-in {
-  from { opacity: 0; clip-path: inset(100% 0 0 0); }
-  to { opacity: 1; clip-path: inset(0 0 0 0); }
+  from { opacity: 0.95; }
+  to { opacity: 1; }
 }
 @keyframes bubble {
-  0% { opacity: 0; transform: translateY(18px) scale(0.6); }
+  0% { opacity: 0.9; transform: scale(0.95); }
   100% { opacity: 1; transform: none; }
 }
 @keyframes drift {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-4px); }
 }
-.anim-rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--delay, 0ms); }
-.anim-tube { animation: tube-in 1.2s cubic-bezier(0.7, 0, 0.2, 1) both; animation-delay: var(--delay, 0ms); }
-.anim-bubble { animation: bubble 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both; animation-delay: var(--delay, 0ms); }
-.anim-drift { animation: drift 7s ease-in-out infinite; }
+.anim-rise { animation: rise 0.3s ease-out both; }
+.anim-tube { animation: tube-in 0.3s ease-out both; }
+.anim-bubble { animation: bubble 0.3s ease-out both; }
+.anim-drift { animation: drift 6s ease-in-out infinite; }
 
-/* Page transition */
+/* Page transition - instantaneous */
 @keyframes page-in {
-  from { opacity: 0; }
+  from { opacity: 0.95; }
   to { opacity: 1; }
 }
-.page-enter { animation: page-in 0.45s ease both; }
+.page-enter { animation: page-in 0.15s ease both; }
 
-/* Workflow connector draws in when visible */
-.flow-line { transform-origin: left center; transform: scaleX(0); transition: transform 1.4s cubic-bezier(0.6, 0, 0.2, 1) 0.2s; }
-.flow-line-v { transform-origin: top center; transform: scaleY(0); transition: transform 1.4s cubic-bezier(0.6, 0, 0.2, 1) 0.2s; }
-.flow-step { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; transition-delay: var(--delay, 0ms); }
-.is-visible .flow-step { opacity: 1; transform: none; }
-.is-visible .flow-line { transform: scaleX(1); }
-.is-visible .flow-line-v { transform: scaleY(1); }
+/* Workflow connector */
+.flow-line { transform-origin: left center; transform: scaleX(1); }
+.flow-line-v { transform-origin: top center; transform: scaleY(1); }
+.flow-step { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
