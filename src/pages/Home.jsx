@@ -30,6 +30,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 import Button from '../components/ui/Button';
 import SectionHeading from '../components/ui/SectionHeading';
 import SmartImage from '../components/ui/SmartImage';
+import Reveal from '../components/ui/Reveal';
 import CategoryCard from '../components/sections/CategoryCard';
 import ProductCard from '../components/sections/ProductCard';
 import AudienceTabs from '../components/sections/AudienceTabs';
