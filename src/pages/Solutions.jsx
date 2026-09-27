@@ -15,13 +15,13 @@ import { images } from '../content/images';
 
 function Points({ items }) {
   return (
-    <ul className="space-y-2.5">
+    <ul className="space-y-3">
       {items.map((p) => (
         <li key={p} className="flex items-start gap-3 text-navy-900">
-          <span className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-600 text-white">
-            <Check size={10} strokeWidth={3} aria-hidden="true" />
+          <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-navy-900 text-white">
+            <Check size={12} strokeWidth={3} aria-hidden="true" />
           </span>
-          <span className="font-semibold text-xs sm:text-sm">{p}</span>
+          <span className="font-semibold text-sm sm:text-base">{p}</span>
         </li>
       ))}
     </ul>
@@ -88,7 +88,7 @@ export default function Solutions() {
             <HubDiagram className="mx-auto w-full max-w-lg" />
           </Reveal>
         </div>
-        <div className="container-site mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+        <div className="container-site mt-14 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
           {audiences.map((a, i) => {
             const Icon = a.icon;
             return (
@@ -96,24 +96,24 @@ export default function Solutions() {
                 as="article"
                 key={a.slug}
                 id={a.slug}
-                delay={(i % 3) * 60}
-                className={`scroll-mt-28 overflow-hidden rounded-2xl border border-line bg-white shadow-xs ${
+                delay={(i % 3) * 70}
+                className={`scroll-mt-28 overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-xs ${
                   i === 0 ? 'sm:col-span-2 lg:col-span-1 lg:row-span-2' : ''
                 }`}
               >
                 <div
-                  className={`relative overflow-hidden bg-slate-50 ${
+                  className={`relative overflow-hidden bg-azure-100 ${
                     i === 0 ? 'aspect-[16/10] lg:aspect-[4/5]' : 'aspect-[16/10]'
                   }`}
                 >
                   <SmartImage image={a.image} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
-                <div className="p-5 sm:p-6">
-                  <div className="flex items-center gap-2.5">
-                    <Icon size={18} className="text-blue-600" aria-hidden="true" />
-                    <h3 className="text-lg font-bold text-navy-900">{a.name}</h3>
+                <div className="p-6 sm:p-7">
+                  <div className="flex items-center gap-3">
+                    <Icon size={20} className="text-violet-600" aria-hidden="true" />
+                    <h3 className="text-xl font-bold text-navy-900">{a.name}</h3>
                   </div>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">{a.text}</p>
+                  <p className="mt-3 text-sm text-ink leading-relaxed">{a.text}</p>
                 </div>
               </Reveal>
             );
@@ -121,51 +121,51 @@ export default function Solutions() {
         </div>
       </section>
 
-      {/* Clinical Setting Profiles Matrix */}
-      <section className="section bg-slate-50/70 border-t border-line">
+      {/* Clinical Setting Profiles Matrix (NEW DEPTH) */}
+      <section className="section bg-mist border-t border-line">
         <div className="container-site">
-          <div className="max-w-3xl mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-md border border-blue-100">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
               Operational Benchmarks
             </span>
-            <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
               Setting Profiles & Throughput Guidelines
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600">
+            <p className="mt-3 text-base text-ink">
               Recommended platform pairings, target turnaround times, and operational priorities by facility type.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {settingProfiles.map((sp) => (
               <div
                 key={sp.setting}
-                className="rounded-xl border border-line bg-white p-5 sm:p-6 flex flex-col justify-between shadow-xs"
+                className="rounded-2xl border border-line bg-white p-6 sm:p-8 flex flex-col justify-between shadow-xs"
               >
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-navy-900">{sp.setting}</h3>
-                  <div className="mt-3 grid grid-cols-2 gap-3 pb-3.5 border-b border-line text-xs">
+                  <h3 className="text-lg font-bold text-navy-900">{sp.setting}</h3>
+                  <div className="mt-3 grid grid-cols-2 gap-3 pb-4 border-b border-line text-xs">
                     <div>
-                      <span className="text-slate-500">Testing Volume:</span>
+                      <span className="text-ink/70">Testing Volume:</span>
                       <p className="font-bold text-navy-900 mt-0.5">{sp.volume}</p>
                     </div>
                     <div>
-                      <span className="text-slate-500">Target TAT:</span>
-                      <p className="font-bold text-blue-700 mt-0.5">{sp.tat}</p>
+                      <span className="text-ink/70">Target TAT:</span>
+                      <p className="font-bold text-violet-700 mt-0.5">{sp.tat}</p>
                     </div>
                   </div>
-                  <div className="mt-3 text-xs text-slate-600">
-                    <strong className="text-navy-900">Recommended: </strong>
+                  <div className="mt-4 text-xs text-ink/80">
+                    <strong className="text-navy-900">Recommended Platform: </strong>
                     {sp.recommended}
                   </div>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-ink/85 leading-relaxed">
                     {sp.focus}
                   </p>
                 </div>
-                <div className="mt-5 pt-3.5 border-t border-line">
+                <div className="mt-6 pt-4 border-t border-line">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-navy-900"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-navy-900"
                   >
                     <span>Request facility consultation</span>
                     <ArrowRight size={13} />
@@ -191,11 +191,11 @@ export default function Solutions() {
           >
             <Points items={area.points} />
             {area.specialties && (
-              <div className="mt-5 flex flex-wrap gap-2 pt-3.5 border-t border-line/60">
+              <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-line/60">
                 {area.specialties.map((s) => (
                   <span
                     key={s}
-                    className="rounded-md bg-blue-50 px-2.5 py-1 text-xs font-semibold text-navy-900 border border-blue-100"
+                    className="rounded-md bg-azure-50 px-2.5 py-1 text-xs font-semibold text-navy-900 border border-azure-100"
                   >
                     {s}
                   </span>
@@ -206,18 +206,18 @@ export default function Solutions() {
         ))}
       </div>
 
-      {/* Reagent Supply Chain Security */}
-      <section className="section bg-slate-50/70 border-t border-line">
+      {/* Reagent Supply Chain Security (NEW DEPTH) */}
+      <section className="section bg-mist border-t border-line">
         <div className="container-site">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-md border border-blue-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
                 Supply Chain Security
               </span>
-              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
                 Reagent Continuity & Standing Supply Contracts
               </h2>
-              <p className="mt-3 text-base text-slate-600 leading-relaxed">
+              <p className="mt-4 text-base text-ink leading-relaxed">
                 Analytical instruments cannot perform without guaranteed reagent availability. Efyion Dx offers scheduled
                 standing orders, lot reservation programs, and temperature-logged cold-chain distribution to ensure your laboratory never faces supply shortages.
               </p>
@@ -237,22 +237,22 @@ export default function Solutions() {
                     desc: 'Regional warehouse hubs maintain safety stock buffers to fulfill urgent demand surges within 24 to 48 hours.',
                   },
                 ].map((item) => (
-                  <div key={item.title} className="rounded-xl border border-line bg-white p-4 shadow-xs">
-                    <h3 className="text-xs sm:text-sm font-bold text-navy-900">{item.title}</h3>
-                    <p className="mt-1 text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  <div key={item.title} className="rounded-2xl border border-line bg-white p-4">
+                    <h3 className="text-sm font-bold text-navy-900">{item.title}</h3>
+                    <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-line bg-white p-6 sm:p-8 shadow-soft">
-                <Truck className="text-blue-600 mb-3.5" size={28} />
-                <h3 className="text-lg font-bold text-navy-900">Customized Reagent Supply Agreement</h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <div className="rounded-3xl border border-line bg-white p-8 shadow-lift">
+                <Truck className="text-violet-600 mb-4" size={32} />
+                <h3 className="text-xl font-bold text-navy-900">Customized Reagent Supply Agreement</h3>
+                <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">
                   Establish a predictable monthly consumable schedule tailored to your daily patient volume, ensuring stable operating budgets.
                 </p>
-                <div className="mt-6 pt-5 border-t border-line">
+                <div className="mt-6 pt-6 border-t border-line">
                   <Button to="/contact?subject=Reagent+Supply+Agreement" className="w-full justify-center text-sm font-bold">
                     Discuss supply contract
                   </Button>
@@ -264,14 +264,18 @@ export default function Solutions() {
       </section>
 
       {/* Diagnostic Workflow */}
-      <section id="workflow" className="relative isolate overflow-hidden bg-navy-950 py-16 sm:py-20 lg:py-24 text-white">
+      <section id="workflow" className="relative isolate overflow-hidden bg-navy-900 py-20 sm:py-24 lg:py-32">
+        <div
+          aria-hidden="true"
+          className="absolute -right-32 -top-32 -z-10 h-[28rem] w-[28rem] rounded-full bg-violet-600/25 blur-3xl"
+        />
         <div className="container-site">
           <Reveal>
             <SectionHeading
               light
               title="Diagnostic Implementation Pathway"
               text="Every client partnership follows the same disciplined, four-phase path so you always know what to expect."
-              className="mb-12 lg:mb-16"
+              className="mb-14 lg:mb-20"
             />
           </Reveal>
           <Workflow light />
@@ -288,9 +292,9 @@ export default function Solutions() {
       >
         <ul className="divide-y divide-line border-y border-line">
           {supportArea.points.map((p) => (
-            <li key={p.title} className="py-4">
-              <h3 className="text-sm sm:text-base font-bold text-navy-900">{p.title}</h3>
-              <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed">{p.text}</p>
+            <li key={p.title} className="py-5">
+              <h3 className="text-base sm:text-lg font-bold text-navy-900">{p.title}</h3>
+              <p className="mt-1 text-xs sm:text-sm text-ink leading-relaxed">{p.text}</p>
             </li>
           ))}
         </ul>

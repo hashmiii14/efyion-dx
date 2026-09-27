@@ -25,13 +25,7 @@ export default function AudienceTabs() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
-      <div
-        role="tablist"
-        aria-label="Clinical settings we serve"
-        aria-orientation="vertical"
-        className="flex flex-col lg:col-span-5"
-        onKeyDown={onKeyDown}
-      >
+      <div role="tablist" aria-label="Who we serve" aria-orientation="vertical" className="flex flex-col lg:col-span-5" onKeyDown={onKeyDown}>
         {audiences.map((a, i) => {
           const Icon = a.icon;
           const selected = i === active;
@@ -45,25 +39,21 @@ export default function AudienceTabs() {
               aria-controls={`panel-${a.slug}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setActive(i)}
-              className={`group flex min-h-[58px] items-center gap-3.5 border-b border-line py-3.5 text-left transition-colors ${
-                selected ? 'text-navy-900 font-bold' : 'text-slate-600 hover:text-navy-900'
+              className={`group flex min-h-[64px] items-center gap-4 border-b border-line py-4 text-left transition-colors ${
+                selected ? 'text-navy-900' : 'text-ink hover:text-navy-900'
               }`}
             >
               <span
-                className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-colors duration-200 ${
-                  selected
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-100 text-slate-700 group-hover:bg-blue-50 group-hover:text-blue-600'
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-full transition-colors duration-300 ${
+                  selected ? 'bg-navy-900 text-white' : 'bg-mist text-navy-900 group-hover:bg-azure-100'
                 }`}
               >
-                <Icon size={18} aria-hidden="true" />
+                <Icon size={20} aria-hidden="true" />
               </span>
-              <span className="text-base sm:text-lg">{a.name}</span>
+              <span className="text-lg font-bold sm:text-xl">{a.name}</span>
               <span
                 aria-hidden="true"
-                className={`ml-auto h-2 w-2 rounded-full bg-blue-600 transition-all duration-200 ${
-                  selected ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-                }`}
+                className={`ml-auto h-2 w-2 rounded-full bg-violet-600 transition-all duration-300 ${selected ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
               />
             </button>
           );
@@ -74,22 +64,16 @@ export default function AudienceTabs() {
         role="tabpanel"
         id={`panel-${current.slug}`}
         aria-labelledby={`tab-${current.slug}`}
-        className="flex flex-col rounded-2xl border border-line bg-white p-6 sm:p-8 shadow-xs lg:col-span-7"
+        className="lg:col-span-7"
       >
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-50 border border-slate-100">
-          <SmartImage
-            image={current.image}
-            label={current.name}
-            priority
-            sizes="(min-width: 1024px) 50vw, 100vw"
-          />
-        </div>
-        <h3 className="mt-6 text-xl sm:text-2xl font-bold text-navy-900">{current.name}</h3>
-        <p className="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">{current.text}</p>
-        <div className="mt-6 pt-4 border-t border-line">
-          <TextLink to={`/solutions#${current.slug}`}>
-            Explore solutions for {current.name.toLowerCase()}
-          </TextLink>
+        <div key={current.slug} className="page-enter">
+          <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-azure-100 shadow-soft border border-line">
+            <SmartImage image={current.image} sizes="(min-width: 1024px) 50vw, 100vw" />
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
+            <p className="max-w-lg text-lg text-ink">{current.text}</p>
+            <TextLink to={`/solutions#${current.slug}`}>Solutions for {current.name.toLowerCase()}</TextLink>
+          </div>
         </div>
       </div>
     </div>

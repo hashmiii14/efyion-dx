@@ -80,10 +80,10 @@ export default function ContactForm({ defaultSubject = '' }) {
 
   if (status === 'sent' || status === 'mailto') {
     return (
-      <div role="status" className="rounded-2xl border border-line bg-mist p-8 sm:p-10">
-        <CheckCircle2 className="text-blue-600" size={40} aria-hidden="true" />
-        <h3 className="mt-5 text-2xl font-bold text-navy-900">{status === 'sent' ? 'Enquiry sent' : 'Your email is ready to send'}</h3>
-        <p className="mt-3 text-ink leading-relaxed">
+      <div role="status" className="rounded-[1.75rem] border border-line bg-mist p-8 sm:p-10">
+        <CheckCircle2 className="text-violet-600" size={40} aria-hidden="true" />
+        <h3 className="mt-5 text-2xl">{status === 'sent' ? 'Enquiry sent' : 'Your email is ready to send'}</h3>
+        <p className="mt-3 text-ink">
           {status === 'sent'
             ? 'Thank you for contacting Efyion Dx. We will reply to the email address you provided.'
             : `We opened your email app with your enquiry filled in. Send it from there to reach ${contact.email}. If nothing opened, email us directly at that address.`}
@@ -91,7 +91,7 @@ export default function ContactForm({ defaultSubject = '' }) {
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-6 min-h-[44px] font-bold text-blue-600 underline-offset-4 hover:underline"
+          className="mt-6 min-h-[44px] font-bold text-azure-600 underline-offset-4 hover:underline"
         >
           Send another enquiry
         </button>
@@ -100,14 +100,14 @@ export default function ContactForm({ defaultSubject = '' }) {
   }
 
   const inputCls = (name) =>
-    `mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-base text-navy-900 placeholder:text-ink/50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
-      errors[name] ? 'border-red-500 focus:border-red-500' : 'border-line focus:border-blue-600'
+    `mt-2 block w-full rounded-2xl border bg-white px-4 py-3.5 text-base text-navy-900 placeholder:text-ink/50 transition-colors focus:outline-none focus:ring-2 focus:ring-azure-500/30 ${
+      errors[name] ? 'border-red-500 focus:border-red-500' : 'border-line focus:border-azure-500'
     }`;
 
   return (
     <form noValidate onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2" aria-describedby="form-note">
       {status === 'error' && (
-        <div role="alert" className="flex gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800 sm:col-span-2">
+        <div role="alert" className="flex gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-red-800 sm:col-span-2">
           <AlertCircle className="mt-0.5 shrink-0" size={20} aria-hidden="true" />
           <p>
             Your enquiry was not sent because the connection failed. Try again, or email us at{' '}
@@ -120,7 +120,7 @@ export default function ContactForm({ defaultSubject = '' }) {
         <div key={f.name} className={f.full ? 'sm:col-span-2' : ''}>
           <label htmlFor={`f-${f.name}`} className="text-sm font-bold text-navy-900">
             {f.label}
-            {f.required ? <span className="text-blue-600"> *</span> : <span className="font-medium text-ink"> (optional)</span>}
+            {f.required ? <span className="text-violet-600"> *</span> : <span className="font-medium text-ink"> (optional)</span>}
           </label>
           <input
             id={`f-${f.name}`}
@@ -140,7 +140,7 @@ export default function ContactForm({ defaultSubject = '' }) {
 
       <div className="sm:col-span-2">
         <label htmlFor="f-message" className="text-sm font-bold text-navy-900">
-          Message<span className="text-blue-600"> *</span>
+          Message<span className="text-violet-600"> *</span>
         </label>
         <textarea
           id="f-message"
@@ -162,7 +162,7 @@ export default function ContactForm({ defaultSubject = '' }) {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex min-h-[44px] sm:min-h-[48px] items-center justify-center gap-2.5 rounded-xl bg-blue-600 px-6 sm:px-7 text-sm sm:text-base font-bold text-white transition-all hover:bg-blue-700 hover:shadow-lift active:scale-[.98] disabled:cursor-wait disabled:opacity-70 shadow-sm"
+          className="inline-flex min-h-[44px] sm:min-h-[48px] items-center justify-center gap-2.5 rounded-full bg-navy-900 px-6 sm:px-7 text-sm sm:text-base font-bold text-white transition-all hover:bg-navy-800 hover:shadow-lift active:scale-[.98] disabled:cursor-wait disabled:opacity-70 shadow-sm"
         >
           {status === 'sending' ? <Loader2 size={16} className="animate-spin" aria-hidden="true" /> : <Send size={16} aria-hidden="true" />}
           <span>{status === 'sending' ? 'Sending enquiry…' : 'Send enquiry'}</span>
