@@ -14,12 +14,17 @@
   }
   body {
     @apply bg-white font-sans text-[1.0625rem] leading-relaxed text-ink antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
   h1,
   h2,
   h3,
   h4 {
     @apply font-extrabold tracking-tight text-navy-900;
+    font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif;
     text-wrap: balance;
   }
   p {
@@ -87,6 +92,28 @@
   .link-underline[aria-current='page'] {
     background-size: 100% 1.5px;
   }
+}
+
+/* ---------- Lenis Smooth Scrolling Engine ---------- */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* ---------- Motion & Scroll Reveal Engine ---------- */
@@ -177,12 +204,18 @@
   to { opacity: 1; }
 }
 
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
 .anim-rise { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .animate-float { animation: float 5s ease-in-out infinite; }
 .animate-float-delayed { animation: float 6s ease-in-out infinite 1.5s; }
 .animate-pulse-glow { animation: pulse-glow 7s ease-in-out infinite; }
 .animate-slideDown { animation: slide-down 0.28s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .animate-fadeIn { animation: fade-in 0.22s ease-out both; }
+.animate-shimmer { animation: shimmer-sweep 3s ease-in-out infinite; }
 
 /* Page transition */
 @keyframes page-in {

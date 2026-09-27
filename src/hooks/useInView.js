@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 /** Returns [ref, inView]. Fires once, then disconnects. */
-export function useInView({ threshold = 0.08, rootMargin = '0px 0px -30px 0px' } = {}) {
+export function useInView({ threshold = 0.05, rootMargin = '50px 0px 50px 0px' } = {}) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -14,9 +14,9 @@ export function useInView({ threshold = 0.08, rootMargin = '0px 0px -30px 0px' }
       return;
     }
 
-    // Check if element is already within viewport on initial render
+    // Check if element is already within or near viewport on initial render
     const rect = node.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (rect.top < window.innerHeight + 60 && rect.bottom > -60) {
       setInView(true);
       return;
     }

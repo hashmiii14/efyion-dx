@@ -128,7 +128,9 @@ function Hero() {
             >
               <span>Precision Diagnostics.</span>
               <br />
-              <span className="text-violet-600">Better Outcomes.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-violet-500 to-azure-600">
+                Better Outcomes.
+              </span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base sm:text-lg text-ink/90 leading-relaxed font-normal">
@@ -302,8 +304,10 @@ function CategoriesSection() {
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((c) => (
-            <CategoryCard key={c.slug} category={c} />
+          {categories.map((c, idx) => (
+            <Reveal key={c.slug} delay={idx * 60}>
+              <CategoryCard category={c} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -369,96 +373,100 @@ function PlatformComparisonSection() {
         </div>
 
         {/* Desktop Specifications Table */}
-        <div className="hidden lg:block overflow-hidden rounded-2xl border border-line bg-white shadow-subtle">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-mist/90 text-navy-900 font-bold uppercase tracking-wider text-[11px] border-b border-line">
-                <tr>
-                  <th scope="col" className="py-4 px-5">System & Modality</th>
-                  <th scope="col" className="py-4 px-4">Throughput / Speed</th>
-                  <th scope="col" className="py-4 px-4">Measuring Principle</th>
-                  <th scope="col" className="py-4 px-4">Sample Vol.</th>
-                  <th scope="col" className="py-4 px-4">Onboard Reagents</th>
-                  <th scope="col" className="py-4 px-4">LIS Protocol</th>
-                  <th scope="col" className="py-4 px-5 text-right">Details</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-line text-ink">
-                {filteredMatrix.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="py-4 px-5">
-                      <div className="font-bold text-navy-900 text-sm">{item.name}</div>
-                      <span className="inline-block mt-1 rounded bg-azure-50 px-2 py-0.5 text-[10px] font-bold text-violet-700 border border-azure-100">
-                        {item.category}
-                      </span>
-                    </td>
-                    <td className="py-4 px-4 font-semibold text-navy-900 whitespace-nowrap">
-                      {item.throughput}
-                    </td>
-                    <td className="py-4 px-4 max-w-[200px] leading-relaxed">
-                      {item.principle}
-                    </td>
-                    <td className="py-4 px-4 whitespace-nowrap font-medium text-navy-900">
-                      {item.sampleVolume}
-                    </td>
-                    <td className="py-4 px-4 max-w-[170px] leading-relaxed">
-                      {item.reagentPositions}
-                    </td>
-                    <td className="py-4 px-4 whitespace-nowrap text-navy-900 font-medium">
-                      {item.lisProtocol}
-                    </td>
-                    <td className="py-4 px-5 text-right whitespace-nowrap">
-                      <Link
-                        to={item.slug}
-                        className="inline-flex items-center gap-1 font-bold text-violet-600 hover:text-navy-900 text-xs"
-                      >
-                        <span>Specifications</span>
-                        <ArrowRight size={13} />
-                      </Link>
-                    </td>
+        <Reveal>
+          <div className="hidden lg:block overflow-hidden rounded-2xl border border-line bg-white shadow-subtle">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-mist/90 text-navy-900 font-bold uppercase tracking-wider text-[11px] border-b border-line">
+                  <tr>
+                    <th scope="col" className="py-4 px-5">System & Modality</th>
+                    <th scope="col" className="py-4 px-4">Throughput / Speed</th>
+                    <th scope="col" className="py-4 px-4">Measuring Principle</th>
+                    <th scope="col" className="py-4 px-4">Sample Vol.</th>
+                    <th scope="col" className="py-4 px-4">Onboard Reagents</th>
+                    <th scope="col" className="py-4 px-4">LIS Protocol</th>
+                    <th scope="col" className="py-4 px-5 text-right">Details</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-line text-ink">
+                  {filteredMatrix.map((item) => (
+                    <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
+                      <td className="py-4 px-5">
+                        <div className="font-bold text-navy-900 text-sm">{item.name}</div>
+                        <span className="inline-block mt-1 rounded bg-azure-50 px-2 py-0.5 text-[10px] font-bold text-violet-700 border border-azure-100">
+                          {item.category}
+                        </span>
+                      </td>
+                      <td className="py-4 px-4 font-semibold text-navy-900 whitespace-nowrap">
+                        {item.throughput}
+                      </td>
+                      <td className="py-4 px-4 max-w-[200px] leading-relaxed">
+                        {item.principle}
+                      </td>
+                      <td className="py-4 px-4 whitespace-nowrap font-medium text-navy-900">
+                        {item.sampleVolume}
+                      </td>
+                      <td className="py-4 px-4 max-w-[170px] leading-relaxed">
+                        {item.reagentPositions}
+                      </td>
+                      <td className="py-4 px-4 whitespace-nowrap text-navy-900 font-medium">
+                        {item.lisProtocol}
+                      </td>
+                      <td className="py-4 px-5 text-right whitespace-nowrap">
+                        <Link
+                          to={item.slug}
+                          className="inline-flex items-center gap-1 font-bold text-violet-600 hover:text-navy-900 text-xs"
+                        >
+                          <span>Specifications</span>
+                          <ArrowRight size={13} />
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Mobile & Tablet Specifications Cards */}
         <div className="lg:hidden grid gap-4 sm:grid-cols-2">
-          {filteredMatrix.map((item) => (
-            <div key={item.id} className="rounded-2xl border border-line bg-white p-5 shadow-xs">
-              <span className="rounded bg-azure-50 px-2 py-0.5 text-[10px] font-bold text-violet-700 border border-azure-100">
-                {item.category}
-              </span>
-              <h3 className="mt-2 text-base font-bold text-navy-900">{item.name}</h3>
-              <dl className="mt-4 space-y-2 text-xs">
-                <div className="flex justify-between border-b border-line/60 pb-1.5">
-                  <dt className="text-ink/75">Throughput:</dt>
-                  <dd className="font-bold text-navy-900 text-right">{item.throughput}</dd>
+          {filteredMatrix.map((item, idx) => (
+            <Reveal key={item.id} delay={idx * 50}>
+              <div className="rounded-2xl border border-line bg-white p-5 shadow-xs">
+                <span className="rounded bg-azure-50 px-2 py-0.5 text-[10px] font-bold text-violet-700 border border-azure-100">
+                  {item.category}
+                </span>
+                <h3 className="mt-2 text-base font-bold text-navy-900">{item.name}</h3>
+                <dl className="mt-4 space-y-2 text-xs">
+                  <div className="flex justify-between border-b border-line/60 pb-1.5">
+                    <dt className="text-ink/75">Throughput:</dt>
+                    <dd className="font-bold text-navy-900 text-right">{item.throughput}</dd>
+                  </div>
+                  <div className="flex justify-between border-b border-line/60 pb-1.5">
+                    <dt className="text-ink/75">Sample Volume:</dt>
+                    <dd className="font-semibold text-navy-900">{item.sampleVolume}</dd>
+                  </div>
+                  <div className="flex justify-between border-b border-line/60 pb-1.5">
+                    <dt className="text-ink/75">Reagent Slots:</dt>
+                    <dd className="font-semibold text-navy-900 text-right">{item.reagentPositions}</dd>
+                  </div>
+                  <div className="flex justify-between pt-1">
+                    <dt className="text-ink/75">LIS Interface:</dt>
+                    <dd className="font-semibold text-navy-900">{item.lisProtocol}</dd>
+                  </div>
+                </dl>
+                <div className="mt-4 pt-3 border-t border-line">
+                  <Link
+                    to={item.slug}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:underline"
+                  >
+                    <span>View platform specifications</span>
+                    <ArrowRight size={13} />
+                  </Link>
                 </div>
-                <div className="flex justify-between border-b border-line/60 pb-1.5">
-                  <dt className="text-ink/75">Sample Volume:</dt>
-                  <dd className="font-semibold text-navy-900">{item.sampleVolume}</dd>
-                </div>
-                <div className="flex justify-between border-b border-line/60 pb-1.5">
-                  <dt className="text-ink/75">Reagent Slots:</dt>
-                  <dd className="font-semibold text-navy-900 text-right">{item.reagentPositions}</dd>
-                </div>
-                <div className="flex justify-between pt-1">
-                  <dt className="text-ink/75">LIS Interface:</dt>
-                  <dd className="font-semibold text-navy-900">{item.lisProtocol}</dd>
-                </div>
-              </dl>
-              <div className="mt-4 pt-3 border-t border-line">
-                <Link
-                  to={item.slug}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:underline"
-                >
-                  <span>View platform specifications</span>
-                  <ArrowRight size={13} />
-                </Link>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -546,8 +554,10 @@ function FeaturedProductsSection() {
 
         {/* Product Cards Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <ProductCard key={p.slug} product={p} />
+          {filtered.map((p, idx) => (
+            <Reveal key={p.slug} delay={idx * 60}>
+              <ProductCard product={p} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -611,78 +621,80 @@ function ClinicalAssayDeepDiveSection() {
 
         {/* Active Panel Detailed View */}
         {currentPanel && (
-          <div className="rounded-[2rem] border border-line bg-mist/60 p-6 sm:p-8 lg:p-10 shadow-subtle">
-            {/* Panel Summary Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-line">
-              <div>
-                <div className="flex items-center gap-2 text-violet-600 font-bold text-xs uppercase tracking-wider">
-                  <span className="h-2 w-2 rounded-full bg-violet-600" />
-                  <span>Clinical Pathology Focus</span>
-                </div>
-                <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-navy-900">
-                  {currentPanel.title}
-                </h3>
-                <p className="mt-1 text-sm text-ink/80 max-w-2xl">{currentPanel.subtitle}</p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="rounded-xl border border-line bg-white px-3.5 py-2">
-                  <p className="text-[10px] font-bold text-ink/75 uppercase">Target Turnaround</p>
-                  <p className="text-xs font-extrabold text-navy-900">{currentPanel.turnaround}</p>
-                </div>
-                <div className="rounded-xl border border-line bg-white px-3.5 py-2">
-                  <p className="text-[10px] font-bold text-ink/75 uppercase">Sample Requirement</p>
-                  <p className="text-xs font-extrabold text-navy-900">{currentPanel.sampleRequirement}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Clinical Decision Note */}
-            <div className="mt-6 rounded-xl bg-white p-4 border border-azure-100 text-xs sm:text-sm text-ink leading-relaxed">
-              <strong className="text-navy-900">Clinical Utility & Significance: </strong>
-              {currentPanel.clinicalDecision}
-            </div>
-
-            {/* Assays Grid */}
-            <div className="mt-6">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">
-                Key Parameters & Analytical Linearity
-              </h4>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {currentPanel.assays.map((assay) => (
-                  <div
-                    key={assay.name}
-                    className="rounded-xl border border-line bg-white p-4 transition-all hover:border-violet-300"
-                  >
-                    <p className="text-xs font-bold text-navy-900">{assay.name}</p>
-                    <div className="mt-2 flex items-center justify-between text-[11px] text-ink/80 border-t border-line/60 pt-2">
-                      <span className="text-ink/65">Linear Range:</span>
-                      <span className="font-semibold text-navy-900">{assay.range}</span>
-                    </div>
-                    <div className="mt-1 flex items-center justify-between text-[11px] text-ink/80">
-                      <span className="text-ink/65">Benchmark:</span>
-                      <span className="font-medium text-violet-700 text-right">{assay.precision}</span>
-                    </div>
+          <Reveal key={activePanelId} variant="fade">
+            <div className="rounded-[2rem] border border-line bg-mist/60 p-6 sm:p-8 lg:p-10 shadow-subtle">
+              {/* Panel Summary Header */}
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-line">
+                <div>
+                  <div className="flex items-center gap-2 text-violet-600 font-bold text-xs uppercase tracking-wider">
+                    <span className="h-2 w-2 rounded-full bg-violet-600" />
+                    <span>Clinical Pathology Focus</span>
                   </div>
-                ))}
+                  <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-navy-900">
+                    {currentPanel.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-ink/80 max-w-2xl">{currentPanel.subtitle}</p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="rounded-xl border border-line bg-white px-3.5 py-2">
+                    <p className="text-[10px] font-bold text-ink/75 uppercase">Target Turnaround</p>
+                    <p className="text-xs font-extrabold text-navy-900">{currentPanel.turnaround}</p>
+                  </div>
+                  <div className="rounded-xl border border-line bg-white px-3.5 py-2">
+                    <p className="text-[10px] font-bold text-ink/75 uppercase">Sample Requirement</p>
+                    <p className="text-xs font-extrabold text-navy-900">{currentPanel.sampleRequirement}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Clinical Decision Note */}
+              <div className="mt-6 rounded-xl bg-white p-4 border border-azure-100 text-xs sm:text-sm text-ink leading-relaxed">
+                <strong className="text-navy-900">Clinical Utility & Significance: </strong>
+                {currentPanel.clinicalDecision}
+              </div>
+
+              {/* Assays Grid */}
+              <div className="mt-6">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">
+                  Key Parameters & Analytical Linearity
+                </h4>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {currentPanel.assays.map((assay) => (
+                    <div
+                      key={assay.name}
+                      className="rounded-xl border border-line bg-white p-4 transition-all hover:border-violet-300"
+                    >
+                      <p className="text-xs font-bold text-navy-900">{assay.name}</p>
+                      <div className="mt-2 flex items-center justify-between text-[11px] text-ink/80 border-t border-line/60 pt-2">
+                        <span className="text-ink/65">Linear Range:</span>
+                        <span className="font-semibold text-navy-900">{assay.range}</span>
+                      </div>
+                      <div className="mt-1 flex items-center justify-between text-[11px] text-ink/80">
+                        <span className="text-ink/65">Benchmark:</span>
+                        <span className="font-medium text-violet-700 text-right">{assay.precision}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Traceability Footer */}
+              <div className="mt-6 pt-4 border-t border-line/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-ink/75">
+                <p>
+                  <strong className="text-navy-900">Reference Standardization: </strong>
+                  {currentPanel.referenceStandard}
+                </p>
+                <Link
+                  to="/products/diagnostic-solution-03"
+                  className="font-bold text-violet-600 hover:text-navy-900 shrink-0 flex items-center gap-1"
+                >
+                  <span>Request assay package insert</span>
+                  <ArrowRight size={13} />
+                </Link>
               </div>
             </div>
-
-            {/* Traceability Footer */}
-            <div className="mt-6 pt-4 border-t border-line/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-ink/75">
-              <p>
-                <strong className="text-navy-900">Reference Standardization: </strong>
-                {currentPanel.referenceStandard}
-              </p>
-              <Link
-                to="/products/diagnostic-solution-03"
-                className="font-bold text-violet-600 hover:text-navy-900 shrink-0 flex items-center gap-1"
-              >
-                <span>Request assay package insert</span>
-                <ArrowRight size={13} />
-              </Link>
-            </div>
-          </div>
+          </Reveal>
         )}
       </div>
     </section>
@@ -736,14 +748,16 @@ function TechnologySection() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {techPoints.map((tp) => {
+              {techPoints.map((tp, idx) => {
                 const Icon = tp.icon;
                 return (
-                  <div key={tp.title} className="rounded-2xl bg-white/5 border border-white/10 p-4">
-                    <Icon size={20} className="text-violet-400 mb-2" aria-hidden="true" />
-                    <h3 className="text-sm font-bold text-white">{tp.title}</h3>
-                    <p className="mt-1 text-xs text-white/65 leading-relaxed">{tp.desc}</p>
-                  </div>
+                  <Reveal key={tp.title} delay={idx * 60}>
+                    <div className="rounded-2xl bg-white/5 border border-white/10 p-4 transition-all duration-300 hover:bg-white/10 hover:border-violet-400/40">
+                      <Icon size={20} className="text-violet-400 mb-2" aria-hidden="true" />
+                      <h3 className="text-sm font-bold text-white">{tp.title}</h3>
+                      <p className="mt-1 text-xs text-white/65 leading-relaxed">{tp.desc}</p>
+                    </div>
+                  </Reveal>
                 );
               })}
             </div>
@@ -756,13 +770,15 @@ function TechnologySection() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/10 shadow-2xl">
-              <SmartImage
-                image={slots.technologyImage}
-                label="Diagnostic Optical & Analytical Hardware"
-                dark
-              />
-            </div>
+            <Reveal variant="scale">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/10 shadow-2xl">
+                <SmartImage
+                  image={slots.technologyImage}
+                  label="Diagnostic Optical & Analytical Hardware"
+                  dark
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -790,37 +806,40 @@ function EconomicValueSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {economicValue.metrics.map((m) => (
-            <div
-              key={m.label}
-              className="rounded-2xl border border-line bg-mist/60 p-6 flex flex-col justify-between transition-all hover:bg-white hover:shadow-subtle hover:border-violet-300"
-            >
-              <div>
-                <p className="text-3xl sm:text-4xl font-extrabold text-violet-600 tracking-tight">
-                  {m.value}
-                </p>
-                <h3 className="mt-2 text-base font-bold text-navy-900">{m.label}</h3>
-                <p className="mt-2 text-xs text-ink/80 leading-relaxed">{m.desc}</p>
+          {economicValue.metrics.map((m, idx) => (
+            <Reveal key={m.label} delay={idx * 70}>
+              <div
+                className="h-full rounded-2xl border border-line bg-mist/60 p-6 flex flex-col justify-between transition-all duration-300 hover:bg-white hover:shadow-subtle hover:border-violet-300 hover:-translate-y-1"
+              >
+                <div>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-azure-600 tracking-tight">
+                    {m.value}
+                  </p>
+                  <h3 className="mt-2 text-base font-bold text-navy-900">{m.label}</h3>
+                  <p className="mt-2 text-xs text-ink/80 leading-relaxed">{m.desc}</p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* Operational ROI Banner */}
-        <div className="mt-8 rounded-2xl border border-line bg-azure-50/70 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="max-w-2xl">
-            <h3 className="text-lg font-bold text-navy-900">
-              Predictable Operational Budgeting & Shift Continuity
-            </h3>
-            <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">
-              Standardized liquid-stable packaging, automated 2D barcode lot loading, and multi-analyzer middleware
-              streamline technician workflows and reduce routine reagent loss by up to 25% across high-throughput shifts.
-            </p>
+        <Reveal delay={120}>
+          <div className="mt-8 rounded-2xl border border-line bg-azure-50/70 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <h3 className="text-lg font-bold text-navy-900">
+                Predictable Operational Budgeting & Shift Continuity
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">
+                Standardized liquid-stable packaging, automated 2D barcode lot loading, and multi-analyzer middleware
+                streamline technician workflows and reduce routine reagent loss by up to 25% across high-throughput shifts.
+              </p>
+            </div>
+            <Button to="/contact?subject=Economic+Value+and+TCO+Inquiry" className="shrink-0 text-sm font-bold">
+              Request TCO & throughput review
+            </Button>
           </div>
-          <Button to="/contact?subject=Economic+Value+and+TCO+Inquiry" className="shrink-0 text-sm font-bold">
-            Request TCO & throughput review
-          </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -836,7 +855,9 @@ function CareSettingsSection() {
           text="From high-throughput central hospital laboratories to bedside point-of-care suites and research institutions."
           className="mb-12 lg:mb-16"
         />
-        <AudienceTabs />
+        <Reveal>
+          <AudienceTabs />
+        </Reveal>
       </div>
     </section>
   );
@@ -849,21 +870,25 @@ function WorkflowSection() {
       <div className="container-site">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
-              <SmartImage
-                image={slots.workflowImage}
-                label="Laboratory Sample Workflow"
-              />
-            </div>
+            <Reveal variant="left">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+                <SmartImage
+                  image={slots.workflowImage}
+                  label="Laboratory Sample Workflow"
+                />
+              </div>
+            </Reveal>
           </div>
 
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <SectionHeading
-              title="From Initial Assessment to Ongoing Care"
-              text="A structured four-phase pathway ensuring smooth instrument commissioning, validation, and long-term diagnostic confidence."
-              className="mb-8"
-            />
-            <Workflow />
+            <Reveal variant="right">
+              <SectionHeading
+                title="From Initial Assessment to Ongoing Care"
+                text="A structured four-phase pathway ensuring smooth instrument commissioning, validation, and long-term diagnostic confidence."
+                className="mb-8"
+              />
+              <Workflow />
+            </Reveal>
           </div>
         </div>
       </div>
@@ -880,37 +905,43 @@ function QualitySection() {
       <div className="container-site">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
-              Quality Governance
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-              {qualitySection.title}
-            </h2>
-            <p className="lead mt-4 text-ink">{qualitySection.lead}</p>
+            <Reveal variant="left">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+                Quality Governance
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+                {qualitySection.title}
+              </h2>
+              <p className="lead mt-4 text-ink">{qualitySection.lead}</p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {qualitySection.points.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-line bg-white p-4">
-                  <h3 className="text-sm font-bold text-navy-900">{item.title}</h3>
-                  <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.text}</p>
-                </div>
-              ))}
-            </div>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {qualitySection.points.map((item, idx) => (
+                  <Reveal key={item.title} delay={idx * 60}>
+                    <div className="h-full rounded-2xl border border-line bg-white p-4 transition-all duration-300 hover:shadow-subtle">
+                      <h3 className="text-sm font-bold text-navy-900">{item.title}</h3>
+                      <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.text}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <Button to="/technology#quality" variant="outline" className="!min-h-[42px] text-sm font-bold">
-                Review quality governance
-              </Button>
-            </div>
+              <div className="mt-8 flex items-center gap-4">
+                <Button to="/technology#quality" variant="outline" className="!min-h-[42px] text-sm font-bold">
+                  Review quality governance
+                </Button>
+              </div>
+            </Reveal>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
-              <SmartImage
-                image={slots.qualityImage}
-                label="Quality Assurance & Calibration Standards"
-              />
-            </div>
+            <Reveal variant="right">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+                <SmartImage
+                  image={slots.qualityImage}
+                  label="Quality Assurance & Calibration Standards"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -942,36 +973,38 @@ function LaboratoryFaqSection() {
           </p>
         </div>
 
-        <div className="max-w-4xl divide-y divide-line rounded-2xl border border-line bg-white shadow-subtle overflow-hidden">
-          {faqs.map((faq, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div key={faq.q} className="transition-colors">
-                <button
-                  type="button"
-                  onClick={() => toggle(i)}
-                  className="flex w-full items-start justify-between gap-4 p-6 text-left transition-colors hover:bg-slate-50"
-                  aria-expanded={isOpen}
-                >
-                  <span className="text-base sm:text-lg font-bold text-navy-900">
-                    {faq.q}
-                  </span>
-                  <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-mist text-violet-600 transition-transform">
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                    />
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm text-ink leading-relaxed border-t border-line/40 bg-slate-50/50">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <Reveal>
+          <div className="max-w-4xl divide-y divide-line rounded-2xl border border-line bg-white shadow-subtle overflow-hidden">
+            {faqs.map((faq, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div key={faq.q} className="transition-colors">
+                  <button
+                    type="button"
+                    onClick={() => toggle(i)}
+                    className="flex w-full items-start justify-between gap-4 p-6 text-left transition-colors hover:bg-slate-50"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base sm:text-lg font-bold text-navy-900">
+                      {faq.q}
+                    </span>
+                    <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-mist text-violet-600 transition-transform">
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      />
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 pt-1 text-sm text-ink leading-relaxed border-t border-line/40 bg-slate-50/50">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </Reveal>
 
         <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-line bg-mist p-4 text-xs">
           <p className="text-ink">
@@ -1004,16 +1037,18 @@ function PrinciplesSection() {
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {why.items.map((item) => {
+          {why.items.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div key={item.title} className="rounded-2xl border border-line bg-white p-6 shadow-xs">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-azure-50 text-violet-600 mb-4">
-                  <Icon size={20} aria-hidden="true" />
+              <Reveal key={item.title} delay={idx * 60}>
+                <div className="h-full rounded-2xl border border-line bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-subtle hover:-translate-y-1 hover:border-violet-300">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-azure-50 text-violet-600 mb-4">
+                    <Icon size={20} aria-hidden="true" />
+                  </div>
+                  <h3 className="text-base font-bold text-navy-900">{item.title}</h3>
+                  <p className="mt-2 text-xs text-ink/80 leading-relaxed">{item.text}</p>
                 </div>
-                <h3 className="text-base font-bold text-navy-900">{item.title}</h3>
-                <p className="mt-2 text-xs text-ink/80 leading-relaxed">{item.text}</p>
-              </div>
+              </Reveal>
             );
           })}
         </div>
@@ -1029,53 +1064,57 @@ function SupportSection() {
       <div className="container-site">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
-              Technical Partnership
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-              Specialized Application Support & Training
-            </h2>
-            <p className="mt-4 text-base text-ink leading-relaxed">
-              Diagnostic instrumentation demands attentive ongoing collaboration. Efyion Dx provides direct access to
-              experienced biomedical engineers and application specialists across every stage of platform deployment.
-            </p>
+            <Reveal variant="left">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+                Technical Partnership
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+                Specialized Application Support & Training
+              </h2>
+              <p className="mt-4 text-base text-ink leading-relaxed">
+                Diagnostic instrumentation demands attentive ongoing collaboration. Efyion Dx provides direct access to
+                experienced biomedical engineers and application specialists across every stage of platform deployment.
+              </p>
 
-            <div className="mt-6 space-y-3">
-              {[
-                {
-                  title: 'Pre-Installation Workflow Audit',
-                  text: 'Matching analyzer throughput and reagent allocations to your daily sample volume and peak hours.',
-                },
-                {
-                  title: 'Operator Training & Validation Runs',
-                  text: 'On-site technical onboarding ensuring laboratory technicians are confident in calibration routines.',
-                },
-                {
-                  title: 'Guaranteed Emergency Support SLA',
-                  text: 'Under 2-hour response for critical laboratory inquiries to keep diagnostic testing uninterrupted.',
-                },
-              ].map((s) => (
-                <div key={s.title} className="rounded-2xl border border-line bg-mist/60 p-4">
-                  <h3 className="text-sm font-bold text-navy-900">{s.title}</h3>
-                  <p className="mt-1 text-xs text-ink/80 leading-relaxed">{s.text}</p>
-                </div>
-              ))}
-            </div>
+              <div className="mt-6 space-y-3">
+                {[
+                  {
+                    title: 'Pre-Installation Workflow Audit',
+                    text: 'Matching analyzer throughput and reagent allocations to your daily sample volume and peak hours.',
+                  },
+                  {
+                    title: 'Operator Training & Validation Runs',
+                    text: 'On-site technical onboarding ensuring laboratory technicians are confident in calibration routines.',
+                  },
+                  {
+                    title: 'Guaranteed Emergency Support SLA',
+                    text: 'Under 2-hour response for critical laboratory inquiries to keep diagnostic testing uninterrupted.',
+                  },
+                ].map((s) => (
+                  <div key={s.title} className="rounded-2xl border border-line bg-mist/60 p-4">
+                    <h3 className="text-sm font-bold text-navy-900">{s.title}</h3>
+                    <p className="mt-1 text-xs text-ink/80 leading-relaxed">{s.text}</p>
+                  </div>
+                ))}
+              </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <Button to="/contact" className="!min-h-[42px] text-sm font-bold">
-                Contact technical support
-              </Button>
-            </div>
+              <div className="mt-8 flex items-center gap-4">
+                <Button to="/contact" className="!min-h-[42px] text-sm font-bold">
+                  Contact technical support
+                </Button>
+              </div>
+            </Reveal>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
-              <SmartImage
-                image={slots.supportImage}
-                label="Technical Advisory & Support Advisory"
-              />
-            </div>
+            <Reveal variant="right">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+                <SmartImage
+                  image={slots.supportImage}
+                  label="Technical Advisory & Support Advisory"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -1106,28 +1145,29 @@ function ResourcesSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredResources.map((r) => (
-            <article
-              key={r.slug}
-              className="flex flex-col rounded-2xl border border-line bg-white p-6 transition-all hover:shadow-subtle"
-            >
-              <span className="text-[11px] font-bold uppercase tracking-wider text-violet-600">
-                {r.category}
-              </span>
-              <h3 className="mt-3 text-lg font-bold text-navy-900 hover:text-violet-600 transition-colors">
-                <Link to={`/resources/${r.slug}`}>{r.title}</Link>
-              </h3>
-              <p className="mt-2 text-xs text-ink leading-relaxed line-clamp-3">{r.excerpt}</p>
-              <div className="mt-auto pt-4">
-                <Link
-                  to={`/resources/${r.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-azure-600 hover:underline"
-                >
-                  <span>Read article</span>
-                  <ArrowRight size={12} />
-                </Link>
-              </div>
-            </article>
+          {featuredResources.map((r, idx) => (
+            <Reveal key={r.slug} delay={idx * 70}>
+              <article
+                className="h-full flex flex-col rounded-2xl border border-line bg-white p-6 transition-all duration-300 hover:shadow-subtle hover:-translate-y-1 hover:border-violet-300"
+              >
+                <span className="text-[11px] font-bold uppercase tracking-wider text-violet-600">
+                  {r.category}
+                </span>
+                <h3 className="mt-3 text-lg font-bold text-navy-900 hover:text-violet-600 transition-colors">
+                  <Link to={`/resources/${r.slug}`}>{r.title}</Link>
+                </h3>
+                <p className="mt-2 text-xs text-ink leading-relaxed line-clamp-3">{r.excerpt}</p>
+                <div className="mt-auto pt-4">
+                  <Link
+                    to={`/resources/${r.slug}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-azure-600 hover:underline"
+                  >
+                    <span>Read article</span>
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

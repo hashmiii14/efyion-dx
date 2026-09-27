@@ -29,7 +29,26 @@ export default {
         ink: '#48527A', // body text
       },
       fontFamily: {
-        sans: ['Manrope Variable', 'Manrope', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+        sans: [
+          'Plus Jakarta Sans Variable',
+          'Plus Jakarta Sans',
+          'Manrope Variable',
+          'Manrope',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Arial',
+          'sans-serif',
+        ],
+        display: [
+          'Plus Jakarta Sans Variable',
+          'Plus Jakarta Sans',
+          'Manrope Variable',
+          'sans-serif',
+        ],
       },
       maxWidth: { site: '80rem' },
       borderRadius: { tube: '999px 999px 2rem 2rem' },
