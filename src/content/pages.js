@@ -1,7 +1,7 @@
 /**
  * PAGE COPY — EFYION DX
  * ------------------------------------------------------------------
- * Professional copy for Home, About and Technology.
+ * Professional copy for Home, About, and Technology.
  * Strictly adheres to verified information: avoids fabricated figures,
  * clinical claims, or unconfirmed certifications.
  */
@@ -23,6 +23,12 @@ import {
   CheckCircle2,
   GitBranch,
   ShieldAlert,
+  HeartPulse,
+  Activity,
+  Clock,
+  Server,
+  Thermometer,
+  Shield,
 } from 'lucide-react';
 import { images } from './images.js';
 
@@ -74,19 +80,258 @@ export const home = {
     ],
   },
 
+  comparisonMatrix: [
+    {
+      id: 'chemtrack-400',
+      name: 'Efyion ChemTrack 400',
+      category: 'Clinical Chemistry',
+      throughput: 'Up to 400 photometric tests/hr (expandable with ISE)',
+      principle: 'Concave holographic grating photometry & direct potentiometry',
+      sampleVolume: '2.0 µL – 25 µL micro-aspiration',
+      reagentPositions: '64 refrigerated positions (2°C–8°C)',
+      lisProtocol: 'Bidirectional ASTM 1394 & HL7 v2.x',
+      statAccess: 'Continuous STAT loading with emergency interrupt',
+      targetLab: 'Hospital central laboratories & high-volume pathology centers',
+      slug: '/products/diagnostic-solution-01',
+    },
+    {
+      id: 'ecl-immuno-240',
+      name: 'High-Sensitivity Immunoassay ECL Analyzer',
+      category: 'Chemiluminescence (CLIA)',
+      throughput: 'Up to 180 immunoassay tests/hr',
+      principle: 'Electrochemiluminescence (ECL) magnetic microbeads',
+      sampleVolume: '10 µL – 50 µL micro-volume',
+      reagentPositions: '30 refrigerated RFID packs (4°C–10°C)',
+      lisProtocol: 'Bidirectional HL7 & LIS query host',
+      statAccess: 'Dedicated emergency lane (18 min first STAT result)',
+      targetLab: 'Clinical hospital laboratories & endocrine testing centers',
+      slug: '/products/diagnostic-solution-05',
+    },
+    {
+      id: 'rapidpoint-poct',
+      name: 'Rapid Point-of-Care Diagnostic Platform',
+      category: 'Point-of-Care (POCT)',
+      throughput: '8 to 15 min per quantitative multi-panel',
+      principle: 'Fluorescence immunoassay & microfluidic cartridge',
+      sampleVolume: '10 µL – 50 µL whole blood, plasma or serum',
+      reagentPositions: 'Unitized single-use barcoded test cartridges',
+      lisProtocol: 'Wi-Fi, Bluetooth & POCT1-A / HL7 export',
+      statAccess: 'Immediate bedside triage & urgent ICU testing',
+      targetLab: 'Emergency rooms, ICUs, cardiology suites & outpatient clinics',
+      slug: '/products/diagnostic-solution-04',
+    },
+    {
+      id: 'optical-system-02',
+      name: 'Multi-Parameter Digital Optical System',
+      category: 'Pathology & Morphology',
+      throughput: 'Automated multi-slide scanning + 20 MP morphology',
+      principle: 'Plan-apochromatic optics & 20 MP sCMOS imaging',
+      sampleVolume: 'Standard blood smear & cytology glass slides',
+      reagentPositions: 'Multi-stain tray compatibility',
+      lisProtocol: 'DICOM, TIFF, USB 3.0 & Gigabit LAN',
+      statAccess: 'Live tele-pathology streaming & instant digital capture',
+      targetLab: 'Hematology morphology, cytology & pathology reference labs',
+      slug: '/products/diagnostic-solution-02',
+    },
+    {
+      id: 'reagent-systems-03',
+      name: 'Standardized Diagnostic Reagent Systems',
+      category: 'Reagents & Calibrators',
+      throughput: '45+ liquid-stable analytical chemistry parameters',
+      principle: 'IFCC & DGKC standardized enzymatic & immunoturbidimetric',
+      sampleVolume: 'Optimized for 100 µL – 250 µL reaction volumes',
+      reagentPositions: 'Universal barcoded vials & analyzer-matched bottles',
+      lisProtocol: 'Automated 2D barcode parameter & lot calibration load',
+      statAccess: 'Ready-to-pipette liquid format (zero prep overhead)',
+      targetLab: 'Hospital core labs, reference facilities & clinical networks',
+      slug: '/products/diagnostic-solution-03',
+    },
+    {
+      id: 'informatics-suite-06',
+      name: 'Diagnostic Informatics & LIS Middleware Suite',
+      category: 'Healthcare Technology',
+      throughput: 'Multi-analyzer aggregation (scalable to 64+ instruments)',
+      principle: 'Automated rule-based validation & intelligent delta-checking',
+      sampleVolume: 'N/A (Enterprise digital middleware & audit trail)',
+      reagentPositions: 'Centralized QC database with Levey-Jennings tracking',
+      lisProtocol: 'HL7 v2.x / v3, HL7 FHIR, ASTM 1394, REST & WebSocket',
+      statAccess: 'Instant critical value SMS / pager alerts & EHR push',
+      targetLab: 'Hospital networks, regional diagnostic labs & integrated clinics',
+      slug: '/products/diagnostic-solution-06',
+    },
+  ],
+
+  clinicalAssayDeepDive: [
+    {
+      id: 'cardiac',
+      title: 'Cardiac & Acute Vascular Profiling',
+      subtitle: 'Early ischaemia detection, necrosis quantification, and thrombotic monitoring.',
+      clinicalDecision: 'Rapid risk stratification for acute coronary syndromes (ACS), non-ST elevation myocardial infarction (NSTEMI), and pulmonary embolism (PE).',
+      turnaround: '12 – 18 minutes (STAT Priority)',
+      sampleRequirement: 'Lithium heparin plasma or serum (minimum 10 µL)',
+      referenceStandard: 'Standardized to WHO International Reference Preparations and IFCC working group specifications.',
+      assays: [
+        { name: 'High-Sensitivity Troponin I (hs-cTnI)', range: '1.5 – 50,000 pg/mL', precision: 'CV < 5% at 99th percentile URL' },
+        { name: 'High-Sensitivity Troponin T (hs-cTnT)', range: '3.0 – 10,000 pg/mL', precision: 'CV < 6% at 99th percentile' },
+        { name: 'CK-MB (Mass Quantitative)', range: '0.5 – 300 ng/mL', precision: 'Within-run CV < 3.2%' },
+        { name: 'Myoglobin', range: '5 – 1,000 ng/mL', precision: 'CV < 4.0%' },
+        { name: 'D-Dimer (Automated Quantitative)', range: '0.1 – 20.0 µg/mL FEU', precision: 'High negative predictive value (>99%)' },
+        { name: 'NT-proBNP', range: '10 – 35,000 pg/mL', precision: 'Heart failure staging & prognosis' },
+      ],
+    },
+    {
+      id: 'renal',
+      title: 'Renal Clearance & Electrolyte Balance',
+      subtitle: 'Accurate glomerular filtration assessment and acid-base homeostasis.',
+      clinicalDecision: 'Essential monitoring for acute kidney injury (AKI), chronic kidney disease (CKD) staging, and critical electrolyte disturbances.',
+      turnaround: '8 – 15 minutes',
+      sampleRequirement: 'Serum, plasma, or timed urine (micro-volume 2.0 µL)',
+      referenceStandard: 'Creatinine standardized against IDMS (Isotope Dilution Mass Spectrometry); Electrolytes calibrated via direct ISE.',
+      assays: [
+        { name: 'Enzymatic Creatinine (IDMS-traceable)', range: '10 – 2,200 µmol/L', precision: 'CV < 1.8% (zero bilirubin/drug interference)' },
+        { name: 'Blood Urea Nitrogen (BUN) / Urea', range: '1.0 – 50.0 mmol/L', precision: 'CV < 2.1% urease UV method' },
+        { name: 'Estimated GFR (eGFR CKD-EPI)', range: 'Calculated index', precision: 'Automatic reporting via LIS integration' },
+        { name: 'Cystatin C', range: '0.2 – 8.0 mg/L', precision: 'Early tubular function biomarker without muscle bias' },
+        { name: 'Direct ISE Electrolytes (Na+, K+, Cl-)', range: 'Na: 50-200, K: 1.0-15.0, Cl: 50-200 mmol/L', precision: 'CV < 1.2% direct potentiometry' },
+        { name: 'Microalbumin / Creatinine Ratio (ACR)', range: '5 – 300 mg/L', precision: 'Diabetic nephropathy surveillance' },
+      ],
+    },
+    {
+      id: 'hepatic',
+      title: 'Hepatic Function & Enzyme Kinetics',
+      subtitle: 'Continuous dynamic monitoring of hepatocellular injury, cholestasis, and synthetic capacity.',
+      clinicalDecision: 'Differential diagnosis of toxic hepatitis, biliary obstruction, cirrhosis progression, and perioperative surgical assessment.',
+      turnaround: '10 – 15 minutes',
+      sampleRequirement: 'Non-hemolyzed serum or heparin plasma (3.0 µL)',
+      referenceStandard: 'Formulated in accordance with IFCC 37°C primary reference measurement procedures without pyridoxal phosphate bias.',
+      assays: [
+        { name: 'Alanine Aminotransferase (ALT/GPT)', range: '4 – 1,000 U/L', precision: 'IFCC UV with pyridoxal-5-phosphate activation' },
+        { name: 'Aspartate Aminotransferase (AST/GOT)', range: '4 – 1,000 U/L', precision: 'CV < 2.4% linear up to 1,000 U/L' },
+        { name: 'Alkaline Phosphatase (ALP)', range: '15 – 1,500 U/L', precision: 'p-NPP kinetic reference method' },
+        { name: 'Total & Direct Bilirubin (Vanadate Oxidation)', range: '1.0 – 500 µmol/L', precision: 'Zero hemoglobin interference up to 500 mg/dL' },
+        { name: 'Gamma-Glutamyl Transferase (GGT)', range: '5 – 1,200 U/L', precision: 'L-gamma-glutamyl-3-carboxy-4-nitroanilide method' },
+        { name: 'Albumin (BCG) & Total Protein (Biuret)', range: 'Alb: 10-60 g/L, TP: 20-120 g/L', precision: 'Precision CV < 1.5% across diagnostic interval' },
+      ],
+    },
+    {
+      id: 'sepsis',
+      title: 'Sepsis & Infectious Inflammation',
+      subtitle: 'Critical acute inflammatory biomarkers for antimicrobial stewardship and ICU triage.',
+      clinicalDecision: 'Early differentiation between bacterial vs. viral infections, septic shock alert, and objective monitoring of antibiotic treatment efficacy.',
+      turnaround: '12 – 15 minutes',
+      sampleRequirement: 'Serum or EDTA / Heparin plasma (15 µL)',
+      referenceStandard: 'Traceable to certified international standards with high analytical sensitivity down to sub-clinical baselines.',
+      assays: [
+        { name: 'Procalcitonin (PCT Quantitative)', range: '0.02 – 100 ng/mL', precision: 'Functional sensitivity 0.05 ng/mL for antibiotic cessation' },
+        { name: 'High-Sensitivity C-Reactive Protein (hs-CRP)', range: '0.1 – 320 mg/L', precision: 'Wide measuring dynamic range covering cardiac to septic values' },
+        { name: 'Interleukin-6 (IL-6)', range: '1.5 – 5,000 pg/mL', precision: 'Early cytokine storm and acute inflammation marker' },
+        { name: 'Serum Ferritin', range: '5 – 2,000 ng/mL', precision: 'Hyperferritinemia and macrophage activation syndrome screening' },
+        { name: 'Serum Amyloid A (SAA)', range: '5 – 300 mg/L', precision: 'Early-phase viral vs bacterial kinetic differentiation' },
+      ],
+    },
+    {
+      id: 'endocrine',
+      title: 'Endocrine, Thyroid & Metabolic Cascades',
+      subtitle: 'Sub-picogram chemiluminescent hormone quantification and gestational tracking.',
+      clinicalDecision: 'Accurate diagnosis of primary and secondary thyroid dysfunctions, fertility cascades, gestational viability, and metabolic bone disorders.',
+      turnaround: '18 minutes',
+      sampleRequirement: 'Serum or plasma (20 µL)',
+      referenceStandard: 'Calibrated directly against WHO International Standards (e.g. WHO 80/558 for TSH, WHO 75/537 for hCG).',
+      assays: [
+        { name: 'Third-Generation TSH (Ultra-Sensitive)', range: '0.005 – 100 µIU/mL', precision: 'Functional sensitivity 0.005 µIU/mL (CV < 10%)' },
+        { name: 'Free Triiodothyronine (FT3) & Free Thyroxine (FT4)', range: 'FT3: 1.0-30.0 pmol/L, FT4: 1.0-100.0 pmol/L', precision: 'High specificity with zero auto-antibody interference' },
+        { name: 'Total Beta-hCG (Quantitative)', range: '0.5 – 250,000 mIU/mL', precision: 'Extended linearity preventing hook effect' },
+        { name: '25-OH Vitamin D Total', range: '4.0 – 150 ng/mL', precision: 'Standardized to NIST SRM 2972 reference materials' },
+        { name: 'Intact Parathyroid Hormone (iPTH)', range: '1.2 – 5,000 pg/mL', precision: 'Intraoperative and renal osteodystrophy monitoring' },
+        { name: 'Luteinizing Hormone (LH) & FSH', range: '0.1 – 200 mIU/mL', precision: 'Ovulatory cycle and fertility assessment' },
+      ],
+    },
+    {
+      id: 'hematology',
+      title: 'Hematology & Cellular Cytometry',
+      subtitle: 'High-definition 5-part WBC differential, reticulocyte analysis, and peripheral smear review.',
+      clinicalDecision: 'Comprehensive complete blood count (CBC) profiling, acute leukemia screening, cytopenia investigation, and automated morphology tele-review.',
+      turnaround: 'Under 60 seconds per sample',
+      sampleRequirement: 'K2/K3 EDTA whole blood (15 µL micro-mode, 50 µL standard)',
+      referenceStandard: 'Standardized in alignment with ICSH (International Council for Standardization in Haematology) reference guidelines.',
+      assays: [
+        { name: 'Complete Blood Count (CBC) with 5-Part Diff', range: '29 analytical parameters + 4 research parameters', precision: 'Semiconductor laser scatter + chemical dye flow cytometry' },
+        { name: 'Nucleated Red Blood Cells (NRBC)', range: 'Reported in every routine CBC', precision: 'Accurate correction of WBC counts in neonates and critical care' },
+        { name: 'Automated Reticulocyte Analysis (RET% & RET#)', range: '0.1 – 15.0%', precision: 'Immature Reticulocyte Fraction (IRF) bone marrow response' },
+        { name: 'Optical Platelet Count (PLT-O)', range: '0 – 5,000 × 10^9/L', precision: 'Fluorophore-resolved count eliminating micro-erythrocyte debris' },
+        { name: 'High-Resolution Digital Morphology Scan', range: 'Up to 1000x oil immersion equivalent', precision: 'Automated 20 MP classification and digital slide archiving' },
+      ],
+    },
+  ],
+
+  economicValue: {
+    kicker: 'Operational Economics & Laboratory ROI',
+    title: 'Engineered for Shift Productivity & Reduced Cost-Per-Test',
+    lead: 'Modern laboratories face rising test volume alongside tight technician staffing. Efyion Dx platforms eliminate hidden operational bottlenecks to deliver measurable economic value.',
+    metrics: [
+      {
+        value: '4 Hours',
+        label: 'Walk-Away Autonomy',
+        desc: 'Continuous sample rack loading and automated capacitive liquid-level sensing allow technicians to focus on clinical validation rather than manual tube handling.',
+      },
+      {
+        value: '30+ Days',
+        label: 'Onboard Reagent Stability',
+        desc: 'Continuous 2°C–8°C Peltier refrigeration protects active enzymes, preventing costly reagent waste from expired or degraded cartridges.',
+      },
+      {
+        value: '2.0 µL',
+        label: 'Micro-Sample Aspiration',
+        desc: 'Nanoliter syringe technology preserves precious pediatric, neonatal, and geriatric specimens, virtually eliminating repeat redraw requests.',
+      },
+      {
+        value: '< 0.05%',
+        label: 'Zero-Carryover Wash System',
+        desc: 'High-pressure interior and exterior probe washing with deionized water cascades guarantees analytical accuracy across consecutive STAT tests.',
+      },
+    ],
+  },
+
+  laboratoryFaqs: [
+    {
+      q: 'What are the pure water and electrical requirements for Efyion Dx clinical chemistry analyzers?',
+      a: 'The Efyion ChemTrack 400 requires NCCLS / CLSI Type II deionized water (resistivity ≥ 1.0 MΩ·cm at 25°C) with an average consumption of 15 to 20 liters per hour during peak testing. Electrical specifications require a dedicated single-phase 220V/110V AC supply (50/60 Hz) with an uninterruptible power supply (UPS) rating of at least 2.5 kVA to guarantee analytical continuity during hospital power transfer.',
+    },
+    {
+      q: 'How does bidirectional LIS integration work with ASTM 1394 and HL7 v2.x protocols?',
+      a: 'Our platforms support full bidirectional query-host communication. When a barcoded specimen tube is loaded onto the analyzer rack, the integrated barcode reader scans the accession ID and transmits a real-time query to your laboratory information system (LIS) or hospital EHR. The LIS returns the patient worklist and ordered test codes immediately. Once analytical measurement is completed, verified results (including flags, reference ranges, and calibration lot IDs) are pushed automatically back into the patient record.',
+    },
+    {
+      q: 'What is the onboard reagent stability and open-vial shelf life for standard chemistry and immunoassay kits?',
+      a: 'Because our analyzers feature continuous closed-compartment refrigeration maintaining 2°C to 8°C (even in standby mode), onboard reagent stability is certified up to 30 days for routine chemistries and up to 28 days for immunoassay cartridges. Unopened kits distributed through our temperature-monitored cold chain carry a shelf life of 18 to 24 months from the date of manufacture.',
+    },
+    {
+      q: 'Can our laboratory utilize third-party open reagents or are closed barcoded cartridges mandatory?',
+      a: 'Efyion Dx platforms offer versatile channel architecture. While our prefilled, barcoded reagent cartridges provide optimal walk-away convenience, automated lot tracking, and zero reconstitution error, our clinical chemistry platforms also feature user-definable open analytical channels. Laboratories can freely configure open channels for specialized parameters or clinical research assays with customizable wavelength, incubation, and calibration parameters.',
+    },
+    {
+      q: 'What is the guaranteed response time SLA for field engineering and application support?',
+      a: 'We understand that laboratory downtime compromises patient care. Every Efyion Dx platform comes backed by a tiered Service Level Agreement (SLA): critical emergency calls receive remote engineering response within 2 hours. If an on-site technician is required, authorized biomedical field service engineers are dispatched within 24 hours with local spare part kits.',
+    },
+    {
+      q: 'How do Efyion Dx systems facilitate ISO 15189 laboratory accreditation audits?',
+      a: 'Our instrumentation and diagnostic middleware maintain comprehensive electronic audit trails compliant with ISO 15189 and CLSI guidelines. The software automatically records operator log-ins, daily multi-level Levey-Jennings QC charts with Westgard evaluation rules, calibrator traceability certificates, reagent lot expiration dates, and maintenance logs. All data can be exported into audit-ready PDF/CSV compliance dossiers with a single click.',
+    },
+  ],
+
   why: {
     title: 'The Principles Guiding Efyion Dx',
-    text: 'Every instrument, reagent system, and consultation is governed by four core operating standards.',
+    text: 'Every instrument, reagent system, and consultation is governed by five core operating standards.',
     items: [
       {
         icon: Crosshair,
         title: 'Analytical Rigor',
-        text: 'Accuracy and repeatability are non-negotiable. We treat precision as the fundamental baseline for every solution.',
+        text: 'Accuracy and repeatability are non-negotiable. We treat analytical precision as the fundamental baseline for every diagnostic solution.',
       },
       {
         icon: Sparkles,
         title: 'Workflow-Centric Innovation',
-        text: 'We focus on technologies that genuinely alleviate laboratory bottlenecks, accelerate turnaround, and reduce manual error.',
+        text: 'We focus on technologies that genuinely alleviate laboratory bottlenecks, accelerate turnaround, and reduce manual operator error.',
       },
       {
         icon: ShieldCheck,
@@ -96,7 +341,7 @@ export const home = {
       {
         icon: Layers,
         title: 'Operational Dependability',
-        text: 'We deliver platforms and consumables that high-volume laboratories can build their daily shift schedules around.',
+        text: 'We deliver platforms and consumables that high-volume laboratories can build their daily shift schedules around without unplanned halts.',
       },
       {
         icon: Headset,
@@ -233,6 +478,71 @@ export const about = {
       text: 'Constantly evaluating diagnostic advancements to bring genuine workflow improvements to clients.',
     },
   ],
+  governance: {
+    title: 'Diagnostic Governance & Quality Systems',
+    lead: 'Operational rigor rooted in international quality frameworks and clinical laboratory best practices.',
+    items: [
+      {
+        title: 'Design Controls & ISO 13485 Principles',
+        text: 'Every diagnostic platform and consumable undergoes formal design control verification, risk mitigation analysis, and software lifecycle validation.',
+      },
+      {
+        title: 'ISO 15189 Laboratory Alignment',
+        text: 'Our technical documentation, Levey-Jennings QC middleware, and audit trail architectures are specifically tailored to assist laboratories in passing accreditation inspections.',
+      },
+      {
+        title: 'Continuous Lot-Release Verification',
+        text: 'Every manufacturing batch of liquid-stable reagents and calibrators is tested against primary certified reference materials before release into distribution.',
+      },
+      {
+        title: 'Cold-Chain Telemetry & Logistics',
+        text: 'End-to-end temperature monitoring from centralized refrigerated storage to laboratory receiving docks guarantees enzyme and antibody viability.',
+      },
+    ],
+  },
+  advisory: {
+    title: 'Specialized Diagnostic Advisory Structure',
+    lead: 'You engage directly with biomedical engineers and clinical application specialists across the full lifecycle of your diagnostic instrumentation.',
+    roles: [
+      {
+        role: 'Field Service Engineers (FSE)',
+        focus: 'Hardware Installation, Optical Alignment & Emergency On-Site Service',
+        desc: 'Specialized biomedical engineers trained in opto-mechanical calibration, fluidic pumps, and scheduled preventive maintenance.',
+      },
+      {
+        role: 'Clinical Application Specialists (CAS)',
+        focus: 'Assay Optimization, QC Validation & Technician Training',
+        desc: 'Laboratory scientists assisting with CLSI EP5 precision protocols, method correlation studies, and daily standard operating procedures.',
+      },
+      {
+        role: 'Informatics & LIS Integration Engineers',
+        focus: 'Bidirectional HL7, ASTM & EHR Connectivity',
+        desc: 'Digital systems experts ensuring seamless query-host communication, automated delta-checking rules, and zero result latency.',
+      },
+    ],
+  },
+  onboardingPhases: [
+    {
+      phase: 'Phase 01',
+      title: 'Workload Audit & Facility Sizing',
+      desc: 'Assessing your daily test volume, peak hour specimen bursts, menu requirements, and physical space to size the optimal instrumentation configuration.',
+    },
+    {
+      phase: 'Phase 02',
+      title: 'Site Preparation & Engineering Readiness',
+      desc: 'Verifying electrical clean-power grounding, pure water deionization (NCCLS Type II), HVAC dissipation, and network drops prior to delivery.',
+    },
+    {
+      phase: 'Phase 03',
+      title: 'Precision Installation & Optical Alignment',
+      desc: 'Physical placement, leveling, fluidic priming, photometer grating calibration, and refrigerated compartment temperature mapping.',
+    },
+    {
+      phase: 'Phase 04',
+      title: 'LIS Interfacing, Method Validation & Certification',
+      desc: 'Connecting bidirectional ASTM/HL7 query-host drivers, running CLSI EP5/EP6 precision and linearity runs, and certifying laboratory technicians.',
+    },
+  ],
   approach: {
     title: 'Our Collaborative Approach',
     text: 'From initial workload analysis to platform validation and long-term supply, our methodology ensures seamless diagnostic continuity.',
@@ -284,6 +594,33 @@ export const technology = {
       title: 'Laboratory Operational Excellence',
       text: 'Optimized diagnostics combines reliable hardware with structured operational protocols. We provide comprehensive standard operating procedure (SOP) guidance.',
       image: images.labExcellence,
+    },
+  ],
+  optoMechanical: [
+    {
+      title: '12-Wavelength Holographic Concave Grating',
+      desc: 'Rear-spectrophotometry optical layout with 12 discrete wavelengths (340–800 nm) avoids optical fiber attenuation, ensuring superior signal-to-noise ratio.',
+      badge: 'Optical System',
+    },
+    {
+      title: 'Triple-Sensor Sample Integrity Probe',
+      desc: 'High-speed capacitive liquid-level detection, vertical & horizontal anti-collision protection, and pressure-based clot aspiration sensing.',
+      badge: 'Fluidic Precision',
+    },
+    {
+      title: '2°C–8°C Continuous Peltier Refrigeration',
+      desc: 'Independent 24/7 cooling module protects reagent enzymes and controls even when the main analyzer host computer is powered off.',
+      badge: 'Reagent Protection',
+    },
+    {
+      title: 'Multi-Stage Deionized Cascade Wash',
+      desc: 'Heated deionized water probe interior and exterior wash stations with vacuum air drying keep analytical carryover below 0.05%.',
+      badge: 'Contamination Control',
+    },
+    {
+      title: 'Bi-Directional Query-Host LIS Integration',
+      desc: 'ASTM 1394 and HL7 v2.x native drivers enable real-time sample barcode accessioning, automated delta checks, and electronic result signing.',
+      badge: 'Digital Middleware',
     },
   ],
   quality: {

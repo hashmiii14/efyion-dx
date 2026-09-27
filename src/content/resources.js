@@ -42,6 +42,54 @@ export const resources = [
     ],
   },
   {
+    slug: 'liquid-stable-vs-reconstituted-reagents',
+    title: 'Liquid-Stable vs. Lyophilized Reagents: A Laboratory Efficiency & TCO Study',
+    category: 'technical',
+    image: images.resourceTechnical,
+    excerpt: 'Examining how ready-to-use liquid-stable chemistry formulations eliminate deionized water pipetting errors, reduce preparation overhead, and extend onboard stability.',
+    body: [
+      'Manual reagent reconstitution remains one of the most overlooked sources of pre-analytical variation in busy clinical laboratories. Variations in deionized water quality, technician pipetting technique, and dissolution delays introduce subtle calibration shifts.',
+      'Ready-to-use liquid-stable reagents eliminate manual preparation entirely. Prefilled into barcoded cartridges, they can be loaded directly into chilled analyzer compartments, instantly verified by automated 2D barcode scanners.',
+      'By reducing preparation time from 45 minutes per shift to under 5 minutes, laboratories reclaim valuable technician hours while minimizing reagent discard from expired reconstituted batches.',
+    ],
+  },
+  {
+    slug: 'iso-15189-accreditation-guide',
+    title: 'Navigating ISO 15189 Accreditation: Electronic Audit Trails & QC Traceability',
+    category: 'articles',
+    image: images.resourceQuality,
+    excerpt: 'A comprehensive operational framework for laboratory supervisors preparing for ISO 15189 quality inspections using automated Levey-Jennings QC tracking.',
+    body: [
+      'ISO 15189 accreditation demands complete, uninterrupted traceability from specimen collection through instrument calibration to report delivery.',
+      'Implementing automated middleware that captures operator IDs, reagent lot expiration dates, and multi-rule Westgard evaluations removes the vulnerability of manual paper logs.',
+      'Efyion Dx diagnostic platforms natively log all analytical events into tamper-evident electronic audit trails, enabling one-click generation of inspection-ready compliance dossiers.',
+    ],
+  },
+  {
+    slug: 'bidirectional-lis-interfacing',
+    title: 'Bidirectional LIS Interfacing: Reducing Clerical Errors and Turnaround Time',
+    category: 'insights',
+    image: images.resourceInsights,
+    excerpt: 'How native ASTM 1394 and HL7 query-host protocols streamline specimen accessioning, eliminate manual worklist entry, and accelerate critical STAT reporting.',
+    body: [
+      'Manual specimen entry onto analyzer consoles introduces unnecessary delay and clerical error risk into high-throughput testing environments.',
+      'Bidirectional query-host interfacing enables the analyzer to scan the tube barcode upon rack insertion, automatically fetch the ordered test codes from the hospital LIS, execute the profile, and return verified results seamlessly.',
+      'This closed-loop digital architecture accelerates emergency STAT turnaround times to under 18 minutes while ensuring zero specimen misattribution.',
+    ],
+  },
+  {
+    slug: 'pediatric-micro-sampling',
+    title: 'Pediatric & Geriatric Micro-Sampling: Conserving Precious Specimen Volumes',
+    category: 'technical',
+    image: images.resourceTechnical,
+    excerpt: 'Overcoming pre-analytical volume limitations in acute neonatal and geriatric care through precision nanoliter aspiration and micro-volume cuvette optics.',
+    body: [
+      'Drawing venous blood from neonates, pediatric patients, and oncology patients undergoing chemotherapy presents severe clinical challenges.',
+      'Modern diagnostic analyzers engineered with precision nanoliter syringes and ultra-sensitive optical gratings reduce the required specimen volume to as little as 2.0 µL per photometric test.',
+      'This micro-volume aspiration capability preserves scarce blood volume, prevents iatrogenic anemia, and virtually eliminates painful, repeated redraw requests.',
+    ],
+  },
+  {
     slug: 'efyion-dx-website-launch',
     title: 'Introducing Efyion Dx: Advancing Precision Diagnostics',
     category: 'news',
@@ -54,30 +102,6 @@ export const resources = [
     ],
   },
   {
-    slug: 'technical-documentation',
-    title: 'Diagnostic Technical Documentation & Protocol Architecture',
-    category: 'technical',
-    image: images.resourceTechnical,
-    excerpt: 'Overview of analytical verification frameworks, calibration protocols, and sample handling requirements for Efyion Dx diagnostic platforms.',
-    body: [
-      'Standardized operating procedures are essential for reproducible laboratory output. Technical documentation for Efyion Dx solutions details recommended specimen collection procedures, centrifuge speeds, and storage guidelines.',
-      'Comprehensive analytical verification protocols assist laboratory supervisors in validating linear range, precision limits, and limit of detection (LoD) prior to placing instruments into live diagnostic service.',
-      'Detailed integration sheets outlining HL7 message specifications and ASTM 1394 communication handshakes are available upon platform commissioning.',
-    ],
-  },
-  {
-    slug: 'product-documents',
-    title: 'Diagnostic Product Guides & Technical Specifications',
-    category: 'downloads',
-    image: images.resourceDownloads,
-    excerpt: 'Downloadable system summaries, assay parameter sheets, and consumable catalogs available for laboratory procurement teams.',
-    body: [
-      'Our downloadable library includes system brochures, technical parameter sheets, and consumable specifications to assist procurement committees and laboratory directors.',
-      'Detailed parameter cards describe reagent packaging, test cassette stability, barcode specifications, and waste management recommendations.',
-      'Specific documentation sets can also be requested directly via our contact channels for tailored project evaluations.',
-    ],
-  },
-  {
     slug: 'quality-in-the-laboratory',
     title: 'Why Analytical Consistency Matters: Quality Control in Modern Labs',
     category: 'insights',
@@ -87,6 +111,18 @@ export const resources = [
       'Reproducibility is the benchmark of clinical laboratory excellence. Even minor drift in assay calibration can lead to systemic reporting errors, affecting clinical interpretations.',
       'Implementing strict internal quality control (IQC) routines—supported by multi-level calibrators traceable to international reference materials—allows laboratory staff to detect bias or precision shifts immediately.',
       'Efyion Dx incorporates standardized control materials and automated QC tracking across our portfolio, supporting quality teams in sustaining audit-ready laboratories.',
+    ],
+  },
+  {
+    slug: 'product-documents',
+    title: 'Diagnostic Product Guides & Technical Parameter Sheets',
+    category: 'downloads',
+    image: images.resourceDownloads,
+    excerpt: 'Downloadable system summaries, assay parameter sheets, and consumable catalogs available for laboratory procurement teams.',
+    body: [
+      'Our downloadable library includes system brochures, technical parameter sheets, and consumable specifications to assist procurement committees and laboratory directors.',
+      'Detailed parameter cards describe reagent packaging, test cassette stability, barcode specifications, and waste management recommendations.',
+      'Specific documentation sets can also be requested directly via our contact channels for tailored project evaluations.',
     ],
   },
 ];
@@ -104,14 +140,22 @@ export const faqs = [
   },
   {
     q: 'How does Efyion Dx ensure batch-to-batch reagent consistency?',
-    a: 'All reagent lots are manufactured under rigorous quality control standards, verified against certified standard reference materials, and supplied with comprehensive certificates of analysis to ensure minimal analytical variation.',
+    a: 'All reagent lots are manufactured under rigorous quality control standards, verified against certified standard reference materials (WHO, NIST, IFCC), and supplied with comprehensive certificates of analysis to ensure minimal analytical variation.',
   },
   {
     q: 'Can Efyion Dx platforms integrate with our existing LIS / HIS?',
-    a: 'Yes. Our automated analysers and healthcare technology software natively support bidirectional ASTM and HL7 clinical communication protocols for automated worklist downloads and result transmission.',
+    a: 'Yes. Our automated analysers and healthcare technology software natively support bidirectional ASTM 1394 and HL7 v2.x clinical communication protocols for automated worklist downloads and result transmission.',
   },
   {
     q: 'What support is provided during instrument onboarding?',
     a: 'We provide structured pre-implementation workflow reviews, technician operational training, verification run assistance, and ongoing application consultation to ensure smooth operational cutover.',
+  },
+  {
+    q: 'What are the pure water and electrical requirements for clinical chemistry analyzers?',
+    a: 'Our high-throughput clinical chemistry analyzers require NCCLS / CLSI Type II deionized water (resistivity ≥ 1.0 MΩ·cm) and dedicated clean-power single-phase AC connections with an online UPS rating of at least 2.5 kVA.',
+  },
+  {
+    q: 'What is the onboard reagent stability inside refrigerated compartments?',
+    a: 'Reagents loaded into the continuous 2°C to 8°C chilled carousels maintain analytical calibration and active enzyme stability for up to 30 days onboard, drastically reducing consumable wastage.',
   },
 ];
