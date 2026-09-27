@@ -28,6 +28,8 @@ export const slots = {
     label: 'Hero Diagnostic Platform',
     description: 'High-throughput automated clinical analyzer platform',
     aspectRatio: '4/3',
+    src: '/images/hero-lab.jpg',
+    alt: 'Clinical laboratory scientists working with diagnostic equipment — Efyion Dx',
   }),
 
   // Corporate & Facility
@@ -36,6 +38,8 @@ export const slots = {
     label: 'Clinical Diagnostic Operations',
     description: 'Specialized diagnostic laboratory cleanroom and instrumentation operations',
     aspectRatio: '16/10',
+    src: '/images/hero-lab.jpg',
+    alt: 'Clinical laboratory scientists working with diagnostic equipment — Efyion Dx',
   }),
 
   aboutFacility: createSlot({
