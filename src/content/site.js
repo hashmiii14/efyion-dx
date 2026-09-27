@@ -1,10 +1,8 @@
 /**
- * SITE-WIDE CONTENT
+ * SITE-WIDE CONTENT — EFYION DX
  * ------------------------------------------------------------------
- * Brand details, navigation and contact information.
- * Only confirmed facts live here. Add phone, address or social links
- * to `contact` when they are confirmed — the footer and contact page
- * will show them automatically.
+ * Brand details, navigation, and contact placeholders.
+ * All company details are clearly structured for simple client replacement.
  */
 
 export const site = {
@@ -13,20 +11,20 @@ export const site = {
   url: 'https://efyion-dx.vercel.app',
   defaultDescription:
     'Efyion Dx delivers precision in vitro diagnostic instruments, standardized assays, and laboratory workflow solutions.',
+  companyInfo: 'XYZ',
 };
 
 export const contact = {
-  email: 'efyiondx@gmail.com',
-  phone: '', // add when confirmed, e.g. '+91 00000 00000'
-  address: '', // add when confirmed
+  email: 'info@efyiondx.com',
+  phone: '+91 XXXXX XXXXX',
+  address: 'XYZ Business Address, India',
   social: [
-    // add when confirmed, e.g. { label: 'LinkedIn', href: 'https://linkedin.com/company/...' }
+    { label: 'LinkedIn', href: '#' },
+    { label: 'Twitter', href: '#' },
   ],
   /**
-   * Form handling. Paste an endpoint from a form service (Formspree,
-   * Getform, Basin, your own API…) to receive enquiries directly.
-   * While empty, the form opens the visitor's email app with the
-   * enquiry pre-filled and addressed to `email`.
+   * Form handling endpoint.
+   * When empty, the form opens the visitor's mail client addressed to contact.email.
    */
   formEndpoint: '',
 };

@@ -92,11 +92,11 @@ export default function Resources() {
                 ))}
               </div>
             ) : (
-              <div className="mt-12 rounded-[2rem] border border-dashed border-line bg-mist px-6 py-16 text-center">
-                <Inbox size={36} className="mx-auto text-violet-600" aria-hidden="true" />
-                <h2 className="mt-5 text-2xl">No {activeCat?.name.toLowerCase()} published yet</h2>
+              <div className="mt-12 rounded-2xl border border-dashed border-line bg-mist px-6 py-16 text-center">
+                <Inbox size={36} className="mx-auto text-blue-600" aria-hidden="true" />
+                <h2 className="mt-5 text-2xl font-bold text-navy-900">No {activeCat?.name.toLowerCase()} published yet</h2>
                 <p className="mx-auto mt-2 max-w-md text-ink">New material will appear here as it is released. Browse all resources in the meantime.</p>
-                <button type="button" onClick={() => select('all')} className="mt-6 min-h-[44px] rounded-full bg-navy-900 px-6 font-bold text-white hover:bg-navy-800">
+                <button type="button" onClick={() => select('all')} className="mt-6 min-h-[44px] rounded-xl bg-blue-600 px-6 font-bold text-white hover:bg-blue-700 transition-colors shadow-sm">
                   Show all resources
                 </button>
               </div>

@@ -6,8 +6,8 @@ import { Microscope, Activity, ShieldCheck, Cpu, FlaskConical, Layers } from 'lu
  * ------------------------------------------------------------------
  * Seamlessly handles:
  * 1. Real image display when `image.src` is provided (cover, responsive, zero-CLS).
- * 2. Elegant, high-tech clinical diagnostic placeholder frame when `image.src` is null,
- *    ready for the 5-10 real photos the client will provide later.
+ * 2. Clean, professional clinical diagnostic placeholder frame when `image.src` is null,
+ *    ready for the real photos to be provided later.
  * 3. Zero artificial delay: renders immediately with no blocking fade-outs or spinners.
  */
 export default function SmartImage({
@@ -38,7 +38,7 @@ export default function SmartImage({
     );
   }
 
-  // Otherwise, render the elegant clinical diagnostic visual slot
+  // Otherwise, render the clean clinical diagnostic visual slot
   return (
     <ClinicalMediaSlot
       slot={image?.slot}
@@ -51,9 +51,8 @@ export default function SmartImage({
 }
 
 /**
- * Elegant, high-precision clinical media slot.
- * Replaces random stock photography with an intentional, branded diagnostic frame
- * that seamlessly transitions when real photos are supplied.
+ * Clean, high-precision clinical media slot.
+ * Branded diagnostic frame prepared for the client's real photographs.
  */
 export function ClinicalMediaSlot({
   slot = 'diagnosticPlatform',
@@ -78,20 +77,20 @@ export function ClinicalMediaSlot({
     <div
       role="img"
       aria-label={`${label} — Visual placeholder slot for Efyion Dx asset`}
-      className={`relative flex h-full w-full flex-col items-center justify-center overflow-hidden p-6 sm:p-8 select-none transition-colors ${
+      className={`relative flex h-full w-full flex-col items-center justify-center overflow-hidden p-6 select-none transition-colors ${
         dark
-          ? 'bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950 text-white border border-white/10'
-          : 'bg-gradient-to-br from-slate-50 via-azure-50/40 to-violet-50/30 text-navy-900 border border-line/80'
+          ? 'bg-navy-950 text-white border border-slate-800'
+          : 'bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-navy-900 border border-slate-200'
       } ${className}`}
     >
       {/* Precision Technical Grid Background */}
-      <svg className="absolute inset-0 h-full w-full opacity-20" aria-hidden="true">
+      <svg className="absolute inset-0 h-full w-full opacity-15" aria-hidden="true">
         <defs>
           <pattern id={`slot-grid-${slot}`} width="28" height="28" patternUnits="userSpaceOnUse">
             <path
               d="M 28 0 L 0 0 0 28"
               fill="none"
-              stroke={dark ? '#94A3B8' : '#3B82F6'}
+              stroke={dark ? '#64748B' : '#0284C7'}
               strokeWidth="0.75"
               strokeDasharray="2,4"
             />
@@ -101,8 +100,8 @@ export function ClinicalMediaSlot({
       </svg>
 
       {/* Optical Reticle & Concentric Crosshairs SVG */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
-        <svg viewBox="0 0 240 240" className="w-56 h-56 text-violet-500/40" fill="none" stroke="currentColor">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+        <svg viewBox="0 0 240 240" className="w-56 h-56 text-blue-500" fill="none" stroke="currentColor">
           <circle cx="120" cy="120" r="100" strokeWidth="1" strokeDasharray="4 6" />
           <circle cx="120" cy="120" r="70" strokeWidth="1" />
           <circle cx="120" cy="120" r="40" strokeWidth="1.2" />
@@ -112,7 +111,7 @@ export function ClinicalMediaSlot({
       </div>
 
       {/* Subtle Efyion Dx Watermark */}
-      <div className="absolute right-4 top-4 opacity-30">
+      <div className="absolute right-4 top-4 opacity-25">
         <img
           src={dark ? '/logo-mark-white.png' : '/logo-mark.png'}
           alt=""
@@ -124,17 +123,17 @@ export function ClinicalMediaSlot({
       {/* Center Technical Badge */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-sm px-4">
         <div
-          className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-2xl shadow-subtle border ${
+          className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl shadow-xs border ${
             dark
-              ? 'bg-white/10 text-violet-400 border-white/15'
-              : 'bg-white text-violet-600 border-violet-100'
+              ? 'bg-slate-900 text-blue-400 border-slate-700'
+              : 'bg-white text-blue-600 border-blue-100'
           }`}
         >
           <IconComponent size={24} aria-hidden="true" />
         </div>
 
         <h3
-          className={`mt-4 text-sm sm:text-base font-extrabold tracking-tight line-clamp-1 ${
+          className={`mt-4 text-sm sm:text-base font-bold tracking-tight line-clamp-1 ${
             dark ? 'text-white' : 'text-navy-900'
           }`}
         >
@@ -144,7 +143,7 @@ export function ClinicalMediaSlot({
         {description && (
           <p
             className={`mt-1 text-xs line-clamp-2 max-w-[260px] leading-relaxed ${
-              dark ? 'text-white/60' : 'text-ink/75'
+              dark ? 'text-slate-400' : 'text-slate-600'
             }`}
           >
             {description}
@@ -155,12 +154,12 @@ export function ClinicalMediaSlot({
           <span
             className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wide uppercase ${
               dark
-                ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
-                : 'bg-azure-100/70 text-navy-900 border border-azure-200/70'
+                ? 'bg-blue-950/80 text-blue-300 border border-blue-800'
+                : 'bg-blue-50 text-blue-800 border border-blue-200'
             }`}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Slot: {slot}</span>
+            <span>Image Slot: {slot}</span>
           </span>
         </div>
       </div>

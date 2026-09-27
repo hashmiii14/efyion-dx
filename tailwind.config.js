@@ -1,41 +1,73 @@
 /** @type {import('tailwindcss').Config} */
-// Brand tokens are sampled from the Efyion Dx logo. Change them here and the
-// whole site updates.
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
+        // Deep authoritative medical navy for titles and dark sections
         navy: {
-          950: '#070B3A',
-          900: '#0B1152', // logo navy — headings, dark sections
-          800: '#141C66',
-          700: '#1E2A80',
+          950: '#07101E',
+          900: '#0F2147',
+          800: '#162C5B',
+          700: '#1E3A8A',
         },
+        // Clinical medical blue for primary buttons, links, accents
+        medical: {
+          900: '#0F2147',
+          800: '#163366',
+          700: '#1D4ED8',
+          600: '#2563EB', // main medical blue
+          500: '#3B82F6',
+          400: '#60A5FA',
+          300: '#93C5FD',
+          200: '#BFDBFE',
+          100: '#DBEAFE',
+          50: '#EFF6FF',
+        },
+        // Clean azure / cyan-blue for secondary medical elements
         azure: {
-          600: '#2447C9', // medical blue — links, focus, secondary accents
-          500: '#3560E0',
-          100: '#E3EBFD',
-          50: '#F1F5FE',
+          600: '#0284C7',
+          500: '#0EA5E9',
+          200: '#BAE6FD',
+          100: '#E0F2FE',
+          50: '#F0F9FF',
         },
+        // Violet alias mapped strictly to clinical medical blue to purge all purple
         violet: {
-          700: '#621C99',
-          600: '#7A24B8', // logo purple — used sparingly as accent
-          500: '#9340CF',
-          100: '#F1E6FA',
+          900: '#0F2147',
+          800: '#163366',
+          700: '#1D4ED8',
+          600: '#2563EB',
+          500: '#3B82F6',
+          400: '#60A5FA',
+          300: '#93C5FD',
+          200: '#BFDBFE',
+          100: '#DBEAFE',
+          50: '#EFF6FF',
         },
-        mist: '#F3F6FB', // light section background
-        line: '#DFE5EF', // hairlines and borders
-        ink: '#48527A', // body text
+        mist: '#F8FAFC', // Slate-50: Crisp, clean, clinical white-gray background
+        line: '#E2E8F0', // Slate-200: Subtle hairline borders
+        ink: '#334155',  // Slate-700: High-readability professional body copy
       },
       fontFamily: {
-        sans: ['Manrope Variable', 'Manrope', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+        sans: [
+          'Manrope Variable',
+          'Manrope',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Arial',
+          'sans-serif',
+        ],
       },
       maxWidth: { site: '80rem' },
-      borderRadius: { tube: '999px 999px 2rem 2rem' },
       boxShadow: {
-        soft: '0 1px 2px rgba(11,17,82,.04), 0 12px 32px -12px rgba(11,17,82,.14)',
-        lift: '0 2px 4px rgba(11,17,82,.05), 0 24px 48px -16px rgba(11,17,82,.22)',
+        subtle: '0 1px 3px 0 rgba(15, 33, 71, 0.05), 0 1px 2px -1px rgba(15, 33, 71, 0.03)',
+        soft: '0 4px 6px -1px rgba(15, 33, 71, 0.06), 0 2px 4px -2px rgba(15, 33, 71, 0.04)',
+        lift: '0 10px 25px -3px rgba(15, 33, 71, 0.08), 0 4px 6px -4px rgba(15, 33, 71, 0.03)',
       },
     },
   },

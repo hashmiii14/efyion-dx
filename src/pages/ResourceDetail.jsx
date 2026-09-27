@@ -28,7 +28,7 @@ export default function ResourceDetail() {
       <PageHero title={r.title} text={r.excerpt} crumbs={[{ label: 'Resources', to: '/resources' }, { label: cat?.name || 'Resource' }]} />
       <article className="pb-20 sm:pb-24">
         <div className="container-site">
-          <div className="relative -mt-4 aspect-[16/9] overflow-hidden rounded-[2rem] bg-azure-100 sm:aspect-[21/9]">
+          <div className="relative -mt-4 aspect-[16/9] overflow-hidden rounded-2xl bg-blue-50 sm:aspect-[21/9] border border-line">
             <SmartImage image={r.image} priority sizes="100vw" />
           </div>
           <div className="mx-auto mt-14 max-w-2xl text-lg">
@@ -38,11 +38,11 @@ export default function ResourceDetail() {
               <div className="rounded-2xl border border-dashed border-line bg-mist p-6 sm:p-8">
                 <p className="font-bold text-navy-900">This {cat?.name.toLowerCase().replace(/s$/, '') || 'resource'} is being prepared.</p>
                 <p className="mt-2 text-ink">
-                  Check back soon, or email <a href={`mailto:${contact.email}`} className="font-bold text-azure-600 hover:underline">{contact.email}</a> if you need information now.
+                  Check back soon, or email <a href={`mailto:${contact.email}`} className="font-bold text-blue-600 hover:underline">{contact.email}</a> if you need information now.
                 </p>
               </div>
             )}
-            <Link to="/resources" className="mt-10 inline-flex min-h-[44px] items-center gap-2 font-bold text-navy-900 hover:text-violet-600">
+            <Link to="/resources" className="mt-10 inline-flex min-h-[44px] items-center gap-2 font-bold text-navy-900 hover:text-blue-600">
               <ArrowLeft size={18} aria-hidden="true" />
               All resources
             </Link>

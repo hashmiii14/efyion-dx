@@ -9,7 +9,7 @@ export default function SectionHeading({ kicker, title, text, align = 'left', li
   return (
     <div className={`${center ? 'mx-auto text-center' : ''} max-w-2xl ${className}`}>
       {kicker && (
-        <p className={`mb-4 flex items-center gap-2.5 text-sm font-bold ${center ? 'justify-center' : ''} ${light ? 'text-white/80' : 'text-violet-600'}`}>
+        <p className={`mb-4 flex items-center gap-2.5 text-sm font-bold ${center ? 'justify-center' : ''} ${light ? 'text-white/80' : 'text-blue-600'}`}>
           <DotMark light={light} />
           {kicker}
         </p>

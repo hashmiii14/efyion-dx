@@ -9,10 +9,10 @@ export default function ResourceCard({ resource, large = false }) {
   return (
     <Link
       to={`/resources/${resource.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-line bg-white p-3.5 transition-all duration-300 hover:-translate-y-1 hover:border-azure-200 hover:shadow-soft"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-3.5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-soft"
     >
       <div
-        className={`relative overflow-hidden rounded-[1.25rem] bg-mist ${
+        className={`relative overflow-hidden rounded-xl bg-mist ${
           large ? 'aspect-[16/10]' : 'aspect-[16/10]'
         }`}
       >
@@ -35,7 +35,7 @@ export default function ResourceCard({ resource, large = false }) {
 
       <div className="flex flex-1 flex-col px-2.5 pb-2 pt-4">
         <h3
-          className={`font-bold text-navy-900 transition-colors group-hover:text-azure-600 line-clamp-2 ${
+          className={`font-bold text-navy-900 transition-colors group-hover:text-blue-600 line-clamp-2 ${
             large ? 'text-2xl sm:text-3xl' : 'text-lg sm:text-xl'
           }`}
         >
@@ -45,7 +45,7 @@ export default function ResourceCard({ resource, large = false }) {
           {resource.excerpt}
         </p>
 
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-bold text-azure-600">
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-bold text-blue-600">
           <span>Read resource</span>
           <ArrowRight
             size={14}

@@ -6,40 +6,58 @@ import { categories } from '../../content/catalog';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
   return (
-    <footer className="relative overflow-hidden bg-navy-950 text-white/70">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-violet-600/20 blur-3xl" />
+    <footer className="relative bg-navy-950 text-slate-300 border-t border-slate-800">
       <div className="container-site relative grid gap-12 py-16 sm:py-20 md:grid-cols-2 lg:grid-cols-12">
+        {/* Brand & Contact Information */}
         <div className="lg:col-span-5">
           <Logo light />
-          <p className="mt-6 max-w-xs text-sm font-bold uppercase tracking-[0.14em] text-white">{site.tagline}</p>
-          <a
-            href={`mailto:${contact.email}`}
-            className="mt-8 inline-flex min-h-[44px] items-center gap-3 rounded-full border border-white/15 px-5 font-semibold text-white transition-colors hover:border-white/50"
-          >
-            <Mail size={18} aria-hidden="true" />
-            {contact.email}
-          </a>
-          {contact.phone && (
-            <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="mt-3 flex items-center gap-3 text-white">
-              <Phone size={18} aria-hidden="true" />
-              {contact.phone}
+          <p className="mt-4 max-w-sm text-xs font-bold uppercase tracking-[0.14em] text-blue-400">
+            {site.tagline}
+          </p>
+          <p className="mt-3 max-w-sm text-xs text-slate-400 leading-relaxed">
+            Clinical in vitro diagnostics, standardized assay systems, and automated laboratory workflow platforms.
+          </p>
+
+          <div className="mt-6 space-y-2.5 text-xs sm:text-sm">
+            <a
+              href={`mailto:${contact.email}`}
+              className="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors"
+            >
+              <Mail size={16} className="text-blue-400 shrink-0" aria-hidden="true" />
+              <span>{contact.email}</span>
             </a>
-          )}
-          {contact.address && (
-            <p className="mt-3 flex items-start gap-3">
-              <MapPin size={18} className="mt-1 shrink-0" aria-hidden="true" />
-              {contact.address}
-            </p>
-          )}
+
+            {contact.phone && (
+              <a
+                href={`tel:${contact.phone.replace(/\s/g, '')}`}
+                className="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors"
+              >
+                <Phone size={16} className="text-blue-400 shrink-0" aria-hidden="true" />
+                <span>{contact.phone}</span>
+              </a>
+            )}
+
+            {contact.address && (
+              <div className="flex items-start gap-2.5 text-slate-400">
+                <MapPin size={16} className="text-blue-400 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>{contact.address}</span>
+              </div>
+            )}
+          </div>
         </div>
 
-        <nav aria-label="Footer" className="lg:col-span-3">
-          <h2 className="text-sm font-bold text-white">Explore</h2>
-          <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-1 md:grid-cols-1">
+        {/* Navigation Links */}
+        <nav aria-label="Footer Navigation" className="lg:col-span-3">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-white">Company</h2>
+          <ul className="mt-4 space-y-2 text-sm">
             {navigation.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="inline-flex min-h-[40px] items-center transition-colors hover:text-white">
+                <Link
+                  to={item.to}
+                  className="text-slate-300 hover:text-blue-400 transition-colors inline-block py-0.5"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -47,34 +65,53 @@ export default function Footer() {
           </ul>
         </nav>
 
+        {/* Diagnostic Modalities */}
         <div className="lg:col-span-4">
-          <h2 className="text-sm font-bold text-white">Product areas</h2>
-          <ul className="mt-5 space-y-1">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-white">Diagnostic Modalities</h2>
+          <ul className="mt-4 space-y-2 text-sm">
             {categories.map((c) => (
               <li key={c.slug}>
-                <Link to={`/products?category=${c.slug}`} className="inline-flex min-h-[40px] items-center transition-colors hover:text-white">
+                <Link
+                  to={`/products?category=${c.slug}`}
+                  className="text-slate-300 hover:text-blue-400 transition-colors inline-block py-0.5"
+                >
                   {c.name}
                 </Link>
               </li>
             ))}
           </ul>
+
           {contact.social.length > 0 && (
-            <ul className="mt-6 flex flex-wrap gap-4">
-              {contact.social.map((s) => (
-                <li key={s.href}>
-                  <a href={s.href} target="_blank" rel="noreferrer" className="font-semibold text-white hover:underline">
-                    {s.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6 pt-4 border-t border-slate-800">
+              <ul className="flex flex-wrap gap-4 text-xs font-semibold text-slate-400">
+                {contact.social.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-blue-400 transition-colors"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="container-site flex flex-col gap-2 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
+
+      {/* Bottom Bar */}
+      <div className="border-t border-slate-800/80 bg-navy-950/80">
+        <div className="container-site flex flex-col gap-2 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {site.name}. All rights reserved.</p>
-          <a href="#main" className="text-white/60 hover:text-white">Back to top</a>
+          <div className="flex items-center gap-4">
+            <span className="text-slate-500">Corporate Details: {site.companyInfo}</span>
+            <a href="#main" className="text-slate-400 hover:text-white transition-colors">
+              Back to top
+            </a>
+          </div>
         </div>
       </div>
     </footer>

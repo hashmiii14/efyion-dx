@@ -5,7 +5,7 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
   }
   html,
@@ -26,10 +26,10 @@
     text-wrap: pretty;
   }
   ::selection {
-    @apply bg-violet-100 text-navy-900;
+    @apply bg-blue-100 text-navy-900;
   }
   :focus-visible {
-    @apply outline-none ring-2 ring-azure-500 ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white;
   }
   img {
     @apply max-w-full;
@@ -38,44 +38,23 @@
 
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8;
   }
   .section {
-    @apply py-20 sm:py-24 lg:py-32;
+    @apply py-16 sm:py-20 lg:py-24;
   }
   .h-display {
-    @apply text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.25rem];
+    @apply text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl xl:text-[4.75rem];
     letter-spacing: -0.035em;
   }
   .h-section {
-    @apply text-3xl leading-[1.1] sm:text-4xl lg:text-5xl;
-    letter-spacing: -0.03em;
+    @apply text-2xl leading-[1.15] sm:text-3xl lg:text-4xl;
+    letter-spacing: -0.025em;
   }
   .lead {
-    @apply text-lg leading-relaxed text-ink sm:text-xl;
+    @apply text-base leading-relaxed text-ink/90 sm:text-lg;
   }
-  /* Test-tube frame — the recurring brand shape taken from the logo */
-  /* Arch radius is a % of height, so --arch is tuned per aspect ratio to keep
-     the top a true semicircle: --arch = 50% × (width ÷ height). */
-  .tube {
-    border-radius: 50% 50% 1.75rem 1.75rem / var(--arch, 40%) var(--arch, 40%) 1.75rem 1.75rem;
-  }
-  .frame-arch {
-    aspect-ratio: 4 / 3;
-    --arch: 66.7%;
-  }
-  .frame-hero {
-    aspect-ratio: 1 / 1;
-    --arch: 50%;
-  }
-  @media (min-width: 640px) {
-    .frame-arch { aspect-ratio: 5 / 4; --arch: 62.5%; }
-    .frame-hero { aspect-ratio: 5 / 4; --arch: 62.5%; }
-  }
-  @media (min-width: 1024px) {
-    .frame-arch { aspect-ratio: 4 / 5; --arch: 40%; }
-    .frame-hero { aspect-ratio: 4 / 5; --arch: 40%; }
-  }
+
   .link-underline {
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 1.5px;
@@ -89,41 +68,19 @@
   }
 }
 
-/* ---------- Motion (Progressive, Non-Blocking) ---------- */
+/* ---------- Motion (Smooth, Non-Blocking) ---------- */
 
-/* Content is immediately visible and readable with zero artificial waiting */
 [data-reveal] {
   opacity: 1;
   transform: none;
 }
 
 @keyframes rise {
-  from { opacity: 0.92; transform: translateY(6px); }
+  from { opacity: 0.94; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
 }
-@keyframes tube-in {
-  from { opacity: 0.95; }
-  to { opacity: 1; }
-}
-@keyframes bubble {
-  0% { opacity: 0.9; transform: scale(0.95); }
-  100% { opacity: 1; transform: none; }
-}
-@keyframes drift {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-.anim-rise { animation: rise 0.3s ease-out both; }
-.anim-tube { animation: tube-in 0.3s ease-out both; }
-.anim-bubble { animation: bubble 0.3s ease-out both; }
-.anim-drift { animation: drift 6s ease-in-out infinite; }
 
-/* Page transition - instantaneous */
-@keyframes page-in {
-  from { opacity: 0.95; }
-  to { opacity: 1; }
-}
-.page-enter { animation: page-in 0.15s ease both; }
+.anim-rise { animation: rise 0.25s ease-out both; }
 
 /* Workflow connector */
 .flow-line { transform-origin: left center; transform: scaleX(1); }
