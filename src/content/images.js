@@ -1,8 +1,26 @@
 /**
  * IMAGE SYSTEM & ASSET SLOTS — EFYION DX
  * ------------------------------------------------------------------
- * Production asset registry optimized with modern WebP and JPEG fallbacks.
- * Every product and section features authentic diagnostic photography.
+ * 100% Authentic Diagnostic Photography with Zero Duplication.
+ * AI-generated images have been removed.
+ *
+ * Distinct Image Assignments:
+ * 1. Hero Background: /images/hero-lab.webp (Scientists in bright clinical lab)
+ * 2. About Section: /images/about-lab.webp (Sysmex testing facility)
+ * 3. Product 1 (ChemTrack 400): /images/product-analyzer.webp (Automated Chemistry Analyzer)
+ * 4. Product 2 (Optical System): /images/product-microscope.webp (FV3000 Confocal Microscope)
+ * 5. Product 4 (Rapid POCT): /images/product-poct.webp (iCHROMA POCT Device with cartridges)
+ * 6. Technology & Optics: /images/tech-optics.webp (Laser optical engine)
+ * 7. Quality Assurance: /images/quality-qc.webp (Calibrator standards & C.O.A. records)
+ * 8. Support Engineering: /images/support-engineer.webp (Biomedical engineer servicing analyzer)
+ * 9. Workflow Automation: /images/workflow-automation.webp (Automated lab track TLA system)
+ * 10. Cat 1 (Clinical): /images/lab-scientist-pipette.webp (Female scientist pipetting in lab)
+ * 11. Cat 2 (Lab Solutions): /images/lab-microscope-culture.webp (Microscope culture preparation)
+ * 12. Cat 3 (Instruments): /images/lab-microscope-research.webp (Scientist at research microscope)
+ * 13. Cat 4 (Reagents): /images/lab-reagent-tubes.webp (Reagent vials and microcentrifuge rack)
+ * 14. Cat 6 (Technology): /images/lab-digital-diagnostics.webp (Digital diagnostic interface)
+ *
+ * Products 3, 5, 6 are clean empty slots awaiting the real product photos provided by client.
  */
 
 // Helper to define a clean, production-ready image slot
@@ -96,7 +114,7 @@ export const slots = {
     alt: 'Biomedical service engineers performing calibration and diagnostic instrumentation support — Efyion Dx',
   }),
 
-  // ── 8. Six Diagnostic Product Slots (100% Real Authentic Photography) ──
+  // ── 8. Six Diagnostic Product Slots (Real photos for 1, 2, 4; Clean empty slots for 3, 5, 6) ──
   productImage1: createSlot({
     slot: 'productImage1',
     label: 'Efyion ChemTrack 400 Analyzer',
@@ -120,8 +138,7 @@ export const slots = {
     label: 'Standardized Diagnostic Reagents',
     description: 'Liquid-Stable Reagent Kits & Multi-Level Calibrators',
     aspectRatio: '4/3',
-    src: '/images/product-reagents.webp',
-    alt: 'Standardized Liquid-Stable Diagnostic Reagents and Control Calibrators — Efyion Dx',
+    src: null, // Empty: waiting for real client photo
   }),
 
   productImage4: createSlot({
@@ -138,8 +155,7 @@ export const slots = {
     label: 'High-Sensitivity Immunoassay ECL System',
     description: 'Electrochemiluminescence Immunoassay Analyzer Workstation',
     aspectRatio: '4/3',
-    src: '/images/product-immunoassay.webp',
-    alt: 'CellView E400 High-Sensitivity Electrochemiluminescence ECL Immunoassay Analyzer',
+    src: null, // Empty: waiting for real client photo
   }),
 
   productImage6: createSlot({
@@ -147,8 +163,7 @@ export const slots = {
     label: 'Diagnostic Informatics & LIS Suite',
     description: 'Laboratory Information Middleware & Digital Connectivity',
     aspectRatio: '4/3',
-    src: '/images/product-informatics.webp',
-    alt: 'LabSync Diagnostic Informatics and Laboratory Information System LIS Dashboard',
+    src: null, // Empty: waiting for real client photo
   }),
 
   // ── 9. Contact & Advisory ──
@@ -161,14 +176,14 @@ export const slots = {
     alt: 'Clinical Consultation and Diagnostic Advisory Team — Efyion Dx',
   }),
 
-  // ── 10. Distinct Category Slots with Authentic Imagery ──
+  // ── 10. Distinct Category Slots with 100% Unique Real Imagery ──
   categoryClinicalSlot: createSlot({
     slot: 'cat-clinical',
     label: 'Clinical Diagnostics',
     description: 'High-sensitivity clinical testing solutions across specialties',
     aspectRatio: '16/10',
-    src: '/images/product-immunoassay.webp',
-    alt: 'Clinical Diagnostics and Immunoassay Testing Solutions — Efyion Dx',
+    src: '/images/lab-scientist-pipette.webp',
+    alt: 'Clinical Diagnostics laboratory scientist — Efyion Dx',
   }),
 
   categoryLabSlot: createSlot({
@@ -176,8 +191,8 @@ export const slots = {
     label: 'Laboratory Solutions',
     description: 'End-to-end automated testing workstations and continuous sample workflows',
     aspectRatio: '16/10',
-    src: '/images/workflow-automation.webp',
-    alt: 'Automated Laboratory Solutions and Sample Workflows — Efyion Dx',
+    src: '/images/lab-microscope-culture.webp',
+    alt: 'Laboratory Solutions and precision microscopy preparation — Efyion Dx',
   }),
 
   categoryInstrumentsSlot: createSlot({
@@ -185,8 +200,8 @@ export const slots = {
     label: 'Diagnostic Instruments',
     description: 'Precision analyzers, automated instruments and optical scanning units',
     aspectRatio: '16/10',
-    src: '/images/product-microscope.webp',
-    alt: 'Precision Diagnostic Instruments and Optical Scanners — Efyion Dx',
+    src: '/images/lab-microscope-research.webp',
+    alt: 'Precision Diagnostic Instruments and laboratory microscopy research — Efyion Dx',
   }),
 
   categoryReagentsSlot: createSlot({
@@ -194,8 +209,8 @@ export const slots = {
     label: 'Reagents & Consumables',
     description: 'Standardized liquid-stable testing reagents and control calibrators',
     aspectRatio: '16/10',
-    src: '/images/product-reagents.webp',
-    alt: 'Standardized Reagents and Control Calibrators — Efyion Dx',
+    src: '/images/lab-reagent-tubes.webp',
+    alt: 'Standardized Diagnostic Reagents and specimen vials — Efyion Dx',
   }),
 
   categoryPointOfCareSlot: createSlot({
@@ -203,8 +218,7 @@ export const slots = {
     label: 'Point-of-Care Solutions',
     description: 'Rapid diagnostic platforms engineered for bedside clinical turnaround',
     aspectRatio: '16/10',
-    src: '/images/product-poct.webp',
-    alt: 'Point-of-Care POCT Rapid Testing Platforms — Efyion Dx',
+    src: null, // clean, distinct visual slot
   }),
 
   categoryTechSlot: createSlot({
@@ -212,8 +226,8 @@ export const slots = {
     label: 'Healthcare Technology',
     description: 'Secure laboratory informatics connecting diagnostic data to care teams',
     aspectRatio: '16/10',
-    src: '/images/product-informatics.webp',
-    alt: 'Healthcare Technology and Laboratory Informatics Middleware — Efyion Dx',
+    src: '/images/lab-digital-diagnostics.webp',
+    alt: 'Healthcare Technology and digital diagnostic interface — Efyion Dx',
   }),
 };
 
@@ -242,7 +256,7 @@ export const images = {
   categoryPointOfCare: slots.categoryPointOfCareSlot,
   categoryTech: slots.categoryTechSlot,
 
-  // Product cards (100% real photography across all 6 products)
+  // Product cards
   product1: slots.productImage1,
   product2: slots.productImage2,
   product3: slots.productImage3,
