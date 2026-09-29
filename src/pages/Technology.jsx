@@ -71,9 +71,35 @@ export default function Technology() {
             reverse={i % 2 === 1}
             className={`scroll-mt-24 ${i > 0 ? 'pt-0 sm:pt-0 lg:pt-0' : ''}`}
           >
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-mist text-violet-600">
-              <Icon size={22} aria-hidden="true" />
-            </span>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 pb-1">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-azure-50 text-violet-600 border border-azure-100 shadow-xs">
+                  <Icon size={22} aria-hidden="true" />
+                </span>
+                <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+                  Engineering Architecture
+                </span>
+              </div>
+
+              {s.paragraphs?.map((p, idx) => (
+                <p key={idx} className="text-base text-ink leading-relaxed font-normal">
+                  {p}
+                </p>
+              ))}
+
+              {s.highlights && (
+                <ul className="mt-5 grid gap-2.5 sm:grid-cols-2 pt-2">
+                  {s.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2.5 text-xs sm:text-sm font-semibold text-navy-900">
+                      <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-violet-100 text-violet-700">
+                        <Check size={10} strokeWidth={3} />
+                      </span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </ImageText>
         );
       })}

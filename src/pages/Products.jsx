@@ -47,6 +47,46 @@ export default function Products() {
 
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <div className="container-site">
+          {/* Portfolio Architectural Overview */}
+          <div className="mb-12 rounded-[2rem] border border-line bg-gradient-to-br from-mist/80 via-white to-azure-50/20 p-6 sm:p-10 shadow-xs">
+            <div className="max-w-3xl">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+                Analytical Instrumentation Standards
+              </span>
+              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
+                Engineered for High-Throughput Reliability & Clinical Precision
+              </h2>
+            </div>
+
+            <div className="mt-6 grid gap-6 lg:grid-cols-2 text-sm sm:text-base text-ink leading-relaxed font-normal border-t border-line/70 pt-6">
+              <p>
+                The Efyion Dx diagnostic catalogue is engineered to equip hospital central laboratories, commercial reference facilities, and acute clinical suites with dependable analytical instrumentation. Each platform is built around verified walk-away automation, low micro-volume sample aspiration, and strict photometric precision that minimizes operator hands-on time during peak testing shifts.
+              </p>
+              <p>
+                Our systems span core diagnostic modalities including automated clinical chemistry, 6-part laser hematology with reticulocyte and NRBC channels, chemiluminescent enzyme immunoassays (CLEIA), and rapid point-of-care cartridges. Every instrument operates with standardized liquid-stable reagents, automated barcode accessioning, and bidirectional ASTM / HL7 middleware integration that eliminates manual transcription errors.
+              </p>
+            </div>
+
+            {/* Core Capability Badges */}
+            <div className="mt-8 grid gap-4 sm:grid-cols-3 pt-6 border-t border-line/60">
+              <div className="rounded-xl bg-white p-4 border border-line/80 shadow-xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-violet-600">Sample Conservation</span>
+                <p className="mt-1 text-sm font-bold text-navy-900">Micro-volume 2.0 µL aspiration</p>
+                <p className="mt-1 text-xs text-ink/75 leading-relaxed">Preserves precious pediatric, neonatal, and specialized fluid specimens.</p>
+              </div>
+              <div className="rounded-xl bg-white p-4 border border-line/80 shadow-xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-azure-600">Reagent Protection</span>
+                <p className="mt-1 text-sm font-bold text-navy-900">2°C–8°C 24/7 Peltier cooling</p>
+                <p className="mt-1 text-xs text-ink/75 leading-relaxed">Guarantees onboard enzyme stability and reduces calibration overhead.</p>
+              </div>
+              <div className="rounded-xl bg-white p-4 border border-line/80 shadow-xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Digital Connectivity</span>
+                <p className="mt-1 text-sm font-bold text-navy-900">Native ASTM 1394 & HL7 v2.x</p>
+                <p className="mt-1 text-xs text-ink/75 leading-relaxed">Automated worklist download and instantaneous verified result transmission.</p>
+              </div>
+            </div>
+          </div>
+
           {/* Toolbar */}
           <div className="grid gap-6 border-b border-line pb-8 lg:grid-cols-[1fr_20rem] lg:items-center">
             <div role="group" aria-label="Filter by product area" className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0 [&::-webkit-scrollbar]:hidden">

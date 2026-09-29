@@ -200,7 +200,7 @@ function AboutSection() {
   const { about } = home;
 
   return (
-    <section className="section bg-white">
+    <section className="section bg-white border-t border-line">
       <div className="container-site">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Media Slot */}
@@ -212,21 +212,38 @@ function AboutSection() {
                   label="Clinical Diagnostic Operations"
                 />
               </div>
+
+              {/* Operating Profile Indicators from Page 2 */}
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                {about.profile.map((p) => (
+                  <div key={p.label} className="rounded-xl border border-line/80 bg-mist/60 p-3.5">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-ink/70">{p.label}</dt>
+                    <dd className="mt-1 text-xs sm:text-sm font-bold text-navy-900 leading-snug">{p.value}</dd>
+                  </div>
+                ))}
+              </div>
             </Reveal>
           </div>
 
           {/* Content */}
           <div className="lg:col-span-7 order-1 lg:order-2">
             <Reveal variant="right">
-              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
-                Diagnostic Excellence
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+                {about.kicker || 'Clinical Diagnostics & Laboratory Solutions'}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
                 {about.title}
               </h2>
-              <p className="lead mt-4 font-medium text-navy-900">{about.lead}</p>
-              <p className="mt-3 text-base text-ink leading-relaxed">{about.body}</p>
+              <p className="lead mt-4 font-medium text-navy-900 leading-relaxed">{about.lead}</p>
 
+              {/* Multi-Paragraph Narrative from Page 2 */}
+              <div className="mt-5 space-y-3.5 text-base text-ink leading-relaxed font-normal">
+                {about.paragraphs.map((p, idx) => (
+                  <p key={idx}>{p}</p>
+                ))}
+              </div>
+
+              {/* Highlights List */}
               <ul className="mt-6 space-y-2.5">
                 {about.highlights.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
@@ -238,9 +255,30 @@ function AboutSection() {
                 ))}
               </ul>
 
+              {/* Vision & Mission Cards from Page 2 */}
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-line bg-gradient-to-br from-mist to-white p-4.5">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-violet-600" />
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900">{about.vision.title}</h3>
+                  </div>
+                  <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">{about.vision.text}</p>
+                </div>
+                <div className="rounded-2xl border border-line bg-gradient-to-br from-mist to-white p-4.5">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-azure-600" />
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900">{about.mission.title}</h3>
+                  </div>
+                  <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">{about.mission.text}</p>
+                </div>
+              </div>
+
               <div className="mt-8 flex items-center gap-4">
                 <Button to="/about" variant="outline" className="!min-h-[44px] text-sm font-bold">
-                  Learn more about Efyion Dx
+                  {about.cta?.label || 'Learn more about Efyion Dx'}
+                </Button>
+                <Button to="/contact" variant="ghost" className="!min-h-[44px] text-sm font-bold text-azure-600 hover:text-navy-900">
+                  Discuss your laboratory setup →
                 </Button>
               </div>
             </Reveal>
@@ -295,26 +333,32 @@ function FeaturedProductsSection() {
   return (
     <section className="section bg-white border-t border-line">
       <div className="container-site">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-600">
-              Hardware & Consumables
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
+          <div className="max-w-3xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+              {home.productsSection?.kicker || 'Hardware & Consumables Portfolio'}
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-              Featured Diagnostic Systems
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              {home.productsSection?.title || 'Featured Diagnostic Systems'}
             </h2>
-            <p className="mt-3 text-base text-ink max-w-2xl">
-              Precision analyzers and reagent formulations engineered for continuous operational reliability.
+            <p className="mt-3 text-base sm:text-lg text-ink font-medium leading-relaxed">
+              {home.productsSection?.lead || 'Precision analytical instruments engineered for high throughput, micro-volume sample consumption, and walk-away operational reliability.'}
             </p>
           </div>
 
           <Link
             to="/products"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-600 hover:underline shrink-0"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-600 hover:text-navy-900 transition-colors shrink-0"
           >
-            <span>Complete catalog</span>
-            <ArrowRight size={14} />
+            <span>Complete catalog & specifications</span>
+            <ArrowRight size={15} />
           </Link>
+        </div>
+
+        {/* Informative Editorial Context Paragraphs */}
+        <div className="mb-10 grid gap-6 lg:grid-cols-2 text-sm sm:text-[0.9375rem] text-ink leading-relaxed border-t border-line/70 pt-6">
+          <p>{home.productsSection?.paragraphs?.[0]}</p>
+          <p>{home.productsSection?.paragraphs?.[1]}</p>
         </div>
 
         {/* Filter Pills */}
@@ -400,15 +444,21 @@ function TechnologySection() {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <span className="text-xs font-bold uppercase tracking-wider text-violet-400 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 backdrop-blur-md">
-              Instrumentation Architecture
+              {home.technology?.kicker || 'Instrumentation Architecture'}
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-              Optics, Fluidics & Analytical Hardware
+              {home.technology?.title || 'Optics, Fluidics & Analytical Hardware'}
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl">
-              Engineered with precision opto-mechanics, high-accuracy syringe pumps, and automated self-clearing probe
-              technologies to deliver dependable patient findings hour after hour.
+            <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed font-medium max-w-2xl">
+              {home.technology?.lead || 'Engineered with precision opto-mechanics, high-accuracy syringe pumps, and automated self-clearing probe technologies to deliver dependable patient findings hour after hour.'}
             </p>
+
+            {/* Authoritative Technical Writing Paragraphs */}
+            <div className="mt-5 space-y-3.5 text-sm sm:text-base text-white/75 leading-relaxed font-normal max-w-2xl">
+              {home.technology?.paragraphs?.map((p, idx) => (
+                <p key={idx}>{p}</p>
+              ))}
+            </div>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {techPoints.map((tp, idx) => {

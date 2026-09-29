@@ -67,16 +67,37 @@ export const home = {
   ],
 
   about: {
+    kicker: 'Clinical Diagnostics & Laboratory Solutions',
     title: 'Precision at the Center of Diagnostic Care',
-    lead: 'Efyion Dx focuses on delivering dependable diagnostic information to support timely clinical decisions.',
-    body: 'We recognize that healthcare decisions begin with accurate laboratory findings. Our portfolio unites carefully selected diagnostic analysers, standardized reagent systems, and attentive application support so laboratories and clinicians can work with complete confidence.',
-    cta: { label: 'Learn more about Efyion Dx', to: '/about' },
+    lead: 'Efyion Dx is a specialized diagnostics organization established to elevate the standard of clinical testing through dependable analyzer automation, high-sensitivity assays, and responsive biomedical engineering collaboration.',
+    body: 'We recognize that over 70% of medical decisions rely directly on accurate in vitro diagnostic findings. Our portfolio unites automated chemistry, laser hematology, chemiluminescent immunoassay, and rapid point-of-care platforms with standardized reagents and dedicated application support so laboratories and clinicians can operate with complete confidence.',
+    paragraphs: [
+      'Efyion Dx is dedicated to elevating the analytical and operational standard of modern laboratory testing. We recognize that healthcare decisions begin with accurate, timely diagnostic findings. Our portfolio brings together automated analyzers, certified reagent formulations, and attentive technical collaboration so healthcare providers can act with clinical certainty.',
+      'Our methodology centers on close partnership with laboratory directorships: understanding the distinct throughput requirements, menu profiles, spatial constraints, and shift patterns of each facility. Rather than delivering isolated instruments, we configure cohesive testing ecosystems that eliminate workflow bottlenecks, minimize hands-on operator time, and protect irreplaceable patient specimens.',
+      'Every platform in our catalogue is supported by international quality governance aligned with ISO 13485 design principles and ISO 15189 laboratory compliance standards. With continuous cold-chain temperature telemetry, batch-calibrated liquid-stable reagents, and native bi-directional LIS integration, Efyion Dx equips healthcare teams to deliver rapid, definitive patient answers with complete confidence.',
+    ],
+    profile: [
+      { label: 'Operating Focus', value: 'Clinical In Vitro Diagnostics (IVD)' },
+      { label: 'Core Segments', value: 'Hospitals, Reference Labs & Point-of-Care' },
+      { label: 'Governance Standard', value: 'ISO 13485 & 15189 Principles' },
+      { label: 'Connectivity', value: 'Native ASTM 1394 & HL7 v2.x Interfacing' },
+    ],
+    vision: {
+      title: 'Our Vision',
+      text: 'A healthcare ecosystem where every clinical decision is grounded in rapid, transparent, and accurate diagnostic insight.',
+    },
+    mission: {
+      title: 'Our Mission',
+      text: 'To equip laboratories and care teams with precision diagnostic tools, robust reagents, and the practical knowledge needed for exceptional patient care.',
+    },
+    cta: { label: 'Explore company overview', to: '/about' },
     image: images.aboutTeam,
     detailImage: images.aboutDetail,
     highlights: [
-      'Tailored instrumentation matching laboratory volume and staffing',
-      'Standardized liquid-stable reagents minimizing prep overhead',
-      'Direct, knowledgeable technical support throughout every phase',
+      'Walk-away automation reducing manual intervention during peak laboratory shifts',
+      'Standardized liquid-stable reagents eliminating reconstituting overhead',
+      'Direct, continuous access to certified biomedical engineers and application specialists',
+      'End-to-end specimen traceability from accession barcode to verified LIS reporting',
     ],
   },
 
@@ -351,9 +372,25 @@ export const home = {
     ],
   },
 
+  productsSection: {
+    kicker: 'Hardware & Consumables Portfolio',
+    title: 'Featured Diagnostic Systems',
+    lead: 'Precision analytical instruments engineered for high throughput, micro-volume sample consumption, and walk-away operational reliability.',
+    paragraphs: [
+      'Modern clinical laboratories face compounding operational challenges: rising daily test volumes, demand for rapid critical STAT reporting, and the imperative to eliminate manual transcription errors. Efyion Dx diagnostic instruments are engineered around walk-away autonomy and photometric precision. Built with continuous barcoded sample rack loading, micro-volume aspiration down to 2.0 µL, and real-time capacitive liquid sensing, our workstations optimize technician workflow and protect delicate pediatric and geriatric specimens.',
+      'Our portfolio spans automated clinical chemistry (ChemTrack 400), 6-part laser hematology with reticulocyte and NRBC enumeration (Mispa HX 88 & HX 80), chemiluminescent enzyme immunoassays (Mispa i121 & i60), and rapid bedside POCT platforms. On-board 2°C–8°C refrigerated carousels maintain reagent integrity up to 30 days, while native bidirectional HL7 and ASTM 1394 interfaces deliver direct, verified test transmission to hospital information systems.',
+    ],
+  },
+
   technology: {
-    title: 'Advanced Diagnostic Instrumentation & Informatics',
-    text: 'Modern clinical care demands testing platforms that combine high throughput with intuitive operation. Efyion Dx bridges analytical hardware with digital laboratory connectivity.',
+    kicker: 'Opto-Mechanical & Informatics Architecture',
+    title: 'Precision Optics, Fluidics & Analytical Hardware',
+    lead: 'Engineered with advanced rear-spectrophotometry, nanoliter fluidic metering, and native LIS middleware to deliver dependable patient findings hour after hour.',
+    paragraphs: [
+      'At the core of Efyion Dx diagnostic instruments lies a high-resolution optical train featuring 12-wavelength concave holographic diffraction gratings. Operating across a 340 nm to 800 nm spectral range, this optical geometry eliminates fiber-optic transmission loss and achieves an expansive linear absorbance range up to 4.0 Abs. The resulting signal-to-noise ratio enables reliable detection of low-concentration cardiac biomarkers, liver enzymes, and turbidimetric serum proteins with minimal photometer drift.',
+      'Precision fluidic handling is governed by ceramic syringe pumps delivering aspiration accuracy down to 0.1 µL increments. Triple-sensor probe assemblies provide real-time capacitive liquid-level sensing, vertical and horizontal crash avoidance, and pressure-based clot detection. A multi-stage heated deionized water cascade wash station scours both inner and outer probe surfaces, maintaining analytical carryover strictly below 0.05% across high-volume operational runs.',
+      'To safeguard fragile enzyme kinetics and antibody calibration curves, solid-state Peltier refrigeration modules maintain constant 2°C–8°C onboard storage 24 hours a day, completely independent of the analyzer host computer state. Paired with bidirectional HL7 and ASTM 1394 query-host middleware, patient worklists are automatically populated and results are verified instantly—delivering a unified diagnostic continuum from collection tube to clinician.',
+    ],
     points: [
       'Automated sample barcode accessioning and continuous loading',
       'Bidirectional ASTM / HL7 data exchange with laboratory information systems',
@@ -438,6 +475,7 @@ export const about = {
     paragraphs: [
       'Efyion Dx is a specialized diagnostics company committed to elevating the standard of laboratory testing through reliable technology, standardized consumables, and attentive technical collaboration.',
       'Our approach centers on close partnership: understanding the specific throughput, spatial, and analytical requirements of each clinical setting, implementing tailored platforms, and standing behind them with responsive support.',
+      'Operating under international quality governance aligned with ISO 13485 design controls and ISO 15189 laboratory compliance principles, we ensure full lot-to-lot traceability, refrigerated cold-chain stability, and automated bidirectional LIS integration across our entire portfolio.',
     ],
     image: images.aboutFacility,
   },
@@ -570,29 +608,69 @@ export const technology = {
     {
       id: 'technology',
       icon: Cpu,
-      title: 'Diagnostic Instrumentation',
-      text: 'We evaluate diagnostic hardware based on analytical reproducibility, walk-away capacity, minimal sample requirement, and user-friendly interface design.',
+      title: 'Diagnostic Instrumentation Architecture',
+      text: 'Balancing high-throughput analytical reproducibility with robust mechanical reliability and intuitive laboratory operation.',
+      paragraphs: [
+        'Diagnostic hardware evaluation requires balancing analytical reproducibility with practical workflow efficiency. Efyion Dx instruments are constructed on rigid aluminum alloy chassis with vibration-damped opto-mechanics, minimizing mechanical vibration during high-speed sample carousel acceleration and deceleration.',
+        'Our platforms integrate modular sub-assemblies—allowing rapid access for routine preventive maintenance, reagent carousel restocking without interrupting running tests, and automatic probe degreasing routines that preserve fluidic seal longevity over hundreds of thousands of analytical cycles.',
+      ],
+      highlights: [
+        'Rigid vibration-isolated optical chassis',
+        'Continuous reagent replenishment without test interruption',
+        'High-torque stepper motors with optical encoder feedback',
+        'Modular electronics for rapid on-site component servicing',
+      ],
       image: images.technology,
     },
     {
       id: 'innovation',
       icon: Sparkles,
-      title: 'Workflow Innovation',
-      text: 'True innovation solves concrete laboratory pain points: reducing manual preparation steps, preventing clerical reporting errors, and speeding critical result reporting.',
+      title: 'Workflow Innovation & Automation',
+      text: 'Eliminating manual touchpoints, preventing clerical transcription errors, and accelerating urgent STAT result reporting.',
+      paragraphs: [
+        'True laboratory innovation is measured by the reduction of friction at the bench. Efyion Dx systems eliminate repetitive manual touchpoints through continuous STAT rack access, automated barcode reading for samples and reagents, and dynamic rerun and reflex testing rules.',
+        'By automating pre-analytical verification—such as checking for hemolyzed, icteric, or lipemic (HIL) serum indices before photometric aspiration—our instruments flag compromised samples before results are released, preventing erroneous reporting and unnecessary follow-up blood draws.',
+      ],
+      highlights: [
+        'Emergency STAT priority lane with immediate cycle interrupt',
+        'Automated pre-analytical serum indices (HIL) detection',
+        'Configurable automated reflex and rerun decision algorithms',
+        'RFID and 2D barcode reagent tracking with on-board volume audit',
+      ],
       image: images.innovation,
     },
     {
       id: 'research',
       icon: Microscope,
-      title: 'Analytical Verification & Validation',
-      text: 'Every assay platform undergoes thorough verification for analytical linearity, precision limits, and matrix compatibility prior to client deployment.',
+      title: 'Analytical Verification & Clinical Validation',
+      text: 'Rigorous multi-matrix verification aligning with international CLSI standards prior to healthcare deployment.',
+      paragraphs: [
+        'Before any diagnostic platform or reagent panel is commissioned for clinical use, it undergoes comprehensive validation aligned with international Clinical and Laboratory Standards Institute (CLSI) protocols, including EP5-A2 for precision, EP6-A for linearity, and EP17-A for limits of detection.',
+        'We supply laboratory directorships with turnkey validation documentation, reference correlation datasets, and standardized calibrator traceability certificates, streamlining local accreditation audits under ISO 15189 and national regulatory frameworks.',
+      ],
+      highlights: [
+        'CLSI EP5-A2 multi-day, multi-operator precision protocols',
+        'CLSI EP6-A wide dynamic range linearity verification',
+        'Method correlation studies against primary reference methods',
+        'Certified traceable calibrators referencing WHO and IFCC standards',
+      ],
       image: images.researchDev,
     },
     {
       id: 'laboratory-excellence',
       icon: FlaskRound,
       title: 'Laboratory Operational Excellence',
-      text: 'Optimized diagnostics combines reliable hardware with structured operational protocols. We provide comprehensive standard operating procedure (SOP) guidance.',
+      text: 'Comprehensive Standard Operating Procedures (SOPs), quality control middleware, and specialized on-site onboarding.',
+      paragraphs: [
+        'Sustained analytical excellence requires cohesive synergy between hardware, reagents, and laboratory personnel. Efyion Dx provides comprehensive Standard Operating Procedure (SOP) documentation, quality control guidance (Levey-Jennings and Westgard multirule charts), and hands-on onboarding.',
+        'Our field service engineers and clinical application specialists conduct scheduled performance audits, photometric grating alignments, and temperature mapping verifications to ensure that instrument output remains consistent across shifts, operators, and seasons.',
+      ],
+      highlights: [
+        'Built-in Levey-Jennings charts with automated Westgard rule evaluation',
+        'Comprehensive digital SOP library tailored to facility workflows',
+        'Scheduled preventive maintenance and optical alignment visits',
+        'Under 2-hour emergency technical response SLA for critical lines',
+      ],
       image: images.labExcellence,
     },
   ],
