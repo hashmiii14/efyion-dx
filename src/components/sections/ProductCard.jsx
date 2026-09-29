@@ -9,9 +9,9 @@ export default function ProductCard({ product, className = '' }) {
   return (
     <Link
       to={`/products/${product.slug}`}
-      className={`group flex h-full flex-col rounded-[1.75rem] border border-line bg-white p-3.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-violet-300 hover:shadow-lift ${className}`}
+      className={`group flex h-full flex-col rounded-[1.75rem] border border-line/80 bg-white p-3.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-violet-300/80 hover:shadow-[0_20px_40px_-15px_rgba(36,71,201,0.12)] ${className}`}
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-white border border-line/60">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-slate-50/50 border border-line/60 flex items-center justify-center">
         <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
           <SmartImage
             image={product.image}
@@ -20,7 +20,7 @@ export default function ProductCard({ product, className = '' }) {
           />
         </div>
         {category && (
-          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-navy-900 shadow-sm backdrop-blur">
+          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-navy-900 shadow-xs backdrop-blur-md border border-line/40">
             {category.name}
           </span>
         )}

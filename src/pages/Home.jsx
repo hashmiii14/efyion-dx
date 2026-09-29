@@ -101,51 +101,50 @@ function Hero() {
       <div className="container-site relative z-10 pt-[130px] pb-20 sm:pt-[150px] sm:pb-24 lg:pt-[170px] lg:pb-28">
         <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
           {/* Hero Copy — left side */}
-          <div className="lg:col-span-8 xl:col-span-7 anim-rise">
+          <div className="lg:col-span-8 xl:col-span-7">
             {/* Kicker Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 text-xs font-bold text-white/90 mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-violet-400 animate-pulse" />
+            <div className="hero-anim-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-white/95 mb-6 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse shadow-[0_0_8px_#c084fc]" />
               <span>{hero.kicker}</span>
             </div>
 
             {/* Headline */}
             <h1
-              className="text-[2.5rem] leading-[1.07] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
+              className="text-[2.5rem] leading-[1.06] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
               style={{ letterSpacing: '-0.035em' }}
             >
-              <span className="drop-shadow-md">Precision Diagnostics.</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-300 to-azure-400">
+              <span className="hero-anim-title-1 block drop-shadow-md">Precision Diagnostics.</span>
+              <span className="hero-anim-title-2 block text-gradient-shimmer mt-1">
                 Better Outcomes.
               </span>
             </h1>
 
             {/* Sub-text */}
-            <p className="mt-5 max-w-2xl text-base sm:text-lg text-white/80 leading-relaxed font-normal">
+            <p className="hero-anim-desc mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed font-normal">
               Equipping clinical laboratories, hospitals, and healthcare networks with
               high-throughput automated analyzers, standardized assay platforms, and dedicated application support.
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="hero-anim-cta mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <Button
                 to="/products"
                 variant="gradient"
-                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40"
+                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40 transition-all duration-300 hover:scale-[1.02]"
               >
                 Explore diagnostic systems
               </Button>
               <Button
                 to="/contact"
                 variant="outlineLight"
-                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold"
+                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-300"
               >
                 Request consultation
               </Button>
             </div>
 
             {/* Quick Metrics */}
-            <div className="mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 max-w-lg">
+            <div className="hero-anim-stats mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 max-w-lg">
               {[
                 { value: '400 T/H', label: 'Photometric Capacity' },
                 { value: '2.0 µL',  label: 'Micro-Volume Sample'  },
@@ -153,31 +152,42 @@ function Hero() {
               ].map(({ value, label }) => (
                 <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
                   <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
-                  <p className="text-xs font-semibold text-white/70 mt-0.5">{label}</p>
+                  <p className="text-xs font-semibold text-white/75 mt-0.5">{label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Floating Info Cards — right side, desktop only */}
-          <div className="hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end items-end pb-2">
-            <div className="flex flex-col gap-3.5 w-full max-w-[270px]">
-              <div className="flex items-center gap-3 rounded-2xl border border-white/20 bg-navy-950/60 backdrop-blur-xl p-4 shadow-2xl animate-float">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/25 text-violet-300 border border-violet-400/20">
-                  <Activity size={20} aria-hidden="true" />
+          {/* Floating Glass Info Cards — right side, desktop only */}
+          <div className="hero-anim-stats hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end items-end pb-2">
+            <div className="flex flex-col gap-3.5 w-full max-w-[285px]">
+              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-violet-500/25 text-violet-300 border border-violet-400/30">
+                  <Activity size={22} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-white">Multi-Channel Detection</p>
+                  <p className="text-sm font-bold text-white tracking-tight">Multi-Channel Detection</p>
                   <p className="text-xs font-medium text-white/70">Continuous STAT Access</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-2xl border border-white/20 bg-navy-950/60 backdrop-blur-xl p-4 shadow-2xl" style={{ animationDelay: '0.5s' }}>
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-azure-500/25 text-azure-300 border border-azure-400/20">
-                  <ShieldCheck size={20} aria-hidden="true" />
+
+              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float-delayed">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-azure-500/25 text-azure-300 border border-azure-400/30">
+                  <ShieldCheck size={22} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-white">CE-IVD Certified</p>
-                  <p className="text-xs font-medium text-white/70">ISO 13485 Quality Standards</p>
+                  <p className="text-sm font-bold text-white tracking-tight">CE-IVD & ISO 13485</p>
+                  <p className="text-xs font-medium text-white/70">Standardized Quality Control</p>
+                </div>
+              </div>
+
+              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float" style={{ animationDelay: '2.5s' }}>
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-500/25 text-emerald-300 border border-emerald-400/30">
+                  <Cpu size={22} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-white tracking-tight">Bi-Directional LIS Sync</p>
+                  <p className="text-xs font-medium text-white/70">Native HL7 / ASTM 1394</p>
                 </div>
               </div>
             </div>
@@ -196,14 +206,14 @@ function TrustStrip() {
   const { trustStrip } = home;
 
   return (
-    <section className="border-y border-line bg-white py-10 sm:py-12">
+    <section className="border-y border-line bg-gradient-to-b from-white via-slate-50/50 to-white py-10 sm:py-12">
       <div className="container-site">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {trustStrip.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <Reveal key={item.title} delay={idx * 80} className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-azure-50 text-violet-600 border border-azure-100/80 transition-transform duration-300 hover:scale-110">
+              <Reveal key={item.title} delay={idx * 80} className="flex items-start gap-4 p-3 rounded-2xl transition-colors hover:bg-white hover:shadow-xs border border-transparent hover:border-line/60">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-azure-50 text-violet-600 border border-azure-100/80 transition-transform duration-300 hover:scale-110 shadow-xs">
                   <Icon size={20} aria-hidden="true" />
                 </div>
                 <div>
@@ -410,10 +420,20 @@ function TechnologySection() {
 
   return (
     <section className="section bg-navy-950 text-white border-t border-navy-900 relative overflow-hidden">
+      {/* Background ambient sapphire & violet glow */}
+      <div
+        aria-hidden="true"
+        className="absolute -right-24 top-1/4 h-[30rem] w-[30rem] rounded-full bg-violet-600/20 blur-3xl pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -left-24 bottom-10 h-[26rem] w-[26rem] rounded-full bg-azure-600/20 blur-3xl pointer-events-none"
+      />
+
       <div className="container-site relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-400 bg-white/10 px-3 py-1 rounded-full border border-white/15">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-400 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 backdrop-blur-md">
               Instrumentation Architecture
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
@@ -429,7 +449,7 @@ function TechnologySection() {
                 const Icon = tp.icon;
                 return (
                   <Reveal key={tp.title} delay={idx * 60}>
-                    <div className="rounded-2xl bg-white/5 border border-white/10 p-4 transition-all duration-300 hover:bg-white/10 hover:border-violet-400/40">
+                    <div className="glass-card-dark rounded-2xl p-4.5 transition-all duration-300 hover:bg-white/12 hover:border-violet-400/40 hover:-translate-y-0.5">
                       <Icon size={20} className="text-violet-400 mb-2" aria-hidden="true" />
                       <h3 className="text-sm font-bold text-white">{tp.title}</h3>
                       <p className="mt-1 text-xs text-white/65 leading-relaxed">{tp.desc}</p>
@@ -448,7 +468,7 @@ function TechnologySection() {
 
           <div className="lg:col-span-5">
             <Reveal variant="scale">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/10 shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/15 shadow-2xl">
                 <SmartImage
                   image={slots.technologyImage}
                   label="Diagnostic Optical & Analytical Hardware"
@@ -486,29 +506,32 @@ function WorkflowSection() {
   return (
     <section className="section bg-white border-t border-line">
       <div className="container-site">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <Reveal variant="left">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
-                <SmartImage
-                  image={slots.workflowImage}
-                  label="Laboratory Sample Workflow"
-                />
-              </div>
-            </Reveal>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 lg:mb-16">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+              Structured Deployment
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              From Initial Assessment to Ongoing Care
+            </h2>
+            <p className="mt-3 text-base text-ink leading-relaxed">
+              A structured four-phase diagnostic pathway ensuring seamless equipment commissioning, CLSI validation runs, and continuous operational confidence.
+            </p>
           </div>
-
-          <div className="lg:col-span-7 order-1 lg:order-2">
-            <Reveal variant="right">
-              <SectionHeading
-                title="From Initial Assessment to Ongoing Care"
-                text="A structured four-phase pathway ensuring smooth instrument commissioning, validation, and long-term diagnostic confidence."
-                className="mb-8"
-              />
-              <Workflow />
-            </Reveal>
-          </div>
+          <Link
+            to="/solutions"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 hover:text-navy-900 transition-colors shrink-0"
+          >
+            <span>Explore solutions</span>
+            <ArrowRight size={16} />
+          </Link>
         </div>
+
+        <Reveal>
+          <div className="rounded-[2.5rem] border border-line bg-gradient-to-br from-mist/80 via-white to-azure-50/20 p-6 sm:p-10 lg:p-12 shadow-xs">
+            <Workflow />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

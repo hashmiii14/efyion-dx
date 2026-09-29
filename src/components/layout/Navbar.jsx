@@ -112,10 +112,10 @@ export default function Navbar() {
     <>
       <header
         ref={headerRef}
-        className={`sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-200 ${
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled || open
-            ? 'bg-white/95 backdrop-blur-md border-b border-line shadow-sm'
-            : 'bg-white border-b border-line/70'
+            ? 'bg-white/85 backdrop-blur-xl border-b border-navy-900/10 shadow-[0_4px_24px_rgba(11,17,82,0.06)]'
+            : 'bg-white/95 backdrop-blur-md border-b border-line/70'
         }`}
       >
         <div className="container-site flex h-[64px] sm:h-[70px] items-center justify-between gap-4">
@@ -168,7 +168,7 @@ export default function Navbar() {
               </NavLink>
 
               {activeDropdown === 'products' && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1.5 w-[560px] rounded-2xl border border-line bg-white p-4 shadow-lift z-50 animate-slideDown">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[560px] rounded-2xl border border-white/80 bg-white/95 backdrop-blur-xl p-4 shadow-[0_20px_50px_rgba(11,17,82,0.12)] z-50 animate-slideDown">
                   <div className="flex items-center justify-between border-b border-line pb-2 mb-2 px-1">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-violet-600">
                       Diagnostic Modalities
@@ -236,7 +236,7 @@ export default function Navbar() {
               </NavLink>
 
               {activeDropdown === 'solutions' && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1.5 w-[500px] rounded-2xl border border-line bg-white p-4 shadow-lift z-50 animate-slideDown">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[500px] rounded-2xl border border-white/80 bg-white/95 backdrop-blur-xl p-4 shadow-[0_20px_50px_rgba(11,17,82,0.12)] z-50 animate-slideDown">
                   <div className="flex items-center justify-between border-b border-line pb-2 mb-2 px-1">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-azure-600">
                       Clinical Settings
