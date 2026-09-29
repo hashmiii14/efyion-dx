@@ -243,7 +243,118 @@ export const slots = {
     alt: 'Healthcare Technology and digital diagnostic interface — Efyion Dx',
   }),
 
-  // ── 11. Dedicated Unique Slots for Each Resource Article ──
+  // ── 11. Dedicated Unique Slots for Audiences (Home & Solutions) ──
+  audienceLabSlot: createSlot({
+    slot: 'aud-lab',
+    label: 'Diagnostic Laboratories',
+    description: 'Clinical laboratory research scientists evaluating specimen tubes',
+    aspectRatio: '16/10',
+    src: '/images/lab-team-scientists-test-tube.webp',
+    alt: 'Clinical laboratory scientists conducting diagnostic testing — Efyion Dx',
+  }),
+
+  audienceHospitalSlot: createSlot({
+    slot: 'aud-hospital',
+    label: 'Hospitals & Health Networks',
+    description: 'Cleanroom laboratory with automated analysis screens and molecular diagnostics',
+    aspectRatio: '16/10',
+    src: '/images/lab-molecular-dual-monitor.webp',
+    alt: 'Hospital cleanroom laboratory workstation and clinical diagnostic displays — Efyion Dx',
+  }),
+
+  audienceClinicianSlot: createSlot({
+    slot: 'aud-clinician',
+    label: 'Healthcare Professionals',
+    description: 'Clinical diagnostic specialist with protective eyewear and test tubes',
+    aspectRatio: '16/10',
+    src: '/images/lab-scientist-goggles-tubes.webp',
+    alt: 'Healthcare diagnostic specialist preparing laboratory test tubes — Efyion Dx',
+  }),
+
+  audienceClinicalEnvSlot: createSlot({
+    slot: 'aud-clinical-env',
+    label: 'Clinical Environments & Outpatient',
+    description: 'Technician selecting blood collection tube from diagnostic rack beside microscope',
+    aspectRatio: '16/10',
+    src: '/images/lab-blood-tubes-microscope-rack.webp',
+    alt: 'Diagnostic blood collection tubes and clinical laboratory microscope — Efyion Dx',
+  }),
+
+  audienceResearchSlot: createSlot({
+    slot: 'aud-research',
+    label: 'Research & Biomedical Facilities',
+    description: 'Specialized optical microscopy and precision reagent test tubes',
+    aspectRatio: '16/10',
+    src: '/images/lab-blue-tubes-microscope.webp',
+    alt: 'Biomedical research microscopy and precision solution testing — Efyion Dx',
+  }),
+
+  // ── 12. Dedicated Unique Slots for Solutions Page Areas ──
+  solutionLabSlot: createSlot({
+    slot: 'sol-lab',
+    label: 'Laboratory Solutions Area',
+    description: 'Automated track robotics and continuous sample loading',
+    aspectRatio: '16/10',
+    src: '/images/workflow-automation.webp',
+    alt: 'Automated clinical laboratory sample workflow and track robotics — Efyion Dx',
+  }),
+
+  solutionClinicalSlot: createSlot({
+    slot: 'sol-clinical',
+    label: 'Clinical Diagnostics Area',
+    description: 'Barcoded clinical specimen tubes in laboratory accession rack',
+    aspectRatio: '16/10',
+    src: '/images/lab-barcoded-blood-tubes.webp',
+    alt: 'Clinical specimen tubes and rapid diagnostic processing — Efyion Dx',
+  }),
+
+  solutionNetworkSlot: createSlot({
+    slot: 'sol-network',
+    label: 'Healthcare Organisation Solutions Area',
+    description: 'Physician using connected healthcare tablet with real-time diagnostic reporting',
+    aspectRatio: '16/10',
+    src: '/images/tech-digital-health.webp',
+    alt: 'Connected digital health informatics and multi-site laboratory network — Efyion Dx',
+  }),
+
+  // ── 13. Dedicated Unique Slots for Technology Page Sections ──
+  techInstrumentationSlot: createSlot({
+    slot: 'tech-instrumentation',
+    label: 'Diagnostic Instrumentation',
+    description: 'High-precision multi-parameter digital optical microscope workstation',
+    aspectRatio: '16/10',
+    src: '/images/product-microscope.webp',
+    alt: 'Precision diagnostic optical equipment and microscope platform — Efyion Dx',
+  }),
+
+  techInnovationSlot: createSlot({
+    slot: 'tech-innovation',
+    label: 'Workflow Innovation',
+    description: 'Precision opto-mechanical laser lens assembly and optical grating',
+    aspectRatio: '16/10',
+    src: '/images/tech-optics-lens.webp',
+    alt: 'Opto-mechanical laser lens engineering and precision analytical optics — Efyion Dx',
+  }),
+
+  techValidationSlot: createSlot({
+    slot: 'tech-validation',
+    label: 'Analytical Verification & Validation',
+    description: 'Quality control calibrator records, analytical standards, and documentation',
+    aspectRatio: '16/10',
+    src: '/images/quality-qc.webp',
+    alt: 'Quality control calibration standards and analytical validation — Efyion Dx',
+  }),
+
+  techExcellenceSlot: createSlot({
+    slot: 'tech-excellence',
+    label: 'Laboratory Operational Excellence',
+    description: 'Digital laboratory informatics and real-time QC monitoring middleware',
+    aspectRatio: '16/10',
+    src: '/images/product-informatics.webp',
+    alt: 'Laboratory informatics middleware and QC operational tracking — Efyion Dx',
+  }),
+
+  // ── 14. Dedicated Unique Slots for Each Resource Article ──
   resourceSlot1: createSlot({
     slot: 'resource-1',
     label: 'Precision Diagnostics in Everyday Care',
@@ -254,8 +365,8 @@ export const slots = {
   resourceSlot2: createSlot({
     slot: 'resource-2',
     label: 'Selecting Next-Generation Analysers',
-    src: '/images/lab-molecular-dual-monitor.webp',
-    alt: 'Laboratory cleanroom workstation with automated analysis screens — Efyion Dx',
+    src: '/images/product-immunoassay.webp',
+    alt: 'Advanced automated chemiluminescent immunoassay analyzer workstation — Efyion Dx',
   }),
 
   resourceSlot3: createSlot({
@@ -341,12 +452,12 @@ export const images = {
   product5: slots.productImage5,
   product6: slots.productImage6,
 
-  // Audiences (Solutions & Home) - 100% unique per card
-  audienceLab: slots.categoryLabSlot,
-  audienceHospital: slots.solutionsImage,
-  audienceClinician: slots.supportImage,
-  audienceClinicalEnv: slots.categoryPointOfCareSlot,
-  audienceResearch: slots.aboutFacility,
+  // Audiences (Solutions & Home) - 100% unique per card, featuring new clinical photos
+  audienceLab: slots.audienceLabSlot,
+  audienceHospital: slots.audienceHospitalSlot,
+  audienceClinician: slots.audienceClinicianSlot,
+  audienceClinicalEnv: slots.audienceClinicalEnvSlot,
+  audienceResearch: slots.audienceResearchSlot,
 
   // Workflow steps
   workflowIntake: slots.categoryPointOfCareSlot,
@@ -355,10 +466,10 @@ export const images = {
   workflowInsight: slots.categoryTechSlot,
 
   // Technology sections - 100% unique per section
-  technology: slots.resourceSlot8, // lab-blue-tubes-microscope
-  innovation: slots.workflowImage,   // workflow-automation
-  researchDev: slots.categoryInstrumentsSlot, // lab-microscope-research
-  labExcellence: slots.qualityImage, // quality-qc
+  technology: slots.techInstrumentationSlot,
+  innovation: slots.techInnovationSlot,
+  researchDev: slots.techValidationSlot,
+  labExcellence: slots.techExcellenceSlot,
 
   qualityControl: slots.qualityImage,
   supportEngineer: slots.supportImage,
@@ -371,13 +482,13 @@ export const images = {
   resourceNews: slots.resourceSlot7,
   resourceDownloads: slots.resourceSlot9,
 
-  // Solutions page areas
-  solutionLab: slots.workflowImage,
-  solutionClinical: slots.categoryClinicalSlot,
-  solutionNetwork: slots.resourceSlot2, // lab-molecular-dual-monitor
+  // Solutions page areas - 100% unique per area
+  solutionLab: slots.solutionLabSlot,
+  solutionClinical: slots.solutionClinicalSlot,
+  solutionNetwork: slots.solutionNetworkSlot,
 
   techOptics: slots.technologyImage,
-  techSampleIntegrity: slots.resourceSlot6, // lab-barcoded-blood-tubes
-  techLims: slots.resourceSlot5, // tech-digital-health
+  techSampleIntegrity: slots.resourceSlot6,
+  techLims: slots.resourceSlot5,
   contactConsultation: slots.contactImage,
 };
