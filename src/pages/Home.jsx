@@ -202,87 +202,111 @@ function AboutSection() {
   return (
     <section className="section bg-white border-t border-line">
       <div className="container-site">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Media Slot */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <Reveal variant="left">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
-                <SmartImage
-                  image={slots.aboutImage}
-                  label="Clinical Diagnostic Operations"
-                />
+        {/* 2-Column Hero Story — Perfectly Balanced Heights */}
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Left Column: Image Frame */}
+          <Reveal variant="left">
+            <div className="relative mx-auto w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+              <SmartImage
+                image={slots.aboutImage}
+                label="Clinical Diagnostic Operations"
+              />
+            </div>
+          </Reveal>
+
+          {/* Right Column: Editorial Narrative */}
+          <Reveal variant="right">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+              {about.kicker || 'Clinical Diagnostics & Laboratory Solutions'}
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+              {about.title}
+            </h2>
+            <p className="lead mt-4 font-medium text-navy-900 leading-relaxed">{about.lead}</p>
+
+            <div className="mt-5 space-y-3.5 text-base text-ink leading-relaxed font-normal">
+              <p>{about.paragraphs[0]}</p>
+              <p>{about.paragraphs[1]}</p>
+            </div>
+
+            {/* Highlights List */}
+            <ul className="mt-6 space-y-2.5">
+              {about.highlights.slice(0, 3).map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-violet-50 text-violet-600">
+                    <Check size={13} strokeWidth={2.5} />
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Button to="/about" variant="outline" className="!min-h-[44px] text-sm font-bold">
+                {about.cta?.label || 'Learn more about Efyion Dx'}
+              </Button>
+              <Button to="/contact" variant="ghost" className="!min-h-[44px] text-sm font-bold text-azure-600 hover:text-navy-900">
+                Discuss your laboratory setup →
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Full-Width Operational Profile Bar (Page 2 Architecture) */}
+        <Reveal delay={100}>
+          <dl className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4 shadow-xs">
+            {about.profile.map((row) => (
+              <div key={row.label} className="bg-white p-5 sm:p-6 transition-colors hover:bg-mist/30">
+                <dt className="text-xs font-semibold text-ink/75 uppercase tracking-wider">{row.label}</dt>
+                <dd className="mt-1.5 font-extrabold text-sm sm:text-base text-navy-900">
+                  {row.value}
+                </dd>
               </div>
+            ))}
+          </dl>
+        </Reveal>
 
-              {/* Operating Profile Indicators from Page 2 */}
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                {about.profile.map((p) => (
-                  <div key={p.label} className="rounded-xl border border-line/80 bg-mist/60 p-3.5">
-                    <dt className="text-[11px] font-bold uppercase tracking-wider text-ink/70">{p.label}</dt>
-                    <dd className="mt-1 text-xs sm:text-sm font-bold text-navy-900 leading-snug">{p.value}</dd>
-                  </div>
-                ))}
+        {/* Full-Width Balanced Vision & Mission Row (Page 2 Architecture) */}
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Reveal delay={120}>
+            <div className="h-full rounded-[2rem] bg-navy-900 text-white p-8 sm:p-10 border border-navy-800 shadow-lift flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-violet-300 bg-white/10 px-3 py-1 rounded-full border border-white/15">
+                  Corporate Direction
+                </span>
+                <h3 className="mt-5 text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                  {about.vision.title}
+                </h3>
+                <p className="mt-3 text-base text-white/80 leading-relaxed font-normal">
+                  {about.vision.text}
+                </p>
               </div>
-            </Reveal>
-          </div>
-
-          {/* Content */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
-            <Reveal variant="right">
-              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
-                {about.kicker || 'Clinical Diagnostics & Laboratory Solutions'}
-              </span>
-              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-                {about.title}
-              </h2>
-              <p className="lead mt-4 font-medium text-navy-900 leading-relaxed">{about.lead}</p>
-
-              {/* Multi-Paragraph Narrative from Page 2 */}
-              <div className="mt-5 space-y-3.5 text-base text-ink leading-relaxed font-normal">
-                {about.paragraphs.map((p, idx) => (
-                  <p key={idx}>{p}</p>
-                ))}
+              <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-2 text-xs font-semibold text-violet-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
+                <span>Empowering Clinical Diagnostic Decision-Making</span>
               </div>
+            </div>
+          </Reveal>
 
-              {/* Highlights List */}
-              <ul className="mt-6 space-y-2.5">
-                {about.highlights.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
-                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-violet-50 text-violet-600">
-                      <Check size={13} strokeWidth={2.5} />
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Vision & Mission Cards from Page 2 */}
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-line bg-gradient-to-br from-mist to-white p-4.5">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-violet-600" />
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900">{about.vision.title}</h3>
-                  </div>
-                  <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">{about.vision.text}</p>
-                </div>
-                <div className="rounded-2xl border border-line bg-gradient-to-br from-mist to-white p-4.5">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-azure-600" />
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900">{about.mission.title}</h3>
-                  </div>
-                  <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">{about.mission.text}</p>
-                </div>
+          <Reveal delay={160}>
+            <div className="h-full rounded-[2rem] bg-gradient-to-br from-mist via-white to-azure-50/30 p-8 sm:p-10 border border-line shadow-xs flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+                  Operational Purpose
+                </span>
+                <h3 className="mt-5 text-xl sm:text-2xl font-extrabold tracking-tight text-navy-900">
+                  {about.mission.title}
+                </h3>
+                <p className="mt-3 text-base text-ink leading-relaxed font-normal">
+                  {about.mission.text}
+                </p>
               </div>
-
-              <div className="mt-8 flex items-center gap-4">
-                <Button to="/about" variant="outline" className="!min-h-[44px] text-sm font-bold">
-                  {about.cta?.label || 'Learn more about Efyion Dx'}
-                </Button>
-                <Button to="/contact" variant="ghost" className="!min-h-[44px] text-sm font-bold text-azure-600 hover:text-navy-900">
-                  Discuss your laboratory setup →
-                </Button>
+              <div className="mt-6 pt-5 border-t border-line flex items-center gap-2 text-xs font-semibold text-azure-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-azure-600" />
+                <span>Standardized Consumables & Application Partnership</span>
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

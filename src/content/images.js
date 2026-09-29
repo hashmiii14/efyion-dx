@@ -330,28 +330,28 @@ export const slots = {
   techInnovationSlot: createSlot({
     slot: 'tech-innovation',
     label: 'Workflow Innovation',
-    description: 'Precision opto-mechanical laser lens assembly and optical grating',
+    description: 'High-throughput automated laboratory workflow track and specimen management',
     aspectRatio: '16/10',
-    src: '/images/tech-optics-lens.webp',
-    alt: 'Opto-mechanical laser lens engineering and precision analytical optics — Efyion Dx',
+    src: '/images/workflow-automation.webp',
+    alt: 'High-throughput automated laboratory workflow track and specimen management — Efyion Dx',
   }),
 
   techValidationSlot: createSlot({
     slot: 'tech-validation',
     label: 'Analytical Verification & Validation',
-    description: 'Quality control calibrator records, analytical standards, and documentation',
+    description: 'Clinical laboratory specialist validating analytical assay protocols and test tubes',
     aspectRatio: '16/10',
-    src: '/images/quality-qc.webp',
-    alt: 'Quality control calibration standards and analytical validation — Efyion Dx',
+    src: '/images/lab-scientist-goggles-tubes.webp',
+    alt: 'Clinical laboratory specialist validating analytical assay protocols — Efyion Dx',
   }),
 
   techExcellenceSlot: createSlot({
     slot: 'tech-excellence',
     label: 'Laboratory Operational Excellence',
-    description: 'Digital laboratory informatics and real-time QC monitoring middleware',
+    description: 'Clinical laboratory informatics cleanroom workstation and dual-monitor monitoring',
     aspectRatio: '16/10',
-    src: '/images/product-informatics.webp',
-    alt: 'Laboratory informatics middleware and QC operational tracking — Efyion Dx',
+    src: '/images/lab-molecular-dual-monitor.webp',
+    alt: 'Clinical laboratory informatics cleanroom workstation and dual-monitor monitoring — Efyion Dx',
   }),
 
   // ── 14. Dedicated Unique Slots for Each Resource Article ──
