@@ -24,7 +24,7 @@ export default function CategoryCard({ category, feature = false, className = ''
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/95 via-navy-900/60 to-navy-900/10"
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent"
         />
         <span className="mb-auto grid h-11 w-11 place-items-center rounded-xl bg-white/15 backdrop-blur text-white transition-transform duration-300 group-hover:scale-110">
           <Icon size={22} aria-hidden="true" />
@@ -61,7 +61,7 @@ export default function CategoryCard({ category, feature = false, className = ''
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"
+          className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity"
         />
         <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-navy-900 shadow-sm backdrop-blur transition-transform duration-300 group-hover:scale-110">
           <Icon size={20} aria-hidden="true" />
