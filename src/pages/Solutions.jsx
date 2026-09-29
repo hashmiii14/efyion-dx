@@ -97,15 +97,9 @@ export default function Solutions() {
                 key={a.slug}
                 id={a.slug}
                 delay={(i % 3) * 70}
-                className={`scroll-mt-28 overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-xs ${
-                  i === 0 ? 'sm:col-span-2 lg:col-span-1 lg:row-span-2' : ''
-                }`}
+                className="scroll-mt-28 overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-xs flex flex-col justify-between"
               >
-                <div
-                  className={`relative overflow-hidden bg-azure-100 ${
-                    i === 0 ? 'aspect-[16/10] lg:aspect-[4/5]' : 'aspect-[16/10]'
-                  }`}
-                >
+                <div className="relative overflow-hidden bg-slate-50 aspect-[16/10]">
                   <SmartImage image={a.image} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
                 <div className="p-6 sm:p-7">

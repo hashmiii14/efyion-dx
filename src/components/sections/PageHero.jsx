@@ -36,7 +36,7 @@ export default function PageHero({ title, text, image, crumbs = [], children }) 
         </div>
         {image && (
           <div className="lg:col-span-5">
-            <div className="anim-tube tube frame-arch relative mx-auto w-full max-w-md overflow-hidden bg-azure-100 shadow-lift" style={{ '--delay': '120ms' }}>
+            <div className="anim-rise relative mx-auto w-full max-w-lg aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[2rem] border border-line/80 bg-white shadow-lift" style={{ '--delay': '120ms' }}>
               <SmartImage image={image} priority sizes="(min-width: 1024px) 40vw, 90vw" />
             </div>
           </div>

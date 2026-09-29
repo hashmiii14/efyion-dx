@@ -69,8 +69,8 @@ export default function ProductDetail() {
               <Button href="#technical" variant="outline">Technical specifications</Button>
             </div>
           </div>
-          <div className="anim-rise relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line" style={{ '--delay': '150ms' }}>
-            <SmartImage image={product.image} priority label={product.name} />
+          <div className="anim-rise relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line p-3 sm:p-5 flex items-center justify-center" style={{ '--delay': '150ms' }}>
+            <SmartImage image={product.image} priority objectFit="contain" label={product.name} />
           </div>
         </div>
       </section>

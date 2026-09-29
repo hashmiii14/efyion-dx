@@ -14,6 +14,8 @@ export default function SmartImage({
   priority = false,
   label,
   dark = false,
+  objectFit,
+  objectPosition,
 }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -28,9 +30,15 @@ export default function SmartImage({
   // If image has a genuine valid src and hasn't failed to load
   if (image && image.src && !failed) {
     const webpSrc = image.src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+    
+    // Automatically detect product hardware images or respect explicit objectFit
+    const isProduct = objectFit === 'contain' || (image.objectFit === 'contain') || (objectFit !== 'cover' && (image.src.includes('/product-') || image.src.includes('product-mispa')));
+    const fitClass = isProduct ? 'object-contain' : (objectFit === 'contain' ? 'object-contain' : 'object-cover');
+    const posClass = objectPosition || image.objectPosition || 'object-center';
+
     return (
-      <div className={`relative h-full w-full overflow-hidden bg-slate-50 ${className}`}>
-        <picture>
+      <div className={`relative h-full w-full overflow-hidden ${isProduct ? 'bg-white p-2.5 sm:p-3.5 flex items-center justify-center' : 'bg-slate-50'} ${className}`}>
+        <picture className={isProduct ? 'h-full w-full flex items-center justify-center' : 'h-full w-full'}>
           <source srcSet={webpSrc} type="image/webp" />
           <img
             ref={imgRef}
@@ -42,7 +50,7 @@ export default function SmartImage({
             decoding="async"
             onLoad={() => setLoaded(true)}
             onError={() => setFailed(true)}
-            className={`h-full w-full object-cover transition-opacity duration-300 ${
+            className={`h-full w-full ${fitClass} ${posClass} transition-opacity duration-300 ${
               loaded ? 'opacity-100' : 'opacity-90'
             }`}
           />
