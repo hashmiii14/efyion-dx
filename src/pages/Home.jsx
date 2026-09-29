@@ -9,6 +9,7 @@ import {
   Activity,
   Microscope,
   FileText,
+  ChevronDown,
 } from 'lucide-react';
 import { usePageMeta } from '../hooks/usePageMeta';
 import Button from '../components/ui/Button';
@@ -22,7 +23,7 @@ import Workflow from '../components/sections/Workflow';
 import CTASection from '../components/sections/CTASection';
 import { home } from '../content/pages';
 import { categories, products } from '../content/catalog';
-import { resources } from '../content/resources';
+import { resources, faqs } from '../content/resources';
 import { slots } from '../content/images';
 
 export default function Home() {
@@ -67,7 +68,10 @@ export default function Home() {
       {/* 11. Knowledge Hub & Technical Publications */}
       <ResourcesSection />
 
-      {/* 12. Bottom Conversion Consultation Prompt */}
+      {/* 12. Frequently Asked Questions */}
+      <HomeFAQSection />
+
+      {/* 13. Bottom Conversion Consultation Prompt */}
       <CTASection />
     </>
   );
@@ -99,98 +103,60 @@ function Hero() {
 
       {/* Hero Content */}
       <div className="container-site relative z-10 pt-[130px] pb-20 sm:pt-[150px] sm:pb-24 lg:pt-[170px] lg:pb-28">
-        <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          {/* Hero Copy — left side */}
-          <div className="lg:col-span-8 xl:col-span-7">
-            {/* Kicker Badge */}
-            <div className="hero-anim-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-white/95 mb-6 shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse shadow-[0_0_8px_#c084fc]" />
-              <span>{hero.kicker}</span>
-            </div>
-
-            {/* Headline */}
-            <h1
-              className="text-[2.5rem] leading-[1.06] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
-              style={{ letterSpacing: '-0.035em' }}
-            >
-              <span className="hero-anim-title-1 block drop-shadow-md">Precision Diagnostics.</span>
-              <span className="hero-anim-title-2 block text-gradient-shimmer mt-1">
-                Better Outcomes.
-              </span>
-            </h1>
-
-            {/* Sub-text */}
-            <p className="hero-anim-desc mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed font-normal">
-              Equipping clinical laboratories, hospitals, and healthcare networks with
-              high-throughput automated analyzers, standardized assay platforms, and dedicated application support.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="hero-anim-cta mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Button
-                to="/products"
-                variant="gradient"
-                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40 transition-all duration-300 hover:scale-[1.02]"
-              >
-                Explore diagnostic systems
-              </Button>
-              <Button
-                to="/contact"
-                variant="outlineLight"
-                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-300"
-              >
-                Request consultation
-              </Button>
-            </div>
-
-            {/* Quick Metrics */}
-            <div className="hero-anim-stats mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 max-w-lg">
-              {[
-                { value: '400 T/H', label: 'Photometric Capacity' },
-                { value: '2.0 µL',  label: 'Micro-Volume Sample'  },
-                { value: 'HL7/ASTM', label: 'Bi-Directional LIS'  },
-              ].map(({ value, label }) => (
-                <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
-                  <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
-                  <p className="text-xs font-semibold text-white/75 mt-0.5">{label}</p>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-3xl lg:max-w-4xl">
+          {/* Kicker Badge */}
+          <div className="hero-anim-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-white/95 mb-6 shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse shadow-[0_0_8px_#c084fc]" />
+            <span>{hero.kicker}</span>
           </div>
 
-          {/* Floating Glass Info Cards — right side, desktop only */}
-          <div className="hero-anim-stats hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end items-end pb-2">
-            <div className="flex flex-col gap-3.5 w-full max-w-[285px]">
-              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-violet-500/25 text-violet-300 border border-violet-400/30">
-                  <Activity size={22} aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-white tracking-tight">Multi-Channel Detection</p>
-                  <p className="text-xs font-medium text-white/70">Continuous STAT Access</p>
-                </div>
-              </div>
+          {/* Headline */}
+          <h1
+            className="text-[2.5rem] leading-[1.06] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
+            style={{ letterSpacing: '-0.035em' }}
+          >
+            <span className="hero-anim-title-1 block drop-shadow-md">Precision Diagnostics.</span>
+            <span className="hero-anim-title-2 block text-gradient-shimmer mt-1">
+              Better Outcomes.
+            </span>
+          </h1>
 
-              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float-delayed">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-azure-500/25 text-azure-300 border border-azure-400/30">
-                  <ShieldCheck size={22} aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-white tracking-tight">CE-IVD & ISO 13485</p>
-                  <p className="text-xs font-medium text-white/70">Standardized Quality Control</p>
-                </div>
-              </div>
+          {/* Sub-text */}
+          <p className="hero-anim-desc mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed font-normal">
+            Equipping clinical laboratories, hospitals, and healthcare networks with
+            high-throughput automated analyzers, standardized assay platforms, and dedicated application support.
+          </p>
 
-              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float" style={{ animationDelay: '2.5s' }}>
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-500/25 text-emerald-300 border border-emerald-400/30">
-                  <Cpu size={22} aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-white tracking-tight">Bi-Directional LIS Sync</p>
-                  <p className="text-xs font-medium text-white/70">Native HL7 / ASTM 1394</p>
-                </div>
+          {/* CTA Buttons */}
+          <div className="hero-anim-cta mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <Button
+              to="/products"
+              variant="gradient"
+              className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40 transition-all duration-300 hover:scale-[1.02]"
+            >
+              Explore diagnostic systems
+            </Button>
+            <Button
+              to="/contact"
+              variant="outlineLight"
+              className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-300"
+            >
+              Request consultation
+            </Button>
+          </div>
+
+          {/* Quick Metrics */}
+          <div className="hero-anim-stats mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-6 max-w-lg">
+            {[
+              { value: '400 T/H', label: 'Photometric Capacity' },
+              { value: '2.0 µL',  label: 'Micro-Volume Sample'  },
+              { value: 'HL7/ASTM', label: 'Bi-Directional LIS'  },
+            ].map(({ value, label }) => (
+              <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
+                <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
+                <p className="text-xs font-semibold text-white/75 mt-0.5">{label}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -702,6 +668,91 @@ function ResourcesSection() {
               </article>
             </Reveal>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** 12. FREQUENTLY ASKED QUESTIONS */
+function HomeFAQSection() {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? -1 : index);
+  };
+
+  return (
+    <section className="section bg-white border-t border-line">
+      <div className="container-site">
+        <div className="max-w-3xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-12 sm:mb-16">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+                Frequently Asked Questions
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="mt-4 text-base text-ink max-w-xl mx-auto">
+                Practical information regarding our diagnostic instruments, reagent supply reliability, and technical support.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="space-y-3.5">
+            {faqs.map((faq, idx) => {
+              const isOpen = openIndex === idx;
+              return (
+                <Reveal key={faq.q} delay={idx * 40}>
+                  <div
+                    className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                      isOpen
+                        ? 'border-violet-300 bg-slate-50/80 shadow-xs'
+                        : 'border-line bg-white hover:border-violet-200'
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggleFAQ(idx)}
+                      className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-base sm:text-lg font-bold text-navy-900 pr-4">
+                        {faq.q}
+                      </span>
+                      <span
+                        className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform duration-200 ${
+                          isOpen
+                            ? 'bg-violet-600 text-white rotate-180'
+                            : 'bg-mist text-navy-900'
+                        }`}
+                      >
+                        <ChevronDown size={18} aria-hidden="true" />
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-sm sm:text-base text-ink leading-relaxed border-t border-line/40 mt-1">
+                        <p>{faq.a}</p>
+                      </div>
+                    )}
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal delay={150}>
+            <div className="mt-12 rounded-2xl bg-azure-50/70 border border-azure-100 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-navy-900">Have a specific question about your laboratory setup?</h3>
+                <p className="text-xs sm:text-sm text-ink mt-1">Our application specialists and biomedical team are available to discuss your workflow.</p>
+              </div>
+              <Button to="/contact" variant="primary" className="shrink-0 text-xs sm:text-sm font-bold">
+                Contact our team
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

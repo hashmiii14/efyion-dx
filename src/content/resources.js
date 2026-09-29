@@ -21,7 +21,7 @@ export const resources = [
     slug: 'diagnostics-in-everyday-care',
     title: 'The Vital Role of Precision Diagnostics in Clinical Decision-Making',
     category: 'insights',
-    image: images.resourceInsights,
+    image: images.resourceSlot1,
     excerpt: 'An exploration of how timely, standardized laboratory findings reduce clinical uncertainty and support prompt therapeutic interventions across acute and routine care.',
     body: [
       'Clinical decisions rely fundamentally on the fidelity of laboratory data. In modern healthcare environments, over 70% of clinical decisions involve diagnostic testing, making analytical accuracy not merely an operational metric, but a cornerstone of patient care.',
@@ -33,7 +33,7 @@ export const resources = [
     slug: 'choosing-laboratory-solutions',
     title: 'A Strategic Guide for Laboratories Selecting Next-Generation Analysers',
     category: 'articles',
-    image: images.resourceLabGuide,
+    image: images.resourceSlot2,
     excerpt: 'Key considerations for laboratory directors evaluating instrument footprint, reagent stability, walk-away automation, and bidirectional LIS integration.',
     body: [
       'Upgrading or introducing diagnostic platforms into an established laboratory requires balancing multiple operational demands: workload volume, menu flexibility, technician staffing, and compliance mandates.',
@@ -45,7 +45,7 @@ export const resources = [
     slug: 'liquid-stable-vs-reconstituted-reagents',
     title: 'Liquid-Stable vs. Lyophilized Reagents: A Laboratory Efficiency & TCO Study',
     category: 'technical',
-    image: images.resourceTechnical,
+    image: images.resourceSlot3,
     excerpt: 'Examining how ready-to-use liquid-stable chemistry formulations eliminate deionized water pipetting errors, reduce preparation overhead, and extend onboard stability.',
     body: [
       'Manual reagent reconstitution remains one of the most overlooked sources of pre-analytical variation in busy clinical laboratories. Variations in deionized water quality, technician pipetting technique, and dissolution delays introduce subtle calibration shifts.',
@@ -57,7 +57,7 @@ export const resources = [
     slug: 'iso-15189-accreditation-guide',
     title: 'Navigating ISO 15189 Accreditation: Electronic Audit Trails & QC Traceability',
     category: 'articles',
-    image: images.resourceQuality,
+    image: images.resourceSlot4,
     excerpt: 'A comprehensive operational framework for laboratory supervisors preparing for ISO 15189 quality inspections using automated Levey-Jennings QC tracking.',
     body: [
       'ISO 15189 accreditation demands complete, uninterrupted traceability from specimen collection through instrument calibration to report delivery.',
@@ -69,7 +69,7 @@ export const resources = [
     slug: 'bidirectional-lis-interfacing',
     title: 'Bidirectional LIS Interfacing: Reducing Clerical Errors and Turnaround Time',
     category: 'insights',
-    image: images.resourceInsights,
+    image: images.resourceSlot5,
     excerpt: 'How native ASTM 1394 and HL7 query-host protocols streamline specimen accessioning, eliminate manual worklist entry, and accelerate critical STAT reporting.',
     body: [
       'Manual specimen entry onto analyzer consoles introduces unnecessary delay and clerical error risk into high-throughput testing environments.',
@@ -81,7 +81,7 @@ export const resources = [
     slug: 'pediatric-micro-sampling',
     title: 'Pediatric & Geriatric Micro-Sampling: Conserving Precious Specimen Volumes',
     category: 'technical',
-    image: images.resourceTechnical,
+    image: images.resourceSlot6,
     excerpt: 'Overcoming pre-analytical volume limitations in acute neonatal and geriatric care through precision nanoliter aspiration and micro-volume cuvette optics.',
     body: [
       'Drawing venous blood from neonates, pediatric patients, and oncology patients undergoing chemotherapy presents severe clinical challenges.',
@@ -93,7 +93,7 @@ export const resources = [
     slug: 'efyion-dx-website-launch',
     title: 'Introducing Efyion Dx: Advancing Precision Diagnostics',
     category: 'news',
-    image: images.resourceNews,
+    image: images.resourceSlot7,
     excerpt: 'The digital hub for Efyion Dx solutions, providing laboratories and healthcare professionals with direct access to our diagnostic portfolio and consultation channels.',
     body: [
       'We are pleased to introduce the official Efyion Dx platform, created to connect healthcare providers, diagnostic laboratories, and researchers with precision diagnostic technologies.',
@@ -105,7 +105,7 @@ export const resources = [
     slug: 'quality-in-the-laboratory',
     title: 'Why Analytical Consistency Matters: Quality Control in Modern Labs',
     category: 'insights',
-    image: images.resourceQuality,
+    image: images.resourceSlot8,
     excerpt: 'Examining internal quality control procedures, calibrator traceability, and Westgard multi-rules that safeguard diagnostic integrity.',
     body: [
       'Reproducibility is the benchmark of clinical laboratory excellence. Even minor drift in assay calibration can lead to systemic reporting errors, affecting clinical interpretations.',
@@ -117,7 +117,7 @@ export const resources = [
     slug: 'product-documents',
     title: 'Diagnostic Product Guides & Technical Parameter Sheets',
     category: 'downloads',
-    image: images.resourceDownloads,
+    image: images.resourceSlot9,
     excerpt: 'Downloadable system summaries, assay parameter sheets, and consumable catalogs available for laboratory procurement teams.',
     body: [
       'Our downloadable library includes system brochures, technical parameter sheets, and consumable specifications to assist procurement committees and laboratory directors.',

@@ -4,27 +4,32 @@
  * 100% Authentic Diagnostic Photography with Zero Duplication.
  * All AI-generated images have been eliminated.
  *
- * Distinct Real Image Assignments (19 Dedicated Assets):
- * 1. Hero Showcase: /images/hero-lab.webp (Scientists in bright clinical lab)
- * 2. About Operations: /images/about-lab.webp (Diagnostic testing facility)
- * 3. Diagnostic Facility: /images/lab-microscope-research.webp (Cleanroom & research facility)
- * 4. Technology & Optics: /images/tech-optics.webp (Precision optical lenses & sapphire blue bokeh)
- * 5. Care Settings & Hospital Labs: /images/lab-pathologist-microscope.webp (Pathologist with compound microscope & reagents)
- * 6. Workflow Automation: /images/workflow-automation.webp (Automated lab track TLA system)
- * 7. Quality Assurance: /images/quality-qc.webp (Calibrator standards & C.O.A. records)
- * 8. Support Engineering: /images/support-engineer.webp (Biomedical engineer servicing analyzer)
- * 9. Product 1 (ChemTrack 400): /images/product-analyzer.webp (Automated Chemistry Analyzer)
- * 10. Product 2 (Mispa HX 88): /images/product-mispa-hx88.webp (6-Part Hematology Analyzer with RET + IPF)
- * 11. Product 3 (Mispa i121): /images/product-mispa-i121.webp (Chemiluminescent Immunoassay Analyzer Workstation)
- * 12. Product 4 (Rapid POCT): /images/product-poct.webp (iCHROMA POCT Device with cartridges)
- * 13. Product 5 (Mispa i60): /images/product-mispa-i60.webp (Benchtop Chemiluminescent Immunoassay Analyzer)
- * 14. Product 6 (Informatics & Ecosystem): /images/tech-digital-health.webp (Connected digital healthcare & LIS)
- * 15. Cat 1 (Clinical): /images/lab-scientist-pipette.webp (Female scientist pipetting in lab)
- * 16. Cat 2 (Lab Solutions): /images/lab-microscope-culture.webp (Microscope culture preparation)
- * 17. Cat 3 (Instruments): /images/lab-microscope-research.webp (Scientist at research microscope)
- * 18. Cat 4 (Reagents): /images/lab-reagent-tubes.webp (Reagent vials and microcentrifuge rack)
- * 19. Cat 5 (Point of Care): /images/lab-specimen-tubes.webp (Diagnostic specimen collection tubes in racks)
- * 20. Cat 6 (Technology): /images/lab-digital-diagnostics.webp (Digital diagnostic interface)
+ * Dedicated Real Image Assets:
+ * 1.  Hero Showcase: /images/hero-lab.webp
+ * 2.  About Operations: /images/about-lab.webp
+ * 3.  Diagnostic Facility: /images/lab-scientists-microscope-hairnet.webp
+ * 4.  Technology & Optics Macro: /images/tech-optics.webp
+ * 5.  Care Settings & Hospital Labs: /images/lab-pathologist-microscope.webp
+ * 6.  Workflow Automation: /images/workflow-automation.webp
+ * 7.  Quality Assurance: /images/quality-qc.webp
+ * 8.  Support Engineering: /images/support-engineer.webp
+ * 9.  Product 1 (ChemTrack 400): /images/product-analyzer.webp
+ * 10. Product 2 (Mispa HX 88): /images/product-mispa-hx88.webp
+ * 11. Product 3 (Mispa i121): /images/product-mispa-i121.webp
+ * 12. Product 4 (Mispa HX 80): /images/product-mispa-hx80.webp
+ * 13. Product 5 (Mispa i60): /images/product-mispa-i60.webp
+ * 14. Product 6 (Rapid POCT): /images/product-poct.webp
+ * 15. Cat 1 (Clinical): /images/lab-scientist-pipette.webp
+ * 16. Cat 2 (Lab Solutions): /images/lab-microscope-culture.webp
+ * 17. Cat 3 (Instruments): /images/lab-microscope-research.webp
+ * 18. Cat 4 (Reagents): /images/lab-reagent-tubes.webp
+ * 19. Cat 5 (Point of Care): /images/lab-specimen-tubes.webp
+ * 20. Cat 6 (Technology): /images/lab-digital-diagnostics.webp
+ * 21. Digital Health & LIS: /images/tech-digital-health.webp
+ * 22. Barcoded Specimen Accession: /images/lab-barcoded-blood-tubes.webp
+ * 23. Molecular Cleanroom Workstation: /images/lab-molecular-dual-monitor.webp
+ * 24. Precision Testing Tubes: /images/lab-blue-tubes-microscope.webp
+ * 25. Liquid-Stable Reagents: /images/product-reagents.webp
  */
 
 // Helper to define a clean, production-ready image slot
@@ -39,7 +44,7 @@ const createSlot = ({ slot, label, description, aspectRatio = '16/10', src = nul
 });
 
 export const slots = {
-  // ── 1. Hero Showcase (Primary Homepage Slot) ──
+  // ── 1. Hero Showcase ──
   heroImage: createSlot({
     slot: 'heroImage',
     label: 'Hero Diagnostic Platform',
@@ -62,17 +67,17 @@ export const slots = {
   aboutFacility: createSlot({
     slot: 'aboutFacility',
     label: 'Diagnostic Center & Testing Facility',
-    description: 'Standardized laboratory workflow facility and cleanroom infrastructure',
+    description: 'Specialized microscopy and sample research cleanroom',
     aspectRatio: '16/10',
-    src: '/images/lab-microscope-research.webp',
-    alt: 'Diagnostic Testing Facility and Standardized Laboratory Workflow — Efyion Dx',
+    src: '/images/lab-scientists-microscope-hairnet.webp',
+    alt: 'Diagnostic Testing Facility and Research Team — Efyion Dx',
   }),
 
   // ── 3. Technology & Optics ──
   technologyImage: createSlot({
     slot: 'technologyImage',
     label: 'Diagnostic Optical & Analytical Hardware',
-    description: 'High-resolution plan-apochromatic microscope optics and photometric grating',
+    description: 'High-resolution plan-apochromatic microscope optics with sapphire blue bokeh',
     aspectRatio: '16/10',
     src: '/images/tech-optics.webp',
     alt: 'Precision diagnostic optical objectives and multi-wavelength analytical hardware — Efyion Dx',
@@ -118,7 +123,7 @@ export const slots = {
     alt: 'Biomedical service engineers performing calibration and diagnostic instrumentation support — Efyion Dx',
   }),
 
-  // ── 8. Six Diagnostic Product Slots (Real Equipment Hardware Photography) ──
+  // ── 8. Six Diagnostic Product Hardware Units (100% Real Instruments) ──
   productImage1: createSlot({
     slot: 'productImage1',
     label: 'Efyion ChemTrack 400 Analyzer',
@@ -148,11 +153,11 @@ export const slots = {
 
   productImage4: createSlot({
     slot: 'productImage4',
-    label: 'Rapid Point-of-Care POCT Platform',
-    description: 'Handheld Rapid-Turnaround Diagnostic Platform with Test Cartridges',
+    label: 'Mispa HX 80 Hematology Analyzer',
+    description: '6-Part Automated Hematology Analyzer with NRBC Channel',
     aspectRatio: '4/3',
-    src: '/images/product-poct.webp',
-    alt: 'Rapid Point-of-Care POCT Handheld Diagnostic Platform and Test Cartridges',
+    src: '/images/product-mispa-hx80.webp',
+    alt: 'Mispa HX 80 6-Part Automated Hematology Analyzer with NRBC — Efyion Dx',
   }),
 
   productImage5: createSlot({
@@ -166,11 +171,11 @@ export const slots = {
 
   productImage6: createSlot({
     slot: 'productImage6',
-    label: 'Diagnostic Informatics & Connected Healthcare Ecosystem',
-    description: 'Laboratory Information Middleware & Real-Time Hospital EHR Connectivity',
+    label: 'Rapid Point-of-Care POCT Platform',
+    description: 'Handheld Rapid-Turnaround Diagnostic Platform with Test Cartridges',
     aspectRatio: '4/3',
-    src: '/images/tech-digital-health.webp',
-    alt: 'Diagnostic informatics suite, connected healthcare ecosystem and hospital EHR integration — Efyion Dx',
+    src: '/images/product-poct.webp',
+    alt: 'Rapid Point-of-Care POCT Handheld Diagnostic Platform and Test Cartridges — Efyion Dx',
   }),
 
   // ── 9. Contact & Advisory ──
@@ -237,6 +242,70 @@ export const slots = {
     src: '/images/lab-digital-diagnostics.webp',
     alt: 'Healthcare Technology and digital diagnostic interface — Efyion Dx',
   }),
+
+  // ── 11. Dedicated Unique Slots for Each Resource Article ──
+  resourceSlot1: createSlot({
+    slot: 'resource-1',
+    label: 'Precision Diagnostics in Everyday Care',
+    src: '/images/lab-scientists-microscope-hairnet.webp',
+    alt: 'Clinical laboratory scientists conducting diagnostic testing — Efyion Dx',
+  }),
+
+  resourceSlot2: createSlot({
+    slot: 'resource-2',
+    label: 'Selecting Next-Generation Analysers',
+    src: '/images/lab-molecular-dual-monitor.webp',
+    alt: 'Laboratory cleanroom workstation with automated analysis screens — Efyion Dx',
+  }),
+
+  resourceSlot3: createSlot({
+    slot: 'resource-3',
+    label: 'Liquid-Stable vs. Lyophilized Reagents',
+    src: '/images/product-reagents.webp',
+    alt: 'Pipetting liquid-stable diagnostic reagents into test tubes — Efyion Dx',
+  }),
+
+  resourceSlot4: createSlot({
+    slot: 'resource-4',
+    label: 'ISO 15189 Quality Traceability',
+    src: '/images/quality-qc.webp',
+    alt: 'Quality control calibrator records and analytical documentation — Efyion Dx',
+  }),
+
+  resourceSlot5: createSlot({
+    slot: 'resource-5',
+    label: 'Bidirectional LIS Interfacing',
+    src: '/images/tech-digital-health.webp',
+    alt: 'Physician using tablet with connected healthcare diagnostic stream — Efyion Dx',
+  }),
+
+  resourceSlot6: createSlot({
+    slot: 'resource-6',
+    label: 'Pediatric Micro-Sampling & Tube Accession',
+    src: '/images/lab-barcoded-blood-tubes.webp',
+    alt: 'Barcoded clinical specimen tubes in laboratory accession rack — Efyion Dx',
+  }),
+
+  resourceSlot7: createSlot({
+    slot: 'resource-7',
+    label: 'Efyion Dx Official Launch',
+    src: '/images/about-lab.webp',
+    alt: 'Efyion Dx diagnostic laboratory testing center — Efyion Dx',
+  }),
+
+  resourceSlot8: createSlot({
+    slot: 'resource-8',
+    label: 'Analytical Consistency & IQC',
+    src: '/images/lab-blue-tubes-microscope.webp',
+    alt: 'Precision testing tubes and laboratory compound microscope — Efyion Dx',
+  }),
+
+  resourceSlot9: createSlot({
+    slot: 'resource-9',
+    label: 'Product Guides & Parameter Sheets',
+    src: '/images/product-analyzer.webp',
+    alt: 'Efyion ChemTrack 400 Chemistry Workstation — Efyion Dx',
+  }),
 };
 
 // Aliases for comprehensive backward compatibility across all component imports
@@ -264,7 +333,7 @@ export const images = {
   categoryPointOfCare: slots.categoryPointOfCareSlot,
   categoryTech: slots.categoryTechSlot,
 
-  // 6 Diagnostic Product cards (All 6 now have authentic photos)
+  // 6 Diagnostic Product cards (100% Real Hardware Instruments)
   product1: slots.productImage1,
   product2: slots.productImage2,
   product3: slots.productImage3,
@@ -277,38 +346,38 @@ export const images = {
   audienceHospital: slots.solutionsImage,
   audienceClinician: slots.supportImage,
   audienceClinicalEnv: slots.categoryPointOfCareSlot,
-  audienceResearch: slots.categoryInstrumentsSlot,
+  audienceResearch: slots.aboutFacility,
 
   // Workflow steps
   workflowIntake: slots.categoryPointOfCareSlot,
   workflowPrep: slots.categoryReagentsSlot,
   workflowAnalysis: slots.productImage1,
-  workflowInsight: slots.productImage6,
+  workflowInsight: slots.categoryTechSlot,
 
   // Technology sections - 100% unique per section
-  technology: slots.productImage1,
-  innovation: slots.workflowImage,
-  researchDev: slots.solutionsImage,
-  labExcellence: slots.qualityImage,
+  technology: slots.resourceSlot8, // lab-blue-tubes-microscope
+  innovation: slots.workflowImage,   // workflow-automation
+  researchDev: slots.categoryInstrumentsSlot, // lab-microscope-research
+  labExcellence: slots.qualityImage, // quality-qc
 
   qualityControl: slots.qualityImage,
   supportEngineer: slots.supportImage,
 
-  // Resources
-  resourceInsights: slots.productImage6,
-  resourceLabGuide: slots.categoryLabSlot,
-  resourceNews: slots.aboutImage,
-  resourceTechnical: slots.technologyImage,
-  resourceDownloads: slots.productImage3,
-  resourceQuality: slots.qualityImage,
+  // Resources - 100% unique per article
+  resourceInsights: slots.resourceSlot1,
+  resourceLabGuide: slots.resourceSlot2,
+  resourceTechnical: slots.resourceSlot3,
+  resourceQuality: slots.resourceSlot4,
+  resourceNews: slots.resourceSlot7,
+  resourceDownloads: slots.resourceSlot9,
 
   // Solutions page areas
-  solutionLab: slots.categoryLabSlot,
+  solutionLab: slots.workflowImage,
   solutionClinical: slots.categoryClinicalSlot,
-  solutionNetwork: slots.productImage5,
+  solutionNetwork: slots.resourceSlot2, // lab-molecular-dual-monitor
 
   techOptics: slots.technologyImage,
-  techSampleIntegrity: slots.qualityImage,
-  techLims: slots.productImage6,
+  techSampleIntegrity: slots.resourceSlot6, // lab-barcoded-blood-tubes
+  techLims: slots.resourceSlot5, // tech-digital-health
   contactConsultation: slots.contactImage,
 };
