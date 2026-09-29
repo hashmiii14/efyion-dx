@@ -82,15 +82,15 @@ export default function Technology() {
               </div>
 
               {s.paragraphs?.map((p, idx) => (
-                <p key={idx} className="text-base text-ink leading-relaxed font-normal">
+                <p key={idx} className={`text-base text-ink leading-relaxed font-normal ${idx > 0 ? 'hidden md:block' : ''}`}>
                   {p}
                 </p>
               ))}
 
               {s.highlights && (
                 <ul className="mt-5 grid gap-2.5 sm:grid-cols-2 pt-2">
-                  {s.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-2.5 text-xs sm:text-sm font-semibold text-navy-900">
+                  {s.highlights.map((h, hIdx) => (
+                    <li key={h} className={`flex items-start gap-2.5 text-xs sm:text-sm font-semibold text-navy-900 ${hIdx >= 2 ? 'hidden sm:flex' : ''}`}>
                       <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-violet-100 text-violet-700">
                         <Check size={10} strokeWidth={3} />
                       </span>

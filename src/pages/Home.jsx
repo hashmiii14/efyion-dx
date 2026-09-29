@@ -103,60 +103,93 @@ function Hero() {
 
       {/* Hero Content */}
       <div className="container-site relative z-10 pt-[130px] pb-20 sm:pt-[150px] sm:pb-24 lg:pt-[170px] lg:pb-28">
-        <div className="max-w-3xl lg:max-w-4xl">
-          {/* Kicker Badge */}
-          <div className="hero-anim-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-white/95 mb-6 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse shadow-[0_0_8px_#c084fc]" />
-            <span>{hero.kicker}</span>
+        <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+          {/* Hero Copy — left side */}
+          <div className="lg:col-span-8 xl:col-span-7">
+            {/* Kicker Badge */}
+            <div className="hero-anim-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-white/95 mb-6 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse shadow-[0_0_8px_#c084fc]" />
+              <span>{hero.kicker}</span>
+            </div>
+
+            {/* Headline */}
+            <h1
+              className="text-[2.5rem] leading-[1.06] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
+              style={{ letterSpacing: '-0.035em' }}
+            >
+              <span className="hero-anim-title-1 block drop-shadow-md">Precision Diagnostics.</span>
+              <span className="hero-anim-title-2 block text-gradient-shimmer mt-1">
+                Better Outcomes.
+              </span>
+            </h1>
+
+            {/* Responsive Sub-text */}
+            <p className="hero-anim-desc mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed font-normal">
+              <span className="md:hidden">
+                Equipping clinical laboratories with high-throughput automated analyzers, standardized assay platforms, and dedicated support.
+              </span>
+              <span className="hidden md:inline">
+                Equipping clinical laboratories, hospitals, and healthcare networks with
+                high-throughput automated analyzers, standardized assay platforms, and dedicated application support.
+              </span>
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="hero-anim-cta mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+              <Button
+                to="/products"
+                variant="gradient"
+                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40 transition-all duration-300 hover:scale-[1.02]"
+              >
+                Explore diagnostic systems
+              </Button>
+              <Button
+                to="/contact"
+                variant="outlineLight"
+                className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-300"
+              >
+                Request consultation
+              </Button>
+            </div>
+
+            {/* Quick Metrics */}
+            <div className="hero-anim-stats mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 sm:gap-6 max-w-lg">
+              {[
+                { value: '400 T/H', label: 'Photometric Capacity' },
+                { value: '2.0 µL',  label: 'Micro-Volume Sample'  },
+                { value: 'HL7/ASTM', label: 'Bi-Directional LIS'  },
+              ].map(({ value, label }) => (
+                <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
+                  <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
+                  <p className="text-xs font-semibold text-white/75 mt-0.5">{label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1
-            className="text-[2.5rem] leading-[1.06] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold text-white tracking-tight"
-            style={{ letterSpacing: '-0.035em' }}
-          >
-            <span className="hero-anim-title-1 block drop-shadow-md">Precision Diagnostics.</span>
-            <span className="hero-anim-title-2 block text-gradient-shimmer mt-1">
-              Better Outcomes.
-            </span>
-          </h1>
-
-          {/* Sub-text */}
-          <p className="hero-anim-desc mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed font-normal">
-            Equipping clinical laboratories, hospitals, and healthcare networks with
-            high-throughput automated analyzers, standardized assay platforms, and dedicated application support.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="hero-anim-cta mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-            <Button
-              to="/products"
-              variant="gradient"
-              className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold shadow-xl shadow-violet-950/50 hover:shadow-violet-600/40 transition-all duration-300 hover:scale-[1.02]"
-            >
-              Explore diagnostic systems
-            </Button>
-            <Button
-              to="/contact"
-              variant="outlineLight"
-              className="!min-h-[48px] sm:!min-h-[52px] text-sm sm:text-base font-bold backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-300"
-            >
-              Request consultation
-            </Button>
-          </div>
-
-          {/* Quick Metrics */}
-          <div className="hero-anim-stats mt-10 pt-8 border-t border-white/15 grid grid-cols-3 gap-6 max-w-lg">
-            {[
-              { value: '400 T/H', label: 'Photometric Capacity' },
-              { value: '2.0 µL',  label: 'Micro-Volume Sample'  },
-              { value: 'HL7/ASTM', label: 'Bi-Directional LIS'  },
-            ].map(({ value, label }) => (
-              <div key={label} className="transition-transform duration-300 hover:-translate-y-0.5">
-                <p className="text-xl sm:text-2xl font-extrabold text-white drop-shadow">{value}</p>
-                <p className="text-xs font-semibold text-white/75 mt-0.5">{label}</p>
+          {/* Floating Glass Info Cards — right side, desktop only (original layout preserved) */}
+          <div className="hero-anim-stats hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end items-end pb-2">
+            <div className="flex flex-col gap-3.5 w-full max-w-[285px]">
+              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-violet-500/25 text-violet-300 border border-violet-400/30">
+                  <Activity size={22} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-white tracking-tight">Multi-Channel Detection</p>
+                  <p className="text-xs font-medium text-white/70">Continuous STAT Access</p>
+                </div>
               </div>
-            ))}
+
+              <div className="glass-card-dark flex items-center gap-3.5 rounded-2xl p-4 shadow-2xl animate-float-delayed">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-azure-500/25 text-azure-300 border border-azure-400/30">
+                  <ShieldCheck size={22} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-white tracking-tight">CE-IVD & ISO 13485</p>
+                  <p className="text-xs font-medium text-white/70">Standardized Quality Control</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -203,20 +236,21 @@ function AboutSection() {
     <section className="section bg-white border-t border-line">
       <div className="container-site">
         {/* 2-Column Hero Story — Perfectly Balanced Heights */}
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* Left Column: Image Frame */}
-          <Reveal variant="left">
-            <div className="relative mx-auto w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+        <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Left Column: Image Frame (height matched on desktop, zero dead gap) */}
+          <Reveal variant="left" className="flex flex-col justify-center">
+            <div className="relative w-full h-full min-h-[320px] sm:min-h-[400px] lg:min-h-[480px] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line flex items-center justify-center">
               <SmartImage
                 image={slots.aboutImage}
                 label="Clinical Diagnostic Operations"
+                className="h-full w-full object-cover"
               />
             </div>
           </Reveal>
 
-          {/* Right Column: Editorial Narrative */}
-          <Reveal variant="right">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100">
+          {/* Right Column: Editorial Narrative (responsive: punchy on mobile, comprehensive on desktop) */}
+          <Reveal variant="right" className="flex flex-col justify-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3.5 py-1.5 rounded-full border border-violet-100 w-fit">
               {about.kicker || 'Clinical Diagnostics & Laboratory Solutions'}
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
@@ -224,9 +258,10 @@ function AboutSection() {
             </h2>
             <p className="lead mt-4 font-medium text-navy-900 leading-relaxed">{about.lead}</p>
 
+            {/* Responsive Paragraphs */}
             <div className="mt-5 space-y-3.5 text-base text-ink leading-relaxed font-normal">
               <p>{about.paragraphs[0]}</p>
-              <p>{about.paragraphs[1]}</p>
+              <p className="hidden md:block">{about.paragraphs[1]}</p>
             </div>
 
             {/* Highlights List */}
@@ -379,10 +414,10 @@ function FeaturedProductsSection() {
           </Link>
         </div>
 
-        {/* Informative Editorial Context Paragraphs */}
-        <div className="mb-10 grid gap-6 lg:grid-cols-2 text-sm sm:text-[0.9375rem] text-ink leading-relaxed border-t border-line/70 pt-6">
+        {/* Informative Editorial Context Paragraphs (responsive: 1 on mobile, 2 on desktop) */}
+        <div className="mb-8 grid gap-6 lg:grid-cols-2 text-sm sm:text-[0.9375rem] text-ink leading-relaxed border-t border-line/70 pt-6">
           <p>{home.productsSection?.paragraphs?.[0]}</p>
-          <p>{home.productsSection?.paragraphs?.[1]}</p>
+          <p className="hidden md:block">{home.productsSection?.paragraphs?.[1]}</p>
         </div>
 
         {/* Filter Pills */}
@@ -465,9 +500,9 @@ function TechnologySection() {
       />
 
       <div className="container-site relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-400 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 backdrop-blur-md">
+        <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-400 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 backdrop-blur-md w-fit">
               {home.technology?.kicker || 'Instrumentation Architecture'}
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
@@ -477,19 +512,20 @@ function TechnologySection() {
               {home.technology?.lead || 'Engineered with precision opto-mechanics, high-accuracy syringe pumps, and automated self-clearing probe technologies to deliver dependable patient findings hour after hour.'}
             </p>
 
-            {/* Authoritative Technical Writing Paragraphs */}
+            {/* Authoritative Technical Writing Paragraphs (responsive) */}
             <div className="mt-5 space-y-3.5 text-sm sm:text-base text-white/75 leading-relaxed font-normal max-w-2xl">
-              {home.technology?.paragraphs?.map((p, idx) => (
-                <p key={idx}>{p}</p>
-              ))}
+              <p>{home.technology?.paragraphs?.[0]}</p>
+              {home.technology?.paragraphs?.[1] && (
+                <p className="hidden md:block">{home.technology?.paragraphs[1]}</p>
+              )}
             </div>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {techPoints.map((tp, idx) => {
                 const Icon = tp.icon;
                 return (
-                  <Reveal key={tp.title} delay={idx * 60}>
-                    <div className="glass-card-dark rounded-2xl p-4.5 transition-all duration-300 hover:bg-white/12 hover:border-violet-400/40 hover:-translate-y-0.5">
+                  <Reveal key={tp.title} delay={idx * 60} className={idx >= 2 ? 'hidden sm:block' : ''}>
+                    <div className="glass-card-dark rounded-2xl p-4.5 transition-all duration-300 hover:bg-white/12 hover:border-violet-400/40 hover:-translate-y-0.5 h-full">
                       <Icon size={20} className="text-violet-400 mb-2" aria-hidden="true" />
                       <h3 className="text-sm font-bold text-white">{tp.title}</h3>
                       <p className="mt-1 text-xs text-white/65 leading-relaxed">{tp.desc}</p>
@@ -506,12 +542,13 @@ function TechnologySection() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <Reveal variant="scale">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/15 shadow-2xl">
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <Reveal variant="scale" className="h-full">
+              <div className="relative w-full h-full min-h-[340px] sm:min-h-[420px] lg:min-h-[500px] overflow-hidden rounded-[2rem] bg-navy-900 border border-white/15 shadow-2xl flex items-center justify-center">
                 <SmartImage
                   image={slots.technologyImage}
                   label="Diagnostic Optical & Analytical Hardware"
+                  className="h-full w-full object-cover"
                   dark
                 />
               </div>
@@ -584,20 +621,20 @@ function QualitySection() {
   return (
     <section className="section bg-mist border-t border-line">
       <div className="container-site">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+        <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7 flex flex-col justify-center">
             <Reveal variant="left">
-              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100 w-fit">
                 Quality Governance
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
                 {qualitySection.title}
               </h2>
-              <p className="lead mt-4 text-ink">{qualitySection.lead}</p>
+              <p className="lead mt-4 text-ink leading-relaxed">{qualitySection.lead}</p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {qualitySection.points.map((item, idx) => (
-                  <Reveal key={item.title} delay={idx * 60}>
+                  <Reveal key={item.title} delay={idx * 60} className={idx >= 2 ? 'hidden sm:block' : ''}>
                     <div className="h-full rounded-2xl border border-line bg-white p-4 transition-all duration-300 hover:shadow-subtle">
                       <h3 className="text-sm font-bold text-navy-900">{item.title}</h3>
                       <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.text}</p>
@@ -614,12 +651,13 @@ function QualitySection() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5">
-            <Reveal variant="right">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <Reveal variant="right" className="h-full">
+              <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[460px] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line flex items-center justify-center">
                 <SmartImage
                   image={slots.qualityImage}
                   label="Quality Assurance & Calibration Standards"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </Reveal>
@@ -635,10 +673,10 @@ function SupportSection() {
   return (
     <section className="section bg-white border-t border-line">
       <div className="container-site">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+        <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7 flex flex-col justify-center">
             <Reveal variant="left">
-              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100 w-fit">
                 Technical Partnership
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
@@ -663,8 +701,8 @@ function SupportSection() {
                     title: 'Guaranteed Emergency Support SLA',
                     text: 'Under 2-hour response for critical laboratory inquiries to keep diagnostic testing uninterrupted.',
                   },
-                ].map((s) => (
-                  <div key={s.title} className="rounded-2xl border border-line bg-mist/60 p-4">
+                ].map((s, idx) => (
+                  <div key={s.title} className={`rounded-2xl border border-line bg-mist/60 p-4 ${idx === 2 ? 'hidden sm:block' : ''}`}>
                     <h3 className="text-sm font-bold text-navy-900">{s.title}</h3>
                     <p className="mt-1 text-xs text-ink/80 leading-relaxed">{s.text}</p>
                   </div>
@@ -679,12 +717,13 @@ function SupportSection() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5">
-            <Reveal variant="right">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line">
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <Reveal variant="right" className="h-full">
+              <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[460px] overflow-hidden rounded-[2rem] bg-white shadow-lift border border-line flex items-center justify-center">
                 <SmartImage
                   image={slots.supportImage}
                   label="Technical Advisory & Support Advisory"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </Reveal>

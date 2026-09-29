@@ -480,9 +480,12 @@ export const about = {
     image: images.aboutFacility,
   },
   profile: [
-    { label: 'Operating Focus', value: 'Clinical In Vitro Diagnostics' },
-    { label: 'Core Segments', value: 'Laboratories, Hospitals, Point-of-Care' },
-    { label: 'Technical Advisory', value: 'Pre & Post Implementation Support' },
+    { label: 'Operating Focus', value: 'Clinical In Vitro Diagnostics (IVD)' },
+    { label: 'Core Segments', value: 'Hospitals, Reference Labs & Point-of-Care' },
+    { label: 'Quality Standards', value: 'EN ISO 13485:2016 & ISO 9001:2015' },
+    { label: 'Reagent Architecture', value: 'Liquid-Stable Ready-to-Use Barcoded' },
+    { label: 'LIS Middleware', value: 'Native Bidirectional HL7 & ASTM 1394' },
+    { label: 'Application Support', value: '24/7 Field & Biomedical Engineering' },
   ],
   vision: {
     icon: Eye,

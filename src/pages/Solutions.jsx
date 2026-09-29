@@ -16,8 +16,8 @@ import { images } from '../content/images';
 function Points({ items }) {
   return (
     <ul className="space-y-3">
-      {items.map((p) => (
-        <li key={p} className="flex items-start gap-3 text-navy-900">
+      {items.map((p, idx) => (
+        <li key={p} className={`flex items-start gap-3 text-navy-900 ${idx >= 2 ? 'hidden sm:flex' : ''}`}>
           <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-navy-900 text-white">
             <Check size={12} strokeWidth={3} aria-hidden="true" />
           </span>
@@ -203,9 +203,9 @@ export default function Solutions() {
       {/* Reagent Supply Chain Security (NEW DEPTH) */}
       <section className="section bg-mist border-t border-line">
         <div className="container-site">
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
-              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100">
+          <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-600 bg-violet-50 px-3 py-1 rounded-full border border-violet-100 w-fit">
                 Supply Chain Security
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
@@ -230,8 +230,8 @@ export default function Solutions() {
                     title: 'Emergency Stock Buffer Reserves',
                     desc: 'Regional warehouse hubs maintain safety stock buffers to fulfill urgent demand surges within 24 to 48 hours.',
                   },
-                ].map((item) => (
-                  <div key={item.title} className="rounded-2xl border border-line bg-white p-4">
+                ].map((item, idx) => (
+                  <div key={item.title} className={`rounded-2xl border border-line bg-white p-4 ${idx === 2 ? 'hidden sm:block' : ''}`}>
                     <h3 className="text-sm font-bold text-navy-900">{item.title}</h3>
                     <p className="mt-1 text-xs text-ink/80 leading-relaxed">{item.desc}</p>
                   </div>
@@ -239,13 +239,15 @@ export default function Solutions() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="rounded-3xl border border-line bg-white p-8 shadow-lift">
-                <Truck className="text-violet-600 mb-4" size={32} />
-                <h3 className="text-xl font-bold text-navy-900">Customized Reagent Supply Agreement</h3>
-                <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">
-                  Establish a predictable monthly consumable schedule tailored to your daily patient volume, ensuring stable operating budgets.
-                </p>
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <div className="rounded-3xl border border-line bg-white p-8 shadow-lift h-full flex flex-col justify-between">
+                <div>
+                  <Truck className="text-violet-600 mb-4" size={32} />
+                  <h3 className="text-xl font-bold text-navy-900">Customized Reagent Supply Agreement</h3>
+                  <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed">
+                    Establish a predictable monthly consumable schedule tailored to your daily patient volume, ensuring stable operating budgets.
+                  </p>
+                </div>
                 <div className="mt-6 pt-6 border-t border-line">
                   <Button to="/contact?subject=Reagent+Supply+Agreement" className="w-full justify-center text-sm font-bold">
                     Discuss supply contract
@@ -258,7 +260,7 @@ export default function Solutions() {
       </section>
 
       {/* Diagnostic Workflow */}
-      <section id="workflow" className="relative isolate overflow-hidden bg-navy-900 py-20 sm:py-24 lg:py-32">
+      <section id="workflow" className="relative isolate overflow-hidden bg-navy-900 py-12 sm:py-16 lg:py-20">
         <div
           aria-hidden="true"
           className="absolute -right-32 -top-32 -z-10 h-[28rem] w-[28rem] rounded-full bg-violet-600/25 blur-3xl"

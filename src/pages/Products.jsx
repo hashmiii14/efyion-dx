@@ -60,14 +60,14 @@ export default function Products() {
 
             <div className="mt-6 grid gap-6 lg:grid-cols-2 text-sm sm:text-base text-ink leading-relaxed font-normal border-t border-line/70 pt-6">
               <p>
-                The Efyion Dx diagnostic catalogue is engineered to equip hospital central laboratories, commercial reference facilities, and acute clinical suites with dependable analytical instrumentation. Each platform is built around verified walk-away automation, low micro-volume sample aspiration, and strict photometric precision that minimizes operator hands-on time during peak testing shifts.
+                The Efyion Dx diagnostic catalogue is engineered to equip hospital central laboratories, commercial reference facilities, and acute clinical suites with dependable analytical instrumentation. Each platform is built around verified walk-away automation, low micro-volume sample aspiration, and strict photometric precision.
               </p>
-              <p>
-                Our systems span core diagnostic modalities including automated clinical chemistry, 6-part laser hematology with reticulocyte and NRBC channels, chemiluminescent enzyme immunoassays (CLEIA), and rapid point-of-care cartridges. Every instrument operates with standardized liquid-stable reagents, automated barcode accessioning, and bidirectional ASTM / HL7 middleware integration that eliminates manual transcription errors.
+              <p className="hidden md:block">
+                Our systems span core diagnostic modalities including automated clinical chemistry, 6-part laser hematology with reticulocyte and NRBC channels, chemiluminescent enzyme immunoassays (CLEIA), and rapid point-of-care cartridges. Every instrument operates with standardized liquid-stable reagents, automated barcode accessioning, and bidirectional ASTM / HL7 middleware integration.
               </p>
             </div>
 
-            {/* Core Capability Badges */}
+            {/* Core Capability Badges (responsive) */}
             <div className="mt-8 grid gap-4 sm:grid-cols-3 pt-6 border-t border-line/60">
               <div className="rounded-xl bg-white p-4 border border-line/80 shadow-xs">
                 <span className="text-xs font-bold uppercase tracking-wider text-violet-600">Sample Conservation</span>
@@ -79,7 +79,7 @@ export default function Products() {
                 <p className="mt-1 text-sm font-bold text-navy-900">2°C–8°C 24/7 Peltier cooling</p>
                 <p className="mt-1 text-xs text-ink/75 leading-relaxed">Guarantees onboard enzyme stability and reduces calibration overhead.</p>
               </div>
-              <div className="rounded-xl bg-white p-4 border border-line/80 shadow-xs">
+              <div className="rounded-xl bg-white p-4 border border-line/80 shadow-xs hidden sm:block">
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Digital Connectivity</span>
                 <p className="mt-1 text-sm font-bold text-navy-900">Native ASTM 1394 & HL7 v2.x</p>
                 <p className="mt-1 text-xs text-ink/75 leading-relaxed">Automated worklist download and instantaneous verified result transmission.</p>

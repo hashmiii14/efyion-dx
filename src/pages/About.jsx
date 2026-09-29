@@ -39,16 +39,18 @@ export default function About() {
       {/* Intro & Core Profile */}
       <ImageText image={about.intro.image} title={about.intro.title}>
         <div className="space-y-4 text-base sm:text-lg text-ink">
-          {about.intro.paragraphs.map((p) => (
-            <p key={p}>{p}</p>
+          {about.intro.paragraphs.map((p, idx) => (
+            <p key={p} className={idx > 0 ? 'hidden md:block' : ''}>
+              {p}
+            </p>
           ))}
         </div>
-        <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+        <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {about.profile.map((row) => (
             <div key={row.label} className="bg-white p-5">
               <dt className="text-xs font-semibold text-ink/75 uppercase tracking-wider">{row.label}</dt>
-              <dd className={`mt-1 font-bold text-sm sm:text-base ${row.value ? 'text-navy-900' : 'text-ink/60'}`}>
-                {row.value || PENDING}
+              <dd className="mt-1 font-bold text-sm sm:text-base text-navy-900">
+                {row.value}
               </dd>
             </div>
           ))}
