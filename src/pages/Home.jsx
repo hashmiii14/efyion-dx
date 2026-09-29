@@ -96,9 +96,9 @@ function Hero() {
             decoding="async"
           />
         </picture>
-        {/* Balanced gradient overlays for high contrast text while keeping lab & scientists clearly visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-950/50 to-navy-950/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/30" />
+        {/* Luminous, light-balanced gradient: keeps the laboratory bright, white, and clinical while ensuring text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/60 via-navy-950/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/25 via-transparent to-transparent" />
       </div>
 
       {/* Hero Content */}
